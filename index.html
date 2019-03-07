@@ -242,6 +242,271 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/06/React-DOM操作的原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡剑">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HuJian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/06/React-DOM操作的原理/" itemprop="url">React DOM操作的原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-06T18:17:01+08:00">
+                2019-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/06/React-DOM操作的原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/06/React-DOM操作的原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h1><h2 id="基础的DOM原理"><a href="#基础的DOM原理" class="headerlink" title="基础的DOM原理"></a>基础的DOM原理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">state 数据</span><br><span class="line">JSX 模板</span><br><span class="line">数据 + 模板 结合, 生成真实的DOM, 显示</span><br><span class="line">state 发生改变</span><br><span class="line">数据 + 模板 结合, 生成真实的DOM, 替换原始的DOM</span><br></pre></td></tr></table></figure>
+<p>缺陷: DOM片段整个整个替换会很耗性能</p>
+<h2 id="改进的DOM原理"><a href="#改进的DOM原理" class="headerlink" title="改进的DOM原理"></a>改进的DOM原理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">state 数据</span><br><span class="line">JSX模板</span><br><span class="line">数据 + 模板 结合, 生成真实的DOM, 显示</span><br><span class="line">state变化</span><br><span class="line">数据 + 模板结合, 生成新的真实的DOM, 并不直接替换原始的DOM</span><br><span class="line">新的DOM (DoucumentFragment文档碎片, 没那么耗性能) 和原始的DOM做对比, 找差异(DOM之间的比较)</span><br><span class="line">找到input 框的变化</span><br><span class="line">只用新的DOM中的input 元素进行替换老元素</span><br></pre></td></tr></table></figure>
+<p>缺陷: 全部替换 –&gt; 生成新的DoucumentFragment, DOM之间比较(DOM比对也耗性能) –&gt; 只替换DOM</p>
+<h2 id="React的DOM原理"><a href="#React的DOM原理" class="headerlink" title="React的DOM原理"></a>React的DOM原理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">state 数据</span><br><span class="line">JSX模板</span><br><span class="line">数据 + 模板 生成虚拟DOM( 虚拟DOM 本质就是 JS对象 , 用来描述真实的DOM) (减少损耗)</span><br><span class="line">    [<span class="string">'div'</span>, &#123;id: <span class="string">'abc'</span>&#125;, [<span class="string">'span'</span>, &#123;&#125;, <span class="string">'Hello'</span>]]  --&gt; js对象[<span class="string">'标签名'</span>, &#123;属性对象&#125;, 子节点]的嵌套成虚拟DOM树</span><br><span class="line"></span><br><span class="line">用虚拟DOM, 生成真实的DOM, 显示</span><br><span class="line">    &lt;div id=<span class="string">"abc"</span>&gt;&lt;span&gt; Hello &lt;/span&gt;&lt;/div&gt; --&gt; 真实的DOM</span><br><span class="line"></span><br><span class="line">state发生变化</span><br><span class="line">数据 + 模板 生成新的虚拟DOM, 只是比较 js对象 的差异, 进行改变(极大的提示性能)</span><br><span class="line">    [<span class="string">'div'</span>, &#123;id: <span class="string">'abc'</span>&#125;, [<span class="string">'span'</span>, &#123;&#125;, <span class="string">'Bye'</span>]]</span><br><span class="line"></span><br><span class="line">比较虚拟DOM(也即JS对象) 的差别</span><br><span class="line">直接操作DOM, 改变span 中的内容</span><br></pre></td></tr></table></figure>
+<p>改进: 整个DOM的替换 -&gt; 生成新的DOM(DocumentFragement), 比较DOM, 替换DOM -&gt; 生成虚拟DOM(JS对象), 比较虚拟DOM(比较js对象), 替换DOM</p>
+<p>优点:<br>    1,性能提升<br>    2,虚拟DOM 使得跨端应用得以实现, React Native, 虚拟DOM本身是js对象(web, 原生应用都可以识别), 网页里面渲染成DOM, 原生里面渲染成原生组件</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/node-异步和同步处理过程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡剑">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HuJian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/25/node-异步和同步处理过程/" itemprop="url">node 异步和同步处理过程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T11:35:55+08:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/25/node-异步和同步处理过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/25/node-异步和同步处理过程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/node-puppeteer模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1530,267 +1795,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/linux命令大全/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="胡剑">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HuJian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/19/linux命令大全/" itemprop="url">linux命令大全</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-19T14:09:37+08:00">
-                2019-02-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/19/linux命令大全/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/19/linux命令大全/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="基础操作"><a href="#基础操作" class="headerlink" title="基础操作:"></a>基础操作:</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">clear/<span class="built_in">command</span>+k/ctrl+l 清屏</span><br><span class="line">ctrl+u/ctrl+k 删除当前光标位置前/后的内容</span><br><span class="line">ctrl<span class="_">-a</span>:把光标移动到命令行最开始的地方.</span><br><span class="line">ctrl<span class="_">-e</span>:把光标移动到命令行末尾.</span><br><span class="line">ctrl-u:清除命令行中光标所处位置之前的所有字符.</span><br><span class="line">ctrl-k:清除从提示符所在位置到行末尾之间的字符</span><br><span class="line">ctrl-w:清除左边的字段,根据空格做分割来删除的</span><br><span class="line">ctrl-y:将会贴上被ctrl-u 或者 ctrl-k 或者 ctrl-w清除的部分.</span><br><span class="line">ctrl-r:将自动在命令历史缓存中增量搜索后面入的字符.(只是搜索离当前时间最近的一次)</span><br><span class="line">tab:命令行自动补全－自动补全当前的命令行.如果启用自动补全脚本命令参数和选项也可以自动补齐.</span><br><span class="line">ctrl<span class="_">-l</span>:清屏</span><br></pre></td></tr></table></figure>
-<h1 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令:"></a>ls命令:</h1><p>列出目标目录中所有的子目录和文件:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">格式:ls [选项] [目录名]</span><br><span class="line">-a 用于显示所有文件和子目录(保罗点文件).</span><br><span class="line">-l 除了文件名之外,还将文件的权限、所有者、文件大小等信息详细列出来.</span><br><span class="line">-r 将目录的内容清单以英文字母顺序的逆序显示.</span><br><span class="line">-t 按文件修改时间进行排序,而不是按文件名进行排序.</span><br><span class="line">-A 同-a,但不列出“.<span class="string">"(表示当前目录)和“.."</span>(表示当前目录的父目录).</span><br><span class="line">-F 在列出的文件名和目录名后添加标志.例如,在可执行文件后添加“*<span class="string">",在目录名后添加“/"</span>以区分不同的类型.</span><br><span class="line">-R 如果目标目录及其子目录中有文件,就列出所有的文件.</span><br><span class="line"></span><br><span class="line">ls -l filename:单独的列出filename文件信息</span><br><span class="line">ls -l *.py:列出以.py文件格式的文件</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/19/vim最常用命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="胡剑">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HuJian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/19/vim最常用命令/" itemprop="url">vim最常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-19T14:06:35+08:00">
-                2019-02-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/19/vim最常用命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/19/vim最常用命令/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> nu ==&gt; 显示行数</span><br><span class="line">:<span class="built_in">set</span> nonu ==&gt; 取消显示行数</span><br><span class="line">dd ==&gt; 删除光标所在行</span><br><span class="line">yy ==&gt; 复制光标所在行,然后按下p进行粘贴</span><br><span class="line">/PATTERN ==&gt; 查找,n 下一个,N 上一个</span><br><span class="line">gg ==&gt; 回到第一行</span><br><span class="line">G ==&gt; 到文末</span><br><span class="line">n+ ==&gt; 光标下移几行</span><br><span class="line">n- ==&gt; 光标上移几行</span><br><span class="line">nG ==&gt; 光标移至第n行行首</span><br><span class="line">u ==&gt; 撤消前一次的编辑操作,ctrl+r ==&gt; 恢复之前动作</span><br><span class="line">0或^ ==&gt; 跳转到行首</span><br><span class="line">$ ==&gt; 跳转到行末</span><br><span class="line">Ctrl+f ==&gt; 向下翻一屏	</span><br><span class="line">Ctrl+b ==&gt; 向上翻一屏</span><br><span class="line">d$ ==&gt; 删除光标到行末</span><br><span class="line">d0或y^ ==&gt; 删除光标到行首</span><br><span class="line">n1,n2 d ==&gt; 删除光标到行首</span><br><span class="line">nyy ==&gt; 复制光标所在行和以下的n行,然后按下p进行粘贴</span><br><span class="line">y$ ==&gt; 复制光标到行末尾,然后按下p进行粘贴</span><br><span class="line">y0或y^ ==&gt; 复制光标到行首,然后按下p进行粘贴</span><br><span class="line">:%s/old/new/g ==&gt; 在整个文件范围内替换所有的字符串<span class="string">"old"</span>为<span class="string">"new"</span></span><br><span class="line">:s/old/new ==&gt; 将当前行中查找到的第一个字符<span class="string">"old"</span> 串替换为<span class="string">"new"</span></span><br><span class="line">:s/old/new/g ==&gt; 将当前行中查找到的所有字符串<span class="string">"old"</span> 替换为<span class="string">"new"</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1843,7 +1847,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="引入模块123const http = require(&apos;http&apos;);const qs = require(&apos;querystring&apos;)const zlib = require(&apos;zlib&apos;); ==&amp;gt; 压缩解压数据 程序主题12345678910111213141516171819202122232425262728293031323334var options = &amp;#123;">
+<meta name="description" content="虚拟DOM基础的DOM原理12345state 数据JSX 模板数据 + 模板 结合, 生成真实的DOM, 显示state 发生改变数据 + 模板 结合, 生成真实的DOM, 替换原始的DOM 缺陷: DOM片段整个整个替换会很耗性能 改进的DOM原理12345678state 数据JSX模板数据 + 模板 结合, 生成真实的DOM, 显示state变化数据 + 模板结合, 生成新的真实的DOM,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="http请求返回gzip处理">
-<meta property="og:url" content="http://yoursite.com/2019/02/21/http请求返回gzip处理/index.html">
+<meta property="og:title" content="React DOM操作的原理">
+<meta property="og:url" content="http://yoursite.com/2019/03/06/React-DOM操作的原理/index.html">
 <meta property="og:site_name" content="HuJian&#39;s Blog">
-<meta property="og:description" content="引入模块123const http = require(&apos;http&apos;);const qs = require(&apos;querystring&apos;)const zlib = require(&apos;zlib&apos;); ==&amp;gt; 压缩解压数据 程序主题12345678910111213141516171819202122232425262728293031323334var options = &amp;#123;">
+<meta property="og:description" content="虚拟DOM基础的DOM原理12345state 数据JSX 模板数据 + 模板 结合, 生成真实的DOM, 显示state 发生改变数据 + 模板 结合, 生成真实的DOM, 替换原始的DOM 缺陷: DOM片段整个整个替换会很耗性能 改进的DOM原理12345678state 数据JSX模板数据 + 模板 结合, 生成真实的DOM, 显示state变化数据 + 模板结合, 生成新的真实的DOM,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-21T03:41:22.955Z">
+<meta property="og:updated_time" content="2019-03-06T10:28:34.395Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="http请求返回gzip处理">
-<meta name="twitter:description" content="引入模块123const http = require(&apos;http&apos;);const qs = require(&apos;querystring&apos;)const zlib = require(&apos;zlib&apos;); ==&amp;gt; 压缩解压数据 程序主题12345678910111213141516171819202122232425262728293031323334var options = &amp;#123;">
+<meta name="twitter:title" content="React DOM操作的原理">
+<meta name="twitter:description" content="虚拟DOM基础的DOM原理12345state 数据JSX 模板数据 + 模板 结合, 生成真实的DOM, 显示state 发生改变数据 + 模板 结合, 生成真实的DOM, 替换原始的DOM 缺陷: DOM片段整个整个替换会很耗性能 改进的DOM原理12345678state 数据JSX模板数据 + 模板 结合, 生成真实的DOM, 显示state变化数据 + 模板结合, 生成新的真实的DOM,">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/21/http请求返回gzip处理/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/06/React-DOM操作的原理/">
 
 
 
 
 
-  <title>http请求返回gzip处理 | HuJian's Blog</title>
+  <title>React DOM操作的原理 | HuJian's Blog</title>
   
 
 
@@ -242,7 +242,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/http请求返回gzip处理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/06/React-DOM操作的原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="胡剑">
@@ -259,7 +259,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">http请求返回gzip处理</h1>
+          <h1 class="post-title" itemprop="name headline">React DOM操作的原理</h1>
         
 
         <div class="post-meta">
@@ -271,8 +271,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T11:33:49+08:00">
-                2019-02-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-06T18:17:01+08:00">
+                2019-03-06
               </time>
             
 
@@ -290,8 +290,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/21/http请求返回gzip处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/21/http请求返回gzip处理/" itemprop="commentCount"></span>
+                <a href="/2019/03/06/React-DOM操作的原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/06/React-DOM操作的原理/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -319,8 +319,13 @@
       
 
       
-        <p>引入模块<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const http = require(<span class="string">'http'</span>);</span><br><span class="line">const qs = require(<span class="string">'querystring'</span>)</span><br><span class="line">const zlib = require(<span class="string">'zlib'</span>); ==&gt; 压缩解压数据</span><br></pre></td></tr></table></figure></p>
-<p>程序主题<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    hostname: <span class="string">'www.kuaidi100.com'</span>,</span><br><span class="line">    path: <span class="string">'/query?type=yuantong&amp;postid=804233238482357128&amp;temp=0.04453568682858622&amp;phone=123'</span>,</span><br><span class="line">    methos: <span class="string">'GET'</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="string">'Accept'</span>: <span class="string">'*/*'</span>,</span><br><span class="line">        <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate'</span>, <span class="comment">//这里设置返回的编码方式 设置其他的会是乱码</span></span><br><span class="line">        <span class="string">'Accept-Language'</span>: <span class="string">'zh-CN,zh;q=0.8'</span>,</span><br><span class="line">        <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</span><br><span class="line">        <span class="string">'Content-Encoding'</span>: <span class="string">'gzip'</span>,</span><br><span class="line">        <span class="string">'Vary'</span>: <span class="string">'Accept-Encoding'</span>,</span><br><span class="line">        <span class="string">'Transfer-Encoding'</span>: <span class="string">'chunked'</span>,</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/json;charset=utf-8'</span>,</span><br><span class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http.get(options, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'STATUS: '</span> + res.statusCode);</span><br><span class="line">    <span class="built_in">console</span>.log(res.headers[<span class="string">'content-encoding'</span>])</span><br><span class="line">    <span class="keyword">var</span> html = [];</span><br><span class="line">    res.on(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        html.push(data);</span><br><span class="line">    &#125;)</span><br><span class="line">    res.on(<span class="string">"end"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> buffer = Buffer.concat(html);</span><br><span class="line">        <span class="comment">// 对返回的数据buffer进行解压操作</span></span><br><span class="line">        zlib.gunzip(buffer, <span class="function"><span class="keyword">function</span>(<span class="params">err, decoded</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(decoded.toString());</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;).on(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"获取失败"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+        <h1 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h1><h2 id="基础的DOM原理"><a href="#基础的DOM原理" class="headerlink" title="基础的DOM原理"></a>基础的DOM原理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">state 数据</span><br><span class="line">JSX 模板</span><br><span class="line">数据 + 模板 结合, 生成真实的DOM, 显示</span><br><span class="line">state 发生改变</span><br><span class="line">数据 + 模板 结合, 生成真实的DOM, 替换原始的DOM</span><br></pre></td></tr></table></figure>
+<p>缺陷: DOM片段整个整个替换会很耗性能</p>
+<h2 id="改进的DOM原理"><a href="#改进的DOM原理" class="headerlink" title="改进的DOM原理"></a>改进的DOM原理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">state 数据</span><br><span class="line">JSX模板</span><br><span class="line">数据 + 模板 结合, 生成真实的DOM, 显示</span><br><span class="line">state变化</span><br><span class="line">数据 + 模板结合, 生成新的真实的DOM, 并不直接替换原始的DOM</span><br><span class="line">新的DOM (DoucumentFragment文档碎片, 没那么耗性能) 和原始的DOM做对比, 找差异(DOM之间的比较)</span><br><span class="line">找到input 框的变化</span><br><span class="line">只用新的DOM中的input 元素进行替换老元素</span><br></pre></td></tr></table></figure>
+<p>缺陷: 全部替换 –&gt; 生成新的DoucumentFragment, DOM之间比较(DOM比对也耗性能) –&gt; 只替换DOM</p>
+<h2 id="React的DOM原理"><a href="#React的DOM原理" class="headerlink" title="React的DOM原理"></a>React的DOM原理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">state 数据</span><br><span class="line">JSX模板</span><br><span class="line">数据 + 模板 生成虚拟DOM( 虚拟DOM 本质就是 JS对象 , 用来描述真实的DOM) (减少损耗)</span><br><span class="line">    [<span class="string">'div'</span>, &#123;id: <span class="string">'abc'</span>&#125;, [<span class="string">'span'</span>, &#123;&#125;, <span class="string">'Hello'</span>]]  --&gt; js对象[<span class="string">'标签名'</span>, &#123;属性对象&#125;, 子节点]的嵌套成虚拟DOM树</span><br><span class="line"></span><br><span class="line">用虚拟DOM, 生成真实的DOM, 显示</span><br><span class="line">    &lt;div id=<span class="string">"abc"</span>&gt;&lt;span&gt; Hello &lt;/span&gt;&lt;/div&gt; --&gt; 真实的DOM</span><br><span class="line"></span><br><span class="line">state发生变化</span><br><span class="line">数据 + 模板 生成新的虚拟DOM, 只是比较 js对象 的差异, 进行改变(极大的提示性能)</span><br><span class="line">    [<span class="string">'div'</span>, &#123;id: <span class="string">'abc'</span>&#125;, [<span class="string">'span'</span>, &#123;&#125;, <span class="string">'Bye'</span>]]</span><br><span class="line"></span><br><span class="line">比较虚拟DOM(也即JS对象) 的差别</span><br><span class="line">直接操作DOM, 改变span 中的内容</span><br></pre></td></tr></table></figure>
+<p>改进: 整个DOM的替换 -&gt; 生成新的DOM(DocumentFragement), 比较DOM, 替换DOM -&gt; 生成虚拟DOM(JS对象), 比较虚拟DOM(比较js对象), 替换DOM</p>
+<p>优点:<br>    1,性能提升<br>    2,虚拟DOM 使得跨端应用得以实现, React Native, 虚拟DOM本身是js对象(web, 原生应用都可以识别), 网页里面渲染成DOM, 原生里面渲染成原生组件</p>
 
       
     </div>
@@ -345,8 +350,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/19/mime文件扩展名/" rel="next" title="mime文件扩展名">
-                <i class="fa fa-chevron-left"></i> mime文件扩展名
+              <a href="/2019/02/25/node-异步和同步处理过程/" rel="next" title="node 异步和同步处理过程">
+                <i class="fa fa-chevron-left"></i> node 异步和同步处理过程
               </a>
             
           </div>
@@ -354,10 +359,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/21/理解-koa-的中间件机制/" rel="prev" title="理解 koa 的中间件机制">
-                理解 koa 的中间件机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -419,8 +420,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -492,6 +502,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟DOM"><span class="nav-number">1.</span> <span class="nav-text">虚拟DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础的DOM原理"><span class="nav-number">1.1.</span> <span class="nav-text">基础的DOM原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改进的DOM原理"><span class="nav-number">1.2.</span> <span class="nav-text">改进的DOM原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React的DOM原理"><span class="nav-number">1.3.</span> <span class="nav-text">React的DOM原理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -650,9 +676,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/02/21/http请求返回gzip处理/';
-          this.page.identifier = '2019/02/21/http请求返回gzip处理/';
-          this.page.title = 'http请求返回gzip处理';
+          this.page.url = 'http://yoursite.com/2019/03/06/React-DOM操作的原理/';
+          this.page.identifier = '2019/03/06/React-DOM操作的原理/';
+          this.page.title = 'React DOM操作的原理';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://fassbendermichael.disqus.com/embed.js';
