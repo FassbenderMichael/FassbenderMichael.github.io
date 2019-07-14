@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="React Native Enviroment前面我们使用的开发方式是进化过的方式，简述步骤就是，先安装一个Expo应用程序，然后使用扫一扫功能在Expo内运行我们的App，偏向传统的前端开发方式。这在之前，React Native采用的开发方式是先把写好的项目打包编译成一个独立App，然后直接安装到手机上运行，偏向传统的Native开发方式。 环境预览  [参照文档] http://reactn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native开发环境">
+<meta property="og:url" content="http://yoursite.com/2019/07/14/react-native开发环境/index.html">
+<meta property="og:site_name" content="HuJian&#39;s Blog">
+<meta property="og:description" content="React Native Enviroment前面我们使用的开发方式是进化过的方式，简述步骤就是，先安装一个Expo应用程序，然后使用扫一扫功能在Expo内运行我们的App，偏向传统的前端开发方式。这在之前，React Native采用的开发方式是先把写好的项目打包编译成一个独立App，然后直接安装到手机上运行，偏向传统的Native开发方式。 环境预览  [参照文档] http://reactn">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/environment_config.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/python.png?raw=true">
+<meta property="og:image" content="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-custom-install-windows.png">
+<meta property="og:image" content="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-verify-installs-windows.png">
+<meta property="og:image" content="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-configure-sdk-windows.png">
+<meta property="og:image" content="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-android-sdk-platforms-windows.png">
+<meta property="og:image" content="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-android-sdk-build-tools-windows.png">
+<meta property="og:image" content="https://reactnative.cn/static/docs/0.51/img/react-native-android-sdk-environment-variable-windows.png">
+<meta property="og:image" content="https://reactnative.cn/static/docs/0.51/img/react-native-android-tools-environment-variable-windows.png">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_welcome.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_timeout.jpg?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/usb_debug.png?raw=true">
+<meta property="og:image" content="http://yoursite.com/2019/07/14/react-native开发环境/img/react_debug_server.png">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/environment_config.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/python.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/android_sdk.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_welcome.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_yaoyiyao.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_license.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_timeout.jpg?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/usb_debug.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/adb_devices.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_debug_server.png?raw=true">
+<meta property="og:updated_time" content="2019-07-14T15:43:39.222Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-native开发环境">
+<meta name="twitter:description" content="React Native Enviroment前面我们使用的开发方式是进化过的方式，简述步骤就是，先安装一个Expo应用程序，然后使用扫一扫功能在Expo内运行我们的App，偏向传统的前端开发方式。这在之前，React Native采用的开发方式是先把写好的项目打包编译成一个独立App，然后直接安装到手机上运行，偏向传统的Native开发方式。 环境预览  [参照文档] http://reactn">
+<meta name="twitter:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/environment_config.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/14/react-native开发环境/">
+
+
+
+
+
+  <title>react-native开发环境 | HuJian's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HuJian's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/react-native开发环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡剑">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HuJian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">react-native开发环境</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-14T23:43:09+08:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/14/react-native开发环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/14/react-native开发环境/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="React-Native-Enviroment"><a href="#React-Native-Enviroment" class="headerlink" title="React Native Enviroment"></a>React Native Enviroment</h1><p>前面我们使用的开发方式是进化过的方式，简述步骤就是，先安装一个Expo应用程序，然后使用扫一扫功能在Expo内运行我们的App，偏向传统的前端开发方式。<br><br>这在之前，React Native采用的开发方式是先把写好的项目打包编译成一个独立App，然后直接安装到手机上运行，偏向传统的Native开发方式。</p>
+<p><strong>环境预览</strong></p>
+<ul>
+<li>[参照文档] <a href="http://reactnative.cn/docs/0.42/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.42/getting-started.html</a></li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/environment_config.png?raw=true" alt="预览"></li>
+</ul>
+<hr>
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="Yarn与React-Native-Cli"><a href="#Yarn与React-Native-Cli" class="headerlink" title="Yarn与React-Native-Cli"></a><strong>Yarn与React-Native-Cli</strong></h3><p>Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载。React Native的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务。<br></p>
+<p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn react-native-cli</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检测</span></span><br><span class="line">yarn -v</span><br><span class="line">react-native -v</span><br></pre></td></tr></table></figure>
+<p>镜像配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yarn config set registry https://registry.npm.taobao.org --global</span><br><span class="line">yarn config set disturl https://npm.taobao.org/dist --global</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检测</span></span><br><span class="line">yarn config get registry</span><br><span class="line">yarn config get disturl</span><br></pre></td></tr></table></figure>
+<h3 id="Python2"><a href="#Python2" class="headerlink" title="Python2"></a><strong>Python2</strong></h3><p>需要注意，RN目前只支持<code>python2.x</code>版本，安装了3.x版本的需要更换。在安装python时，注意安装界面上的 <code>Add Python to path</code>选项, 勾选上会自动将Python配置到环境变量，否则需要手动配置。<br></p>
+<ul>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/python.png?raw=true" alt="Add Python to path"></li>
+<li>安装完毕后, 在命令行中键入 <code>python --version</code> 进行测试，显示出版本号即成功</li>
+</ul>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a><strong>Java</strong></h3><p>如果使用Android系统开发测试，那么需要安装 Java SE Development Kit (JDK)，安装后需要手动配置环境变量。打开控制面板 -&gt; 系统和安全 -&gt; 系统 -&gt; 高级系统设置 -&gt; 高级 -&gt; 环境变量 -&gt; 新建。环境变量配置后，需要关闭现有的命令行工具然后重新打开，新的环境变量才会生效。</p>
+<ul>
+<li>[下载页面]<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+<li>[环境变量配置参考文档]<a href="https://jingyan.baidu.com/article/d45ad148ba5ab169552b80d3.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/d45ad148ba5ab169552b80d3.html</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1. 创建 JAVA_HOME 环境变量，值为 jdk 的安装根路径，默认 C:\Program Files\Java\jdk1.8.0_112</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. 编辑 Path 环境变量，在 Path 中加入 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin，如果是Win10一个一个添加即可</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3. 创建 CLASSPATH 变量, 值为 .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 4. 配置完毕后保存并退出, 然后运行下面命令进行检测</span></span><br><span class="line">java -version</span><br><span class="line">javac -version</span><br></pre></td></tr></table></figure>
+<h3 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a><strong>Android Studio</strong></h3><p>Android Studio是谷歌推出的Android集成开发工具，其包含了运行和测试React Native应用所需的Android SDK和模拟器。<br><br>在安装时需要确定所有安装都勾选了，尤其是Android SDK和Android Device Emulator。在初步安装完成后，选择Custom进行自定义安装。其中Androoid SDK Location目录可以选择一个剩余空间比较大的磁盘存放，建议至少留有10G。<br></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h4><ul>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-custom-install-windows.png" alt="Custom"></li>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-verify-installs-windows.png" alt="setup"></li>
+</ul>
+<p>安装完成后，在Android Studio的欢迎界面中选择Configure | SDK Manager。</p>
+<ul>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-configure-sdk-windows.png" alt="welcome"></li>
+</ul>
+<p>在SDK Platforms窗口中，选择Show Package Details，然后在Android 6.0 (Marshmallow)中勾选Google APIs、Android SDK Platform 23、Intel x86 Atom System Image、Intel x86 Atom_64 System Image以及Google APIs Intel x86 Atom_64 System Image。</p>
+<ul>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-android-sdk-platforms-windows.png" alt="SDK platforms"></li>
+</ul>
+<p>在SDK Tools窗口中，选择Show Package Details，然后在Android SDK Build Tools中勾选Android SDK Build-Tools 23.0.1（必须包含有这个版本。当然如果其他插件需要其他版本，你可以同时安装其他多个版本）。然后还要勾选最底部的Android Support Repository.</p>
+<ul>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-android-sdk-build-tools-windows.png" alt="SDK tools"></li>
+</ul>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a><strong>配置环境变量</strong></h4><p>通过Android Studio安装的SDK路径，需要配置到ANDROID_HOME环境变量中。</p>
+<p><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-sdk-environment-variable-windows.png" alt="ANDROID_HOME"></p>
+<p>还可以把Android SDK的tools和platform-tools目录添加到PATH变量中，这样就可以在终端中运行一些Android工具，例如adb devices或android avd等。</p>
+<p><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-tools-environment-variable-windows.png" alt="path"></p>
+<h3 id="adb工具"><a href="#adb工具" class="headerlink" title="adb工具"></a>adb工具</h3><p>adb安装在Android-sdk路径下的platform-tools目录，这个工具是电脑与Android设备进行通信的通用命令行工具，有几个常用命令需要了解，将来打包调试的时候需要保证本机的adb版本需要与模拟器的adb一致，如果不一致可以复制本机的adb.ext然后覆盖掉模拟器中的版本。</p>
+<ul>
+<li>adb version        # 版本</li>
+<li>adb devices        # 列出连接到本机的Android设备与状态</li>
+<li>adb start-server  # 启动adb服务</li>
+<li>adb kill-server    # 关闭adb服务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb version</span><br><span class="line">// 第一行显示的信息：Android Debug Bridge version 1.0.40</span><br><span class="line">// 其中40就代表adb的版本，将来可能把copy这个版本的adb工具覆盖掉模拟器版本</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a><strong>开发方式</strong></h2><h3 id="启动模拟器"><a href="#启动模拟器" class="headerlink" title="启动模拟器"></a>启动模拟器</h3><ul>
+<li>启动模拟器，运行adb devices命令，查看设备是否正常连接，</li>
+<li>如果提示adb版本不符合，那么就需要把本地Android-sdk目录下的adb.ext复制到模拟器目录下的bin中，进行覆盖。然后重启模拟器进行尝试。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 连接正常的话会显示设备信息或地址信息，如：127.0.0.1:62001 device</span><br><span class="line">adb devices</span><br><span class="line"></span><br><span class="line">// 如果没有发现设备，那么需要手动进行连接，夜神模拟器端口62001，MUMU模拟器端口7555</span><br><span class="line">adb connect 127.0.0.1:7555</span><br></pre></td></tr></table></figure>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>创建项目的时候，保证项目所在目录没有中文与空格，然后运行命令创建项目，创建的过程中需要联网下载依赖包，需要耐心等待。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建项目，项目名称自由定义</span></span><br><span class="line">react-native init projectName</span><br></pre></td></tr></table></figure>
+<h3 id="启动js打包服务"><a href="#启动js打包服务" class="headerlink" title="启动js打包服务"></a>启动js打包服务</h3><ul>
+<li>在项目目录下运行<code>yarn start</code>命令，默认会启动一个<code>8081</code>端口的js打包传输服务，它的作用是向移动设备提供项目最新的打包生成的bundle.js文件，每当代码变更时，该服务就会重新打包js并推送给客户端使用。</li>
+<li><strong>注意</strong>：因为8081端口已经被adb工具占用了，所以我们需要手动换一个端口好。</li>
+</ul>
+<p><strong>端口检测</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 查看8081端口占用情况与pid</span><br><span class="line">netstat -aon | findstr 8081</span><br><span class="line"></span><br><span class="line">// 通过pid查阅程序名称，即可知道是谁占用了8081端口</span><br><span class="line">tasklist | findstr 上条命令得到的pid</span><br></pre></td></tr></table></figure>
+<p><strong>启动服务</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 切入项目目录</span><br><span class="line">cd projectName</span><br><span class="line"></span><br><span class="line">// 启动服务，并指定端口</span><br><span class="line">yarn start --prot 8888</span><br></pre></td></tr></table></figure>
+<p><strong>服务检测</strong></p>
+<p>服务启动之后，我们可以通过浏览器测试js是否可以正常得到，url如下：<br><code>http://192.168.12.1:9999/index.bundle?platform=android</code></p>
+<h3 id="app安装与运行"><a href="#app安装与运行" class="headerlink" title="app安装与运行"></a>app安装与运行</h3><ul>
+<li>在项目目录下运行<code>react-native run-android</code>命令便会打包<code>android</code>项目, 生成<code>apk</code>文件, 然后自动安装到Android设备并运行。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">react-native run-android</span><br><span class="line">// 最后看到BUILD SUCCESSFUL提示就代表打包成功</span><br></pre></td></tr></table></figure>
+<p>接下来设备会自动启动应用，如果显示如下界面就代表一切正常可以开发调试了。<br><br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_welcome.png?raw=true" alt="成功运行"></p>
+<p>打包中途打包失败了，记得看提示信息，可能是网络问题，一般会提示timed out，那么重拾或者找个网络环境好的，手机热点也可以。</p>
+<p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_timeout.jpg?raw=true" alt="timed out"></p>
+<p>也可能会提示找不到android-sdk目录，那么需要手动创建一个配置文件放置到projectName/android/local.properties。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 配置sdk所在目录</span><br><span class="line">sdk.dir=G:\\Android-sdk</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="开发初体验"><a href="#开发初体验" class="headerlink" title="开发初体验"></a>开发初体验</h2><ul>
+<li>在项目根目录下有个 <code>index.js</code> , 它是项目的<code>入口</code>文件, 负责注册根组件</li>
+<li>根目录下有个 <code>App.js</code> , 是默认生成的<code>根组件</code>, 我们在 APP 上看到的<code>欢迎界面</code>就是这个组件实现的</li>
+<li>尝试修改 <code>App.js</code> 中的文本内容, 然后手机摇一摇 <code>Reload</code> 查看即可看到修改内容</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          你是我的了!</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></span><br><span class="line"><span class="regexp">          哈哈, 开心不?</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span><br><span class="line">          &#123;instructions&#125;</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>根组件代码解读</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导包</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  Platform,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Platform.select方法会根据运行环境得到配置的内容</span></span><br><span class="line"><span class="keyword">const</span> instructions = Platform.select(&#123;</span><br><span class="line">  ios: <span class="string">'Press Cmd+R to reload,\n'</span> +</span><br><span class="line">    <span class="string">'Cmd+D or shake for dev menu'</span>,</span><br><span class="line">  android: <span class="string">'Double tap R on your keyboard to reload,\n'</span> +</span><br><span class="line">    <span class="string">'Shake or press menu button for dev menu'</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出根组件, 组件的定于语法与之前学习的一样</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="comment">// 返回的视图需要使用View组件包裹, 作用相当于Div标签</span></span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line"></span><br><span class="line">  		&#123;<span class="comment">/* 文本内容使用Text组件包裹, 作用相当于P标签 */</span>&#125;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          Welcome to React Native!</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></span><br><span class="line"><span class="regexp">          To get started, edit App.js</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span><br><span class="line">          &#123;instructions&#125;</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义样式, 这里的尺寸大小无需加单位, 元素可以通过数组引用多个样式, 后面的样式优先级比前面的高</span></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    justifyContent: <span class="string">'center'</span>,</span><br><span class="line">    alignItems: <span class="string">'center'</span>,</span><br><span class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  welcome: &#123;</span><br><span class="line">    fontSize: <span class="number">20</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    margin: <span class="number">10</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  instructions: &#123;</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    color: <span class="string">'#333333'</span>,</span><br><span class="line">    marginBottom: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="真机调试"><a href="#真机调试" class="headerlink" title="真机调试"></a>真机调试</h2><h3 id="app手动安装"><a href="#app手动安装" class="headerlink" title="app手动安装"></a>app手动安装</h3><ul>
+<li>打包后的 <code>apk</code> 安装包, 可以在项目中找到，路径为 <code>projecrName/android/app/build/outputs/apk</code>，这个apk安装包可以手动安装到其它模拟器或真机中进行开发调试。</li>
+<li>如果自动安装失败, 可自行把apk文件拷贝到手机存储器, 然后手动安装。</li>
+</ul>
+<h3 id="app权限设置"><a href="#app权限设置" class="headerlink" title="app权限设置"></a>app权限设置</h3><ul>
+<li>app运行时需要<code>悬浮框</code>权限，可在<code>设置</code> =&gt; <code>授权管理</code> =&gt; <code>应用权限管理</code> 中找到对应的 APP , 然后<code>开启</code>悬浮框权限。<br></li>
+</ul>
+<h3 id="连接方式"><a href="#连接方式" class="headerlink" title="连接方式"></a>连接方式</h3><p>手机直连</p>
+<ul>
+<li>准备一台Android手机, 通过数据线连接到电脑，设置启用USB调试</li>
+<li>一般的手机在设置中可以直接找到开发者选项进行开启, 部分手机开启的位置可能不同，根据需要自行百度一下</li>
+<li>手机连接成功后运行检测命令adb devices,如果有输出设备列表与ID相关的字符串就证明连接成功了</li>
+<li>附录: 小米手机开启USB调试步骤<ul>
+<li>首先进入<code>设置</code> =&gt; <code>我的设备</code> =&gt; <code>全部参数</code> =&gt; 连续<code>点击</code>MUI版本3次以上</li>
+<li>然后重新进入<code>设置</code> =&gt; <code>更多设置</code> =&gt; <code>开发者选项</code>(在无障碍下面) =&gt; 找到<code>USB调试</code>点击开启</li>
+<li>最后需要拉到底部找到<code>启用 MUI 优化</code>, 关掉重启</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/usb_debug.png?raw=true" alt="usb调试"></p>
+<p>局域网连接</p>
+<ul>
+<li>移动设备除了通过 <code>USB</code> 直连电脑调试开发, 还可以采用<code>无线</code>的方式进行调试</li>
+<li>只要保证手机和电脑在同一个<code>局域网</code>, 然后摇一摇唤出调试菜单</li>
+<li>点击 <code>Dev settings</code> =&gt; <code>Debuug server host</code> , 配置本地 <code>IP</code> 地址和端口号 <code>8081</code> 即可</li>
+<li>如果出现这个<code>错误</code>提示, 说明配置错了: <code>could not connect to development server</code></li>
+<li><img src="img/react_debug_server.png" alt="摇一摇弹出框"></li>
+</ul>
+<hr>
+<h2 id="旧版环境安装，备份保留"><a href="#旧版环境安装，备份保留" class="headerlink" title="旧版环境安装，备份保留"></a>旧版环境安装，备份保留</h2><h3 id="注册事项"><a href="#注册事项" class="headerlink" title="注册事项"></a><strong>注册事项</strong></h3><ul>
+<li>安装的目录结构中<code>不要</code>出现<code>中文</code>与<code>特殊字符</code></li>
+<li>如果<code>计算机</code>名称是中文改成<code>英文</code></li>
+<li>因为这些环境都依赖我们的操作系统，如果系统是被优化阉割的版本可能会安装失败</li>
+</ul>
+<h3 id="环境预览"><a href="#环境预览" class="headerlink" title="环境预览"></a><strong>环境预览</strong></h3><ul>
+<li>参照文档 <a href="http://reactnative.cn/docs/0.42/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.42/getting-started.html</a></li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/environment_config.png?raw=true" alt="预览"></li>
+</ul>
+<h3 id="Node环境"><a href="#Node环境" class="headerlink" title="Node环境"></a><strong>Node环境</strong></h3><ul>
+<li>下载最新的长期<code>稳定版本</code><a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
+<li>安装完毕后，在命令行中键入 <code>node -v</code> 进行测试，显示出版本号即成功</li>
+<li>在国内的话如有需要可以<code>修改</code> npm 的<code>下载地址</code>, 或在下载包的时候临时指定<ul>
+<li><code>npm config set registry https://registry.npm.taobao.org -g</code></li>
+<li><code>npm config set disturl https://npm.taobao.org/dist -g</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="React-Native-Cli与Yarn"><a href="#React-Native-Cli与Yarn" class="headerlink" title="React-Native-Cli与Yarn"></a><strong>React-Native-Cli与Yarn</strong></h3><ul>
+<li><code>Yarn</code> 是 <code>Facebook</code> 推出的<code>包管理</code>工具, 可以加速 node 模块的下载, <code>React-Native</code> 脚手架安装包的时候会使用</li>
+<li><code>React-Native-Cli</code> 是一款命令行工具, 用于 <code>React-Native</code> 项目的创建、初始化、更新、运行与打包</li>
+<li>安装命令: <code>npm install yarn react-native-cli -g</code></li>
+<li>测试命令: <code>yarn -v</code> <code>react-native -v</code></li>
+<li>安装完毕后可以设置 <code>Yarn</code> 安装模块的<code>镜像</code>地址<ul>
+<li><code>yarn config set registry https://registry.npm.taobao.org -g</code></li>
+<li><code>yarn config set disturl https://npm.taobao.org/dist -g</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Python环境"><a href="#Python环境" class="headerlink" title="Python环境"></a><strong>Python环境</strong></h3><ul>
+<li>安装 <code>2.×</code> 的版本的 <code>python</code>, 安装时注意勾选安装界面上的 <code>Add Python to path</code>, 自动将Python添加到<code>环境变量</code></li>
+<li>安装完毕后, 在命令行中键入 <code>python --version</code> 进行测试，显示出版本号即成功<br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/python.png?raw=true" alt="预览"></li>
+</ul>
+<h3 id="Java环境"><a href="#Java环境" class="headerlink" title="Java环境"></a><strong>Java环境</strong></h3><ul>
+<li>下载1.8版本JDK, <a href="http://www.oracle.com/technetwork/java/javase/overview/index.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/overview/index.html</a></li>
+<li>安装完毕后, 需要手动配置环境变量<a href="http://jingyan.baidu.com/article/f96699bb8b38e0894e3c1bef.html" target="_blank" rel="noopener">http://jingyan.baidu.com/article/f96699bb8b38e0894e3c1bef.html</a><ol>
+<li>系统环境变量中新增 <code>JAVA_HOME</code> 变量，值为 <code>C:\Program Files\Java\jdk1.8.0_112</code>, 即 jdk 的<code>安装</code>根路径</li>
+<li>修改系统环境变量 <code>Path</code>, 在 Path 之后新增 <code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</code></li>
+<li>新增 <code>CLASSPATH</code> 变量, 值为 <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</code></li>
+<li>配置完毕后保存并退出, 在命令行中分别键入<code>java</code> 与 <code>javac</code> 进行测试, 出现命令选项即配置成功</li>
+</ol>
+</li>
+</ul>
+<h3 id="Android环境"><a href="#Android环境" class="headerlink" title="Android环境"></a><strong>Android环境</strong></h3><ol>
+<li><p>双击<code>installer_r24.3.4-windows.exe</code>安装androidSDK<br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/android_sdk.png?raw=true" alt="每个用户"></p>
+</li>
+<li><p>进入安装目录，将<code>android-25</code>、<code>android-23</code>(react-native依赖)压缩包复制到<code>platforms</code>文件夹下，右键<code>解压</code>到当前文件夹</p>
+</li>
+<li><p>将<code>platform-tools_r23.1.0-windows</code>压缩包复制到<code>安装目录</code>，右键<code>解压</code>到当前文件夹</p>
+</li>
+<li><p><strong>tools文件夹不解压覆盖也行；</strong><del>解压<code>tools</code>，放到<code>tools</code>文件夹下</del></p>
+</li>
+<li><p>在安装目录新建一个<code>build-tools</code>文件夹，然后将<code>build-tools_r23.0.1-windows.zip(react-native依赖)</code>、<br><code>build-tools_r23.0.2-windows.zip(weex依赖)</code>和<code>build-tools_r23.0.3-windows.zip</code>压缩包复制到<code>build-tools</code>，<br>然后依次右键解压到当前文件夹，<code>解压后</code>的文件夹需要<code>修改名字</code>为对应的版本号<code>23.0.1</code>、<code>23.0.2</code>和<code>23.0.3</code></p>
+</li>
+<li><p>在安装目录中，新建<code>extras</code>文件夹，在<code>extras</code>文件夹下新建<code>android</code>文件夹<br>将<code>android_m2repository_r40.zip</code>与<code>support_r23.2.1.zip</code>压缩包复制到这个<code>android</code>文件夹，右键解压到当前文件夹</p>
+</li>
+<li><p>配置安装环境变量：在系统环境变量中新建<code>ANDROID_HOME</code>变量，值为SDK安装目录,<br>然后在Path中新增 <code>;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;</code></p>
+</li>
+</ol>
+<h2 id="环境测试与APP打包"><a href="#环境测试与APP打包" class="headerlink" title="环境测试与APP打包"></a>环境测试与APP打包</h2><h3 id="创建项目-1"><a href="#创建项目-1" class="headerlink" title="创建项目"></a>创建项目</h3><ul>
+<li>使用<code>命令行</code>工具切入一个<code>目录</code>, 保证该目录及整个<code>路径</code>中没有任何<code>中文</code>字符串</li>
+<li>然后运行 <code>react-native init project-name</code> 命令初始化一个 <code>React-Native</code> 项目</li>
+<li>创建时过程中需要联网<code>下载</code>依赖包, 所以可能比较慢, 建议设置 <code>npm 或 yarn</code> 为国内镜像源</li>
+</ul>
+<h3 id="初始打包"><a href="#初始打包" class="headerlink" title="初始打包"></a>初始打包</h3><ul>
+<li>运行 <code>cd project-name</code> 命令进入<code>项目</code>根目录</li>
+<li>然后运行 <code>react-native run-android</code> 命令</li>
+<li>该命令首先在本地启动一个端口<code>8081</code>的本地<code>服务器</code>, 用于向移动设备提供最新的项目打包生成的 <code>js</code> 文件</li>
+<li>其次命令会打包 <code>android</code> 项目, 生成 <code>apk</code> 文件, 如果有移动设备连接了电脑, 还会自动帮你<code>安装</code></li>
+</ul>
+<h3 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h3><ul>
+<li>打包好的 <code>apk</code> 安装包, 被放置到了 <code>/android/app/build/outputs/apk</code> 目录下</li>
+<li>如果没有设备连接电脑, 或自动安装失败, 可自行把 <code>apk</code> 文件<code>拷贝</code>到手机存储器, 然后手动<code>安装</code></li>
+</ul>
+<h3 id="设置App权限"><a href="#设置App权限" class="headerlink" title="设置App权限"></a>设置App权限</h3><ul>
+<li><code>App</code> 安装完毕要后<code>执行</code>, 需要确保其拥有<code>悬浮框</code>权限</li>
+<li>可在<code>设置</code> =&gt; <code>授权管理</code> =&gt; <code>应用权限管理</code> 中找到对应的 APP , 然后<code>开启</code>悬浮框权限</li>
+<li>有些手机需要关闭优化，比如MIUI系统手机需要进入开发者模式，关闭 “MIUI优化”</li>
+</ul>
+<h3 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h3><ul>
+<li>App 权限设置完毕后, 关掉重新启动, 便会看到一个<code>欢迎</code>界面</li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_welcome.png?raw=true" alt="欢迎页面"></li>
+<li>也可以<code>摇一摇</code>手机, 唤起调试菜单, 点击第一个选项 <code>Reload</code>重新加载 <code>js</code> 执行</li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_yaoyiyao.png?raw=true" alt="摇一摇弹出框"></li>
+</ul>
+<h2 id="常见打包失败问题"><a href="#常见打包失败问题" class="headerlink" title="常见打包失败问题"></a>常见打包失败问题</h2><ul>
+<li>参考资料 <a href="http://www.open-open.com/lib/view/open1477469117948.html" target="_blank" rel="noopener">http://www.open-open.com/lib/view/open1477469117948.html</a></li>
+<li>参考资料 <a href="http://reactnative.cn/docs/0.50/running-on-device-android.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/running-on-device-android.html#content</a></li>
+</ul>
+<h3 id="无法获取桥接"><a href="#无法获取桥接" class="headerlink" title="无法获取桥接"></a>无法获取桥接</h3><ul>
+<li>提示: <code>Could not get BatchedBridge, make sure your bundle is packaged correctly</code></li>
+<li>确保 <code>android/app/src/main/</code> 目录下有 <code>assets</code> 文件夹, 如果没有, 手动创建一个</li>
+<li>然后在命令行工具中切入到项目根目录</li>
+<li>执行命令: <code>react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/</code></li>
+</ul>
+<h3 id="缺少许可"><a href="#缺少许可" class="headerlink" title="缺少许可"></a>缺少许可</h3><ul>
+<li><strong>Windows脚本</strong><ul>
+<li><code>mkdir &quot;%ANDROID_HOME%\licenses&quot;</code></li>
+<li><code>echo |set /p=&quot;8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;%ANDROID_HOME%\licenses\android-sdk-license&quot;</code></li>
+</ul>
+</li>
+<li><strong>Linux脚本</strong><ul>
+<li><code>mkdir &quot;$ANDROID_HOME/licenses&quot;</code></li>
+<li><code>echo -e &quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-license&quot;</code><br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_license.png?raw=true" alt="缺少许可截图与解决方案"></li>
+</ul>
+</li>
+</ul>
+<h3 id="连接超时"><a href="#连接超时" class="headerlink" title="连接超时"></a>连接超时</h3><p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_timeout.jpg?raw=true" alt="连接超时截图与解决方案"></p>
+<hr>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><h3 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h3><ul>
+<li>之前运行 <code>react-native run-android</code> 打包命令的时候会自动启动一个本地<code>服务器</code>用于更新 js 代码</li>
+<li>如果是项目的<code>后续</code>开发, 我们只需单独运行 <code>react-native start</code> 命令重新启动<code>服务器</code>即可</li>
+<li>只要启动了, 我们就可以修改 <code>web</code> 代码, 将来移动设备 <code>Reload</code> 新代码即可预览最新效果</li>
+</ul>
+<h3 id="设备直连"><a href="#设备直连" class="headerlink" title="设备直连"></a>设备直连</h3><ol>
+<li>准备一台 <code>Android</code> 手机, 通过数据线<code>连接</code>到电脑，设置启用<code>USB调试</code></li>
+<li>一般的手机在<code>设置</code>中可以直接找到<code>开发者选项</code>进行开启, 如果<code>找不到</code>, 就自行百度查一下</li>
+<li>手机连接成功后运行检测命令 <code>adb devices</code> , 如果有输出设备列表与 <code>ID</code> 相关的字符串就证明连接成功了<br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/usb_debug.png?raw=true" alt="调试模式"><br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/adb_devices.png?raw=true" alt="查看连接设备"></li>
+<li>附录: 小米手机开启USB调试步骤<ul>
+<li>首先进入<code>设置</code> =&gt; <code>我的设备</code> =&gt; <code>全部参数</code> =&gt; 连续<code>点击</code>MUI版本3次以上</li>
+<li>然后重新进入<code>设置</code> =&gt; <code>更多设置</code> =&gt; <code>开发者选项</code>(在无障碍下面) =&gt; 找到<code>USB调试</code>点击开启</li>
+<li>最后需要拉到底部找到<code>启用 MUI 优化</code>, 关掉重启</li>
+</ul>
+</li>
+</ol>
+<h3 id="局域网连接"><a href="#局域网连接" class="headerlink" title="局域网连接"></a>局域网连接</h3><ul>
+<li>移动设备除了通过 <code>USB</code> 直连电脑调试开发, 还可以采用<code>无线</code>的方式进行调试</li>
+<li>只要保证手机和电脑在同一个<code>局域网</code>, 然后摇一摇唤出调试菜单</li>
+<li>点击 <code>Dev settings</code> =&gt; <code>Debuug server host</code> , 配置本地 <code>IP</code> 地址和端口号 <code>8081</code> 即可</li>
+<li>如果出现这个<code>错误</code>提示, 说明配置错了: <code>could not connect to development server</code></li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_debug_server.png?raw=true" alt="摇一摇弹出框"></li>
+</ul>
+<h3 id="调试菜单说明"><a href="#调试菜单说明" class="headerlink" title="调试菜单说明"></a>调试菜单说明</h3><ul>
+<li>Reload: 重新加载整个页面</li>
+<li>Debug JS Remotely: 启动远程调试, 会自动打开chrome浏览器, 然后可在开发者工具中调试js</li>
+<li>Enable Live Reload: 开启自动加载, 代码变动会自动更新整个页面</li>
+<li>Enable Hot Reloading: 热更新, 代码变动自动的进行局部更新</li>
+<li>Show Perf Monitor: 打开性能监控，可查看UI与JS运行性能</li>
+<li>Dev Sttings: 开发调试配置</li>
+</ul>
+<hr>
+<h2 id="打包正式版"><a href="#打包正式版" class="headerlink" title="打包正式版"></a>打包正式版</h2><p>1、产生签名的key</p>
+<p>该过程会用到keytool密钥和证书管理工具，在项目的主目录（不是android文件夹）中执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 生成签名key，注意记下你的密钥和存储密码，后面配置文件需要使用</span><br><span class="line">keytool -genkey -v -keystore my-release-key.keystore -alias 自己起的别名 -keyalg RSA -keysize 2048 -validity 10000</span><br><span class="line"></span><br><span class="line">// 将keystore文件移动至android/app/文件夹</span><br><span class="line">move my-release-key.keystore android/app/</span><br></pre></td></tr></table></figure>
+<p>2、修改android/gradle.properties文件，增加如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MYAPP_RELEASE_STORE_FILE=my-release-key.keystore</span><br><span class="line">MYAPP_RELEASE_KEY_ALIAS=自己起的别名</span><br><span class="line">MYAPP_RELEASE_STORE_PASSWORD=存储密码</span><br><span class="line">MYAPP_RELEASE_KEY_PASSWORD=密钥</span><br></pre></td></tr></table></figure>
+<p>3、修改android/app/build.gradle文件，增加如下签名配置</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">android &#123; </span><br><span class="line">  signingConfigs &#123; </span><br><span class="line">    release &#123; </span><br><span class="line">        storeFile <span class="keyword">file</span>(MYAPP_RELEASE_STORE_FILE) </span><br><span class="line">        storePassword MYAPP_RELEASE_STORE_PASSWORD </span><br><span class="line">        keyAlias MYAPP_RELEASE_KEY_ALIAS </span><br><span class="line">        keyPassword MYAPP_RELEASE_KEY_PASSWORD </span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">  buildTypes &#123; </span><br><span class="line">    release &#123; </span><br><span class="line">      signingConfig signingConfigs.release </span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、打包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 在android/app/build/outputs/apk/文件夹中生产可以发布的app-release.apk文件</span><br><span class="line">cd android</span><br><span class="line">gradlew assembleRelease</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/14/react-native基础组件/" rel="next" title="react-native基础组件">
+                <i class="fa fa-chevron-left"></i> react-native基础组件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4" alt="胡剑">
+            
+              <p class="site-author-name" itemprop="name">胡剑</p>
+              <p class="site-description motion-element" itemprop="description">时间就是一个小偷,它让你猝不及防地失去,那些你很容易忽略掉的东西,当你记起时，却怎么也找不着了...</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FassbenderMichael" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/540907171/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/df1f61cabea9" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/179974868/" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>豆瓣</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Native-Enviroment"><span class="nav-number">1.</span> <span class="nav-text">React Native Enviroment</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境安装"><span class="nav-number">1.1.</span> <span class="nav-text">环境安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Yarn与React-Native-Cli"><span class="nav-number">1.1.1.</span> <span class="nav-text">Yarn与React-Native-Cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python2"><span class="nav-number">1.1.2.</span> <span class="nav-text">Python2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java"><span class="nav-number">1.1.3.</span> <span class="nav-text">Java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-Studio"><span class="nav-number">1.1.4.</span> <span class="nav-text">Android Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置环境变量"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">配置环境变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adb工具"><span class="nav-number">1.1.5.</span> <span class="nav-text">adb工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发方式"><span class="nav-number">1.2.</span> <span class="nav-text">开发方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动模拟器"><span class="nav-number">1.2.1.</span> <span class="nav-text">启动模拟器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目"><span class="nav-number">1.2.2.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动js打包服务"><span class="nav-number">1.2.3.</span> <span class="nav-text">启动js打包服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app安装与运行"><span class="nav-number">1.2.4.</span> <span class="nav-text">app安装与运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发初体验"><span class="nav-number">1.3.</span> <span class="nav-text">开发初体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#真机调试"><span class="nav-number">1.4.</span> <span class="nav-text">真机调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#app手动安装"><span class="nav-number">1.4.1.</span> <span class="nav-text">app手动安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app权限设置"><span class="nav-number">1.4.2.</span> <span class="nav-text">app权限设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接方式"><span class="nav-number">1.4.3.</span> <span class="nav-text">连接方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#旧版环境安装，备份保留"><span class="nav-number">1.5.</span> <span class="nav-text">旧版环境安装，备份保留</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册事项"><span class="nav-number">1.5.1.</span> <span class="nav-text">注册事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境预览"><span class="nav-number">1.5.2.</span> <span class="nav-text">环境预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node环境"><span class="nav-number">1.5.3.</span> <span class="nav-text">Node环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-Native-Cli与Yarn"><span class="nav-number">1.5.4.</span> <span class="nav-text">React-Native-Cli与Yarn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python环境"><span class="nav-number">1.5.5.</span> <span class="nav-text">Python环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java环境"><span class="nav-number">1.5.6.</span> <span class="nav-text">Java环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android环境"><span class="nav-number">1.5.7.</span> <span class="nav-text">Android环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境测试与APP打包"><span class="nav-number">1.6.</span> <span class="nav-text">环境测试与APP打包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建项目-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始打包"><span class="nav-number">1.6.2.</span> <span class="nav-text">初始打包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动安装"><span class="nav-number">1.6.3.</span> <span class="nav-text">手动安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置App权限"><span class="nav-number">1.6.4.</span> <span class="nav-text">设置App权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试运行"><span class="nav-number">1.6.5.</span> <span class="nav-text">测试运行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见打包失败问题"><span class="nav-number">1.7.</span> <span class="nav-text">常见打包失败问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#无法获取桥接"><span class="nav-number">1.7.1.</span> <span class="nav-text">无法获取桥接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺少许可"><span class="nav-number">1.7.2.</span> <span class="nav-text">缺少许可</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接超时"><span class="nav-number">1.7.3.</span> <span class="nav-text">连接超时</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发"><span class="nav-number">1.8.</span> <span class="nav-text">开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动本地服务器"><span class="nav-number">1.8.1.</span> <span class="nav-text">启动本地服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设备直连"><span class="nav-number">1.8.2.</span> <span class="nav-text">设备直连</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局域网连接"><span class="nav-number">1.8.3.</span> <span class="nav-text">局域网连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调试菜单说明"><span class="nav-number">1.8.4.</span> <span class="nav-text">调试菜单说明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包正式版"><span class="nav-number">1.9.</span> <span class="nav-text">打包正式版</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡剑</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://fassbendermichael.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/07/14/react-native开发环境/';
+          this.page.identifier = '2019/07/14/react-native开发环境/';
+          this.page.title = 'react-native开发环境';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://fassbendermichael.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

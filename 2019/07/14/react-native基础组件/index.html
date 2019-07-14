@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ReactNative 快速开始学习使用 ReactNative 最令人头疼的就是环境问题，因为大多数 Web 开发者，并不熟悉 Android 与 IOS 的开发环境，配置起来比较繁琐。当然 Android 程序员也不熟悉 IOS 环境，反之亦然，这导致很多人因为繁杂的开发环境而放弃学习或者暂时搁浅。 为了改善这个问题，一个快速的开发环境解决方案应运而生。这个方案需要两个工具：1. create">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native基础组件">
+<meta property="og:url" content="http://yoursite.com/2019/07/14/react-native基础组件/index.html">
+<meta property="og:site_name" content="HuJian&#39;s Blog">
+<meta property="og:description" content="ReactNative 快速开始学习使用 ReactNative 最令人头疼的就是环境问题，因为大多数 Web 开发者，并不熟悉 Android 与 IOS 的开发环境，配置起来比较繁琐。当然 Android 程序员也不熟悉 IOS 环境，反之亦然，这导致很多人因为繁杂的开发环境而放弃学习或者暂时搁浅。 为了改善这个问题，一个快速的开发环境解决方案应运而生。这个方案需要两个工具：1. create">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/ipconfig.png?raw=true">
+<meta property="og:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/expo_service.png?raw=true">
+<meta property="og:image" content="https://note.youdao.com/yws/public/resource/6a301213468716d4d839ca93f6b26025/xmlnote/5F7D6A3BB20945BE8C521606F0DD0C76/6915">
+<meta property="og:updated_time" content="2019-07-14T15:52:47.723Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-native基础组件">
+<meta name="twitter:description" content="ReactNative 快速开始学习使用 ReactNative 最令人头疼的就是环境问题，因为大多数 Web 开发者，并不熟悉 Android 与 IOS 的开发环境，配置起来比较繁琐。当然 Android 程序员也不熟悉 IOS 环境，反之亦然，这导致很多人因为繁杂的开发环境而放弃学习或者暂时搁浅。 为了改善这个问题，一个快速的开发环境解决方案应运而生。这个方案需要两个工具：1. create">
+<meta name="twitter:image" content="https://github.com/guopengfei116/drop/blob/master/img/react-native/ipconfig.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/14/react-native基础组件/">
+
+
+
+
+
+  <title>react-native基础组件 | HuJian's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HuJian's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/react-native基础组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡剑">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HuJian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">react-native基础组件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-14T23:42:30+08:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/14/react-native基础组件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/14/react-native基础组件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ReactNative-快速开始"><a href="#ReactNative-快速开始" class="headerlink" title="ReactNative 快速开始"></a>ReactNative 快速开始</h1><p>学习使用 ReactNative 最令人头疼的就是环境问题，因为大多数 Web 开发者，并不熟悉 Android 与 IOS 的开发环境，配置起来比较繁琐。当然 Android 程序员也不熟悉 IOS 环境，反之亦然，这导致很多人因为繁杂的开发环境而放弃学习或者暂时搁浅。</p>
+<p>为了改善这个问题，一个快速的开发环境解决方案应运而生。这个方案需要两个工具：1. create-react-native-app 2. Expo。</p>
+<h2 id="create-react-native-app"><a href="#create-react-native-app" class="headerlink" title="create-react-native-app"></a>create-react-native-app</h2><p>这是一款用来创建 ReactNative 项目的脚手架工具。特点是无需配置繁杂的 Android 或 IOS 开发环境，便可进行原生应用的开发，极大简化了环境搭建与配置的过程，很适合学习使用。</p>
+<ul>
+<li>[参考文档] <a href="https://reactnative.cn/docs/getting-started.html" target="_blank" rel="noopener">https://reactnative.cn/docs/getting-started.html</a></li>
+<li>[替代方案] <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="noopener">https://facebook.github.io/react-native/docs/getting-started.html</a></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装</span></span><br><span class="line">npm install -g create-react-native-app</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检测，文档更新时最新版本2.0.2</span></span><br><span class="line">create-react-native-app --version</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建项目</span></span><br><span class="line">create-react-native-app projectName</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动项目</span></span><br><span class="line">cd projectName</span><br><span class="line">expo start</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Expo"><a href="#Expo" class="headerlink" title="Expo"></a>Expo</h2><p>这是一款安装在手机上的应用，专门负责运行上述方式构建的 App，这有点像是微信里面运行的小程序。IOS 可以到 AppStore 里面搜索下载，Android 可以到 GooglePlay 里面搜索下载，也可以到 Github 里下载。</p>
+<ul>
+<li>[Github] <a href="https://github.com/expo/expo" target="_blank" rel="noopener">https://github.com/expo/expo</a></li>
+</ul>
+<hr>
+<h2 id="真机运行"><a href="#真机运行" class="headerlink" title="真机运行"></a>真机运行</h2><p>准备工作：使用<code>create-react-native-app</code>创建一个项目，然后手机安装<code>Expo</code>应用，并确保手机与开发机处于同一局域网下。</p>
+<p>项目运行：<code>npm start</code>启动项目，打开<code>Expo</code>应用，使用里面的扫一扫功能，扫描项目启动后生成的巨大二维码，等待JS打包传输完毕，就会在手机上运行。</p>
+<h3 id="IP错误问题"><a href="#IP错误问题" class="headerlink" title="IP错误问题"></a>IP错误问题</h3><p>因为开发机可能会有多个ip地址，比如以太网IP、虚拟IP、无线局域网IP等等。当项目启动时通常会无脑的选择IP列表中的第一个，假如是以太网IP，那么就与手机所处的无线局域网不同，造成网络连接失败。</p>
+<p>下面是这种情况的图例，项目启动时使用的是IP列表中的第一个94 IP，并没有使用无线局域网IP。<br></p>
+<p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/ipconfig.png?raw=true" alt="ipconfig"></p>
+<p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/expo_service.png?raw=true" alt="expo-service"></p>
+<p>如果发生这种情况，先<code>Ctrl+C</code>停掉项目，设置一个环境变量，然后再重启项目即可。</p>
+<ul>
+<li>[参考解决方案] <a href="https://github.com/react-community/create-react-native-app/blob/d01ddabb634532200629c6d17f920eb856fa6416/react-native-scripts/template/README.md#environment-variables" target="_blank" rel="noopener">https://github.com/react-community/create-react-native-app/blob/d01ddabb634532200629c6d17f920eb856fa6416/react-native-scripts/template/README.md#environment-variables</a></li>
+<li>[参考解决方案] <a href="https://github.com/react-community/create-react-native-app/issues/270" target="_blank" rel="noopener">https://github.com/react-community/create-react-native-app/issues/270</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 设置环境变量</span></span><br><span class="line">set REACT_NATIVE_PACKAGER_HOSTNAME=my-custom-ip-address-or-hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启项目</span></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="开发初体验"><a href="#开发初体验" class="headerlink" title="开发初体验"></a>开发初体验</h2><ul>
+<li>在项目根目录下有个 <code>App.js</code> , 是应用的<code>根组件</code>, 我们手机上看到的<code>内容</code>就是这个组件实现的</li>
+<li>尝试修改 <code>App.js</code> 中的文本内容, 然后手机摇一摇, 点击 <code>Reload</code> 选项即可更新修改内容</li>
+<li>也可尝试给文本添加新的样式</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, Text, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出根组件, 组件的定于语法与之前学习的一样</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="comment">// 返回的视图需要使用View组件包裹, 作用相当于Div标签</span></span><br><span class="line">        &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">            &#123;<span class="comment">/* 文本内容使用Text组件包裹, 作用相当于P标签 */</span>&#125;</span><br><span class="line">            &lt;Text&gt;Open up App.js to start working on your app!&lt;/Text&gt;</span><br><span class="line">        &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 定义样式, 这里的尺寸大小无需加单位, 元素可以通过数组引用多个样式, 后面的样式优先级比前面的高</span></span><br><span class="line"><span class="regexp">const styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">  container: &#123;</span></span><br><span class="line"><span class="regexp">    flex: 1,</span></span><br><span class="line"><span class="regexp">    backgroundColor: '#fff',</span></span><br><span class="line"><span class="regexp">    alignItems: 'center',</span></span><br><span class="line"><span class="regexp">    justifyContent: 'center',</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="错误提示-红屏和黄屏"><a href="#错误提示-红屏和黄屏" class="headerlink" title="错误提示 - 红屏和黄屏"></a>错误提示 - 红屏和黄屏</h2><p>RN代码运行时会把错误分为红屏和黄屏两种，红屏会以全屏红色显示在应用中，导致程序无法正常运行，红屏通常是编码错误导致的，必须修复。<br></p>
+<p>黄屏代表警告，会显示在应用下方，不影响程序运行，不修复也可以，警告可以通过代码禁止。<br></p>
+<p>红屏和黄屏只在debug版本中才会显示，在rellease版本中不会。一般情况下，通过RN红屏中的错误提示信息，就可以定位问题，如果是语法等常见运行错误，RN也会给出错误代码所在位置与行数，所以出现红屏一定要阅读描述信息。<br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 频闭黄色警告，参数为一个数组：数组中的字符串就是要屏蔽的警告的开头的内容。</span></span><br><span class="line">YellowBox.ignoreWarnings([<span class="string">'Warning: '</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手动触发红屏和警告</span></span><br><span class="line"><span class="built_in">console</span>.error(<span class="string">"严重错误"</span>);</span><br><span class="line"><span class="built_in">console</span>.warn(<span class="string">"警告"</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="调试菜单"><a href="#调试菜单" class="headerlink" title="调试菜单"></a>调试菜单</h2><p>React-Native开发调试没有本地代码方便，但也是可以调的，在调试菜单中可以进行开发调试相关的配置。调试菜单只在debug版本中可以被调出，如果是模拟器环境，Windows平台按window+m可调出，也可能是F1或F2，Mac平台按commond+m可调出，或者发送<code>adb shell input keyevent 82</code>指令。如果是真机，摇一摇就可以调出调试菜单。<br></p>
+<p><img src="https://note.youdao.com/yws/public/resource/6a301213468716d4d839ca93f6b26025/xmlnote/5F7D6A3BB20945BE8C521606F0DD0C76/6915" alt="调试菜单预览"></p>
+<p>调试菜单说明</p>
+<ul>
+<li>Reload: 重新加载整个页面</li>
+<li>Debug JS Remotely: 启动远程调试, 会自动打开chrome浏览器, 然后可在开发者工具中调试js</li>
+<li>Enable Live Reload: 开启自动加载, 代码变动会自动更新整个页面</li>
+<li>Enable Hot Reloading: 热更新, 代码变动自动的进行局部更新</li>
+<li>Dev Sttings: 开发调试配置</li>
+</ul>
+<hr>
+<h2 id="内置组件"><a href="#内置组件" class="headerlink" title="内置组件"></a>内置组件</h2><ul>
+<li>在 <code>React Native</code> 中你需要使用官方提供的<code>组件</code>进行应用构建</li>
+<li>因为是开发<code>原生</code>应用, 我们的代码最终会<code>转为</code>原生组件的方式渲染, 所以你不会看到任何以 <code>html</code> 标签命名的组件</li>
+<li>[官方文档] <a href="https://facebook.github.io/react-native/docs/getting-started" target="_blank" rel="noopener">https://facebook.github.io/react-native/docs/getting-started</a></li>
+</ul>
+<h3 id="View"><a href="#View" class="headerlink" title="View"></a>View</h3><ul>
+<li>视图容器，作用相当于 <code>html</code> 的 <code>div</code> 标签，它是创建UI所需的最基础组件，支持Flexbox布局、样式、触摸事件，它可以放到其它视图中，也可以包含任意多个任意子视图。</li>
+<li><a href="https://reactnative.cn/docs/view/" target="_blank" rel="noopener">https://reactnative.cn/docs/view/</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, Button &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &#123;<span class="comment">/* View标签相当于div，可以嵌套 */</span>&#125;</span><br><span class="line">            &lt;View style=&#123;style.container&#125;&gt;</span><br><span class="line">                &lt;View&gt;</span><br><span class="line">                    &lt;Text&gt;React Native&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>View&gt;</span><br><span class="line">                &lt;View&gt;</span><br><span class="line">                    &lt;Text&gt;使用React编写&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;Text&gt;使用JSX编写&lt;/</span>Text&gt;</span><br><span class="line">                &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>View&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意border、background等样式不能简写，必须一个一个的设置属性</span></span><br><span class="line"><span class="keyword">let</span> style = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        width: <span class="number">300</span>,</span><br><span class="line">        padding: <span class="number">10</span>,</span><br><span class="line">        borderStyle: <span class="string">"dashed"</span>,</span><br><span class="line">        borderWidth: <span class="number">2</span>,</span><br><span class="line">        borderColor: <span class="string">"red"</span>,</span><br><span class="line">        borderRadius: <span class="number">2</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    text: &#123;</span><br><span class="line">        fontSize: <span class="number">20</span>,</span><br><span class="line">        color: <span class="string">"yellow"</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h3><ul>
+<li>文本容器，作用相当于 <code>html</code> 的 <code>span</code> 标签，为什么不是 <code>p</code> 标签呢，一会演示。Text标签支持嵌套、触摸事件。在RN中，文本必须放置到Text中才可以被渲染，否则报错。</li>
+<li>注意: 除了Text外, 别的组件内都不能包含文本</li>
+<li><a href="https://reactnative.cn/docs/text/" target="_blank" rel="noopener">https://reactnative.cn/docs/text/</a></li>
+</ul>
+<p>文本布局</p>
+<p>Text采用的是文本布局，多个子文本在渲染时会折叠合并在一起，如果把View理解成块级元素，那么Text就可以理解为行内元素。<br></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">TextTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="comment">// 可以嵌套</span></span><br><span class="line">            &lt;Text&gt;</span><br><span class="line">                &#123;<span class="comment">/* 文本节点是span版本的p标签，行内元素，下面文字会合并在一行 */</span>&#125;</span><br><span class="line">                &lt;Text&gt;饿了吗&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Text&gt;美图&lt;/</span>Text&gt;</span><br><span class="line">            &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>文本样式</strong></p>
+<p>在RN中，父文本的样式可以传递给后代文本，也就是样式继承。但是除了文本之外其它组件都无法继承样式。<br></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;Text style=&#123;style.rootText&#125;&gt;</span><br><span class="line">            &lt;Text&gt;饿了吗&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">            &lt;Text&gt;美图&lt;/</span>Text&gt;</span><br><span class="line">            &#123;<span class="comment">/* 文本样式继承 */</span>&#125;</span><br><span class="line">            &lt;Text&gt;</span><br><span class="line">                &lt;Text&gt;滴滴外卖&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>Text&gt;</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">let style = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">    rootText: &#123;</span></span><br><span class="line"><span class="regexp">        fontSize: 20,</span></span><br><span class="line"><span class="regexp">        color: "blue",</span></span><br><span class="line"><span class="regexp">        lineHeight: 24</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><ul>
+<li>作用相当于 <code>html</code> 的 <code>img</code> 标签用于承载图片</li>
+<li>组件通过 <code>source</code> 属性设置图片地址</li>
+<li><a href="https://reactnative.cn/docs/image.html" target="_blank" rel="noopener">https://reactnative.cn/docs/image.html</a></li>
+<li><a href="http://reactnative.cn/docs/0.50/images.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/images.html#content</a></li>
+</ul>
+<h4 id="载入本地图片"><a href="#载入本地图片" class="headerlink" title="载入本地图片"></a>载入本地图片</h4><ul>
+<li>本地图片通过<code>require</code>方法导入</li>
+<li>之前的版本中require方法必须传入<code>静态字符串</code>，不能使用表达式和字符串拼接, 也就是写死，同时图片名称也不允许以<code>数字</code>开头，现在的新版本已经修复了这两个bug</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Image &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">let</span> pic = &#123;</span><br><span class="line">            uri: <span class="string">'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=645293140,2005760885&amp;fm=173'</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">let</span> imgBasePath = <span class="string">"../public/img/"</span>;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View &gt;</span><br><span class="line">                &#123;<span class="comment">/* 通过source属性设置图片地址，通过require方法载入本地图片 */</span>&#125;</span><br><span class="line">                &lt;Image style=&#123;styles.img&#125; source=&#123;<span class="built_in">require</span>(<span class="string">'../public/img/12.jpg'</span>)&#125;/&gt;</span><br><span class="line">                </span><br><span class="line">                &#123;<span class="comment">/* 在之前的版本中，图片路径必须是静态的，不能写表达式，现在可以了 */</span>&#125;</span><br><span class="line">                &lt;Image style=&#123;styles.img&#125; source=&#123;<span class="built_in">require</span>(imgBasePath + <span class="string">'12.jpg'</span>)&#125; /&gt;</span><br><span class="line">                </span><br><span class="line">                &#123;<span class="comment">/* 在之前的版本中，图片名称也不能以数字开头，现在也可以了 */</span>&#125;</span><br><span class="line">                &lt;Image style=&#123;styles.img&#125; source=&#123;<span class="built_in">require</span>(<span class="string">'./56.jpg'</span>)&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">let styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">    img: &#123;</span></span><br><span class="line"><span class="regexp">        width: 55,</span></span><br><span class="line"><span class="regexp">        height: 55</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h4 id="载入网络图片"><a href="#载入网络图片" class="headerlink" title="载入网络图片"></a>载入网络图片</h4><ul>
+<li>如果是通过uri载入的网络图片，必须要设置宽高，否则无法显示</li>
+<li>如果某些网站的图片载入失败尝试换一个域名图片试试</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">let</span> pic = &#123;</span><br><span class="line">            uri: <span class="string">'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=645293140,2005760885&amp;fm=173'</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">let</span> imgBasePath = <span class="string">"../public/img/"</span>;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View &gt;</span><br><span class="line">                &#123;<span class="comment">/* 没有宽高，图片不会显示 */</span>&#125;</span><br><span class="line">                &lt;Image source=&#123;pic&#125; /&gt;</span><br><span class="line"></span><br><span class="line">                &#123;<span class="comment">/* 设置宽高，图片正常显示 */</span>&#125;</span><br><span class="line">                &lt;Image source=&#123;pic&#125; style=&#123;&#123;<span class="attr">width</span>:<span class="number">200</span>, <span class="attr">height</span>: <span class="number">100</span>&#125;&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="批量载入网络图片"><a href="#批量载入网络图片" class="headerlink" title="批量载入网络图片"></a>批量载入网络图片</h4><ul>
+<li>之前如果想<code>写活</code>地址, 必须定义一个<code>对象</code>赋值</li>
+<li><code>&lt;Image source={对象} /&gt;</code></li>
+<li>现在更加灵活，只需要把uri写活就可以</li>
+<li><code>&lt;Image source={uri: 变量} /&gt;</code></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Image &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">this</span>.props.imgs &amp;&amp; <span class="keyword">this</span>.props.imgs.map(<span class="function">(<span class="params">uri, i</span>) =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">return</span> &lt;Image key=&#123;`key$&#123;i&#125;`&#125; source=&#123;&#123;uri: uri&#125;&#125; style=&#123;&#123;width:200, height: 100&#125;&#125; /&gt;;</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><ul>
+<li>作用相当于 <code>html</code> 的 <code>button</code> 标签用于触发点击</li>
+<li>按钮需要通过 <code>title</code> 属性设置文本内容, 值必须为字符串，其他数值或者不设都会报错</li>
+<li>按钮通过 <code>onPress</code> 属性监听点击事件</li>
+<li><a href="http://reactnative.cn/docs/0.50/button.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/button.html</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, Button, Alert &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ButtonTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            num: <span class="number">1</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onPressHandler() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;<span class="attr">num</span>: ++<span class="keyword">this</span>.state.num&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;Text&gt;&#123;<span class="keyword">this</span>.state.num&#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Button onPress=&#123;() =&gt; &#123;this.onPressHandler()&#125;&#125; title="点我+1"&gt;&lt;/</span>Button&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="TextInput"><a href="#TextInput" class="headerlink" title="TextInput"></a>TextInput</h3><ul>
+<li>作用相当于 <code>html</code> 的 <code>input</code> 标签用于输入文本</li>
+<li>需要通过 <code>value</code> 属性指定文本内容, 通过 <code>onChangeText</code> 属性监听文本的变化事件</li>
+<li><a href="http://reactnative.cn/docs/0.50/textinput.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/textinput.html#content</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, TextInput &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">TextInputTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            text: <span class="string">'默认值'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &#123;<span class="comment">/* 模拟双向数据绑定 */</span>&#125;</span><br><span class="line">      			&lt;Text&gt;&#123; <span class="keyword">this</span>.state.text &#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;TextInput value=&#123; this.state.text &#125; onChangeText=&#123;(text) =&gt; this.setState(&#123;text&#125;)&#125; /</span>&gt;</span><br><span class="line">                &lt;Text&gt;&#123; <span class="keyword">this</span>.state.text &#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">    			&lt;TextInput placeholder="请输入密码" onChangeText=&#123;(text) =&gt; this.setState(&#123;text&#125;)&#125; /</span>&gt;</span><br><span class="line">	    	&lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, Button, Alert &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">AlertTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    onPressHanlder() &#123;</span><br><span class="line">        Alert.alert(</span><br><span class="line">            <span class="comment">// 标题</span></span><br><span class="line">            <span class="string">'温馨提示'</span>,</span><br><span class="line">            <span class="comment">// 内容</span></span><br><span class="line">            <span class="string">'您的餐凉了，要不要热一下'</span>,</span><br><span class="line">            <span class="comment">// 配置一个按钮是确定，两个按钮是取消与确定，三个按钮是稍后再试、取消与确定</span></span><br><span class="line">            [</span><br><span class="line">              &#123;<span class="attr">text</span>: <span class="string">'再等一会'</span>, <span class="attr">onPress</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'先聊会天'</span>)&#125;,</span><br><span class="line">              &#123;<span class="attr">text</span>: <span class="string">'算了'</span>, <span class="attr">onPress</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'凉着吃吧'</span>)&#125;,</span><br><span class="line">              &#123;<span class="attr">text</span>: <span class="string">'好的'</span>, <span class="attr">onPress</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'热的好吃'</span>)&#125;,</span><br><span class="line">            ],</span><br><span class="line">            <span class="comment">// 点击屏幕关闭</span></span><br><span class="line">            &#123; <span class="attr">cancelable</span>: <span class="literal">false</span> &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;Button onPress=&#123;()=&gt;&#123;<span class="keyword">this</span>.onPressHanlder()&#125;&#125; title=<span class="string">"点我弹框"</span>&gt;&lt;/Button&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Dimensions"><a href="#Dimensions" class="headerlink" title="Dimensions"></a>Dimensions</h3><p>有时候我们需要设置元素大小为屏幕的大小，在Web开发中可以使用%百分比单位，但是RN并不支持这种单位，这时候我们可以使用RN内置的<code>Dimensions</code>对象API方法动态获取屏幕宽高然后进行设置。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Dimensions = <span class="built_in">require</span>(<span class="string">'Dimensions'</span>);</span><br><span class="line"><span class="keyword">const</span> screenSize = Dimensions.get(<span class="string">"window"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        width: screenSize.width,</span><br><span class="line">        height: screenSize.height</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="ScrollView"><a href="#ScrollView" class="headerlink" title="ScrollView"></a>ScrollView</h3><ul>
+<li>默认情况下, <code>超出</code>屏幕的内容是看不到的, 不像浏览器环境下会自动添加<code>滚动条</code></li>
+<li>如果需要滚动, 可以使用这个<code>组件</code>把要相应的内容<code>包裹</code>起来, 被包裹的内容就会处于<code>滚动条</code>中</li>
+<li>滚动的过程中，可以通过onScroll绑定回调，每帧最多调用一次回调</li>
+<li><a href="http://reactnative.cn/docs/0.50/scrollview.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/scrollview.html#content</a></li>
+</ul>
+<p><strong>基本使用</strong></p>
+<p>ScrollView使用非常简单，只需要把标签内容通过ScrollView组件包裹起来即可。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">    &lt;ScrollView&gt;</span><br><span class="line">        &lt;View style=&#123;styles.container&#125; onScroll=&#123;() =&gt; &#123;<span class="keyword">this</span>.onScrollHandler()&#125;&#125;&gt;</span><br><span class="line">            &lt;Text&gt;Open up App.js to start working on your app!&lt;/Text&gt;</span><br><span class="line">            &lt;Text&gt;Changes you make will automatically reload.&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">            &lt;Text&gt;Shake your phone to open the developer menu1.&lt;/</span>Text&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;TextTest&gt;&lt;/TextTest&gt;</span><br><span class="line">            &lt;ImageTest imgs=&#123;imgs&#125;&gt;&lt;/ImageTest&gt;</span><br><span class="line">            &lt;ButtonTest&gt;&lt;/ButtonTest&gt;</span><br><span class="line">            &lt;TextInputTest&gt;&lt;/TextInputTest&gt;</span><br><span class="line">            &lt;AlertTest&gt;&lt;/AlertTest&gt;</span><br><span class="line">        &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ScrollView&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>简易Swiper</strong></p>
+<p>我们可以利用ScrollView的几个特殊属性来实现一个简易的Swiper。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">    StyleSheet,</span><br><span class="line">    View,</span><br><span class="line">    Text,</span><br><span class="line">    ScrollView</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Dimensions = <span class="built_in">require</span>(<span class="string">'Dimensions'</span>);</span><br><span class="line"><span class="keyword">const</span> screenSize = Dimensions.get(<span class="string">"window"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ScrollViewSwiper</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取渲染列表</span></span><br><span class="line">    getList() &#123;</span><br><span class="line">        <span class="keyword">const</span> backgroundList = [<span class="string">"orange"</span>, <span class="string">"purple"</span>, <span class="string">"pink"</span>, <span class="string">"aqua"</span>];</span><br><span class="line">        <span class="keyword">return</span> backgroundList.map(<span class="function">(<span class="params">color, i</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                &lt;View</span><br><span class="line">                    key=&#123; <span class="string">`key<span class="subst">$&#123;i&#125;</span>`</span> &#125; </span><br><span class="line">                    style=&#123; [styles.swipeItem, &#123;<span class="attr">backgroundColor</span>: color&#125;] &#125;&gt;</span><br><span class="line">                    &lt;Text&gt;&#123; color &#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>View&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="comment">// horizontal属性可设置列表水平排列，</span></span><br><span class="line">            <span class="comment">// pagingEnabled属性能够让列表一页一页切换，</span></span><br><span class="line">            <span class="comment">// showsHorizontalScrollIndicator属性控制滚动条显示隐藏</span></span><br><span class="line">            &lt;ScrollView</span><br><span class="line">                style=&#123;styles.swipe&#125;</span><br><span class="line">                horizontal=&#123; <span class="literal">true</span> &#125;</span><br><span class="line">                pagingEnabled=&#123; <span class="literal">true</span> &#125;</span><br><span class="line">                showsHorizontalScrollIndicator=&#123; <span class="literal">false</span> &#125;&gt;</span><br><span class="line">                &#123; <span class="keyword">this</span>.getList() &#125;</span><br><span class="line">            &lt;<span class="regexp">/ScrollView&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">    swipe: &#123;</span></span><br><span class="line"><span class="regexp">        marginTop: 24,</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    swipeItem: &#123;</span></span><br><span class="line"><span class="regexp">        width: screenSize.width,</span></span><br><span class="line"><span class="regexp">        height: 200</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h3 id="FlatList"><a href="#FlatList" class="headerlink" title="FlatList"></a>FlatList</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, FlatList &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">FlatListTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;FlatList</span><br><span class="line">                    data=&#123;[</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Devin'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Jackson'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'James'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Joel'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'John'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Jillian'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Jimmy'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Julie'</span>&#125;,</span><br><span class="line">                    ]&#125;</span><br><span class="line">                    renderItem=&#123;(e) =&gt; &lt;Text style=&#123;styles.item&#125;&gt;&#123;e.index + ":" + e.item.key&#125;&lt;/Text&gt;&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">        </span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">    item: &#123;</span></span><br><span class="line"><span class="regexp">        padding: 10,</span></span><br><span class="line"><span class="regexp">        fontSize: 18,</span></span><br><span class="line"><span class="regexp">        height: 44,</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h3 id="ActivityIndicator"><a href="#ActivityIndicator" class="headerlink" title="ActivityIndicator"></a>ActivityIndicator</h3><ul>
+<li>展示一个小圆形的<code>loading</code></li>
+<li>通过属性 <code>animating</code> 控制显示隐藏, <code>color</code> 设置颜色</li>
+<li><a href="http://reactnative.cn/docs/0.50/activityindicator.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/activityindicator.html#content</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, ActivityIndicator &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityIndicatorTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            isShow: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;ActivityIndicator animating=&#123;<span class="keyword">this</span>.state.isShow&#125; color=<span class="string">"green"</span> size=<span class="string">"large"</span>&gt;&lt;/ActivityIndicator&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="触控系列组件"><a href="#触控系列组件" class="headerlink" title="触控系列组件"></a>触控系列组件</h3><p>在需要捕捉用户点击操作时，可以使用<code>Touchable</code>开头的一系列组件。这些组件通过onPress属性设置点击事件的处理函数。当在本组件上按下手指并且抬起手指时也没有移开到组件外时，此函数会被调用。Touchable组件最大的特点是附带反馈效果。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; </span><br><span class="line">    StyleSheet, </span><br><span class="line">    View, </span><br><span class="line">    Image,</span><br><span class="line">    Text, </span><br><span class="line">    TouchableHighlight, </span><br><span class="line">    TouchableOpacity, </span><br><span class="line">    TouchableNativeFeedback </span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"><span class="keyword">import</span> StyleBoxTest <span class="keyword">from</span> <span class="string">'./StyleBoxTest'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">TouchableGroupTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    opacityHandler() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"透明按钮"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    HighlighrHandler() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"高亮按钮"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FeedbackHandler() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"原生反馈按钮"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &#123;<span class="comment">/* 透明效果，支持多个子节点 */</span>&#125;</span><br><span class="line">                &lt;TouchableOpacity </span><br><span class="line">                    activeOpacity=&#123;<span class="number">0.5</span>&#125; </span><br><span class="line">                    onPress=&#123;<span class="keyword">this</span>.opacityHandler.bind(<span class="keyword">this</span>)&#125;&gt;</span><br><span class="line">                    &lt;View style=&#123;styles.base&#125;&gt;</span><br><span class="line">                        &lt;Text style=&#123;styles.baseFont&#125;&gt;透明按钮&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;/</span>View&gt;</span><br><span class="line">                &lt;<span class="regexp">/TouchableOpacity&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">                &#123;/</span>* 透明与底色两种效果，只支持一个子节点，可以用一个View再包装多个子节点 *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">                &#123;/</span>* 可以包裹图片，点击时加深背景 *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">                &lt;TouchableHighlight</span></span><br><span class="line"><span class="regexp">                    activeOpacity=&#123;0.5&#125; </span></span><br><span class="line"><span class="regexp">                    underlayColor="#c1c1c1"</span></span><br><span class="line"><span class="regexp">                    onPress=&#123;this.HighlighrHandler.bind(this)&#125;&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;View style=&#123;styles.base&#125;&gt;</span></span><br><span class="line"><span class="regexp">                        &lt;Image source=&#123;require("./</span><span class="number">56.</span>jpg<span class="string">")&#125; style=&#123;&#123;width:300,height:100&#125;&#125; resizeMode="</span>stretch<span class="string">"&gt;&lt;/Image&gt;</span></span><br><span class="line"><span class="string">                    &lt;/View&gt;</span></span><br><span class="line"><span class="string">                &lt;/TouchableHighlight&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &#123;/* 使用原生状态渲染反馈效果，比如涟漪，只能放置一个view子组件 */&#125;</span></span><br><span class="line"><span class="string">                &#123;/* 效果有三个可选方法：SelectableBackground、SelectableBackgroundBorderless、Ripple(color)*/&#125;</span></span><br><span class="line"><span class="string">                &lt;TouchableNativeFeedback </span></span><br><span class="line"><span class="string">                    background=&#123;TouchableNativeFeedback.SelectableBackground()&#125;</span></span><br><span class="line"><span class="string">                    onPress=&#123;this.FeedbackHandler.bind(this)&#125;&gt;</span></span><br><span class="line"><span class="string">                    &lt;View style=&#123;styles.base&#125;&gt;</span></span><br><span class="line"><span class="string">                        &lt;Text style=&#123;styles.baseFont&#125;&gt;原生按钮&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                    &lt;/View&gt;</span></span><br><span class="line"><span class="string">                &lt;/TouchableNativeFeedback&gt;</span></span><br><span class="line"><span class="string">            &lt;/View&gt;</span></span><br><span class="line"><span class="string">        );</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="string">    base: &#123;</span></span><br><span class="line"><span class="string">        margin: 10,</span></span><br><span class="line"><span class="string">        width: 300,</span></span><br><span class="line"><span class="string">        height: 100,</span></span><br><span class="line"><span class="string">        borderRadius: 5,</span></span><br><span class="line"><span class="string">        backgroundColor: 'green',</span></span><br><span class="line"><span class="string">        justifyContent: 'center',</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    baseFont: &#123;</span></span><br><span class="line"><span class="string">        color: "</span>orange<span class="string">",</span></span><br><span class="line"><span class="string">        textAlign: "</span>center<span class="string">",</span></span><br><span class="line"><span class="string">        lineHeight: 50</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/14/react-native介绍/" rel="next" title="react-native介绍">
+                <i class="fa fa-chevron-left"></i> react-native介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/14/react-native开发环境/" rel="prev" title="react-native开发环境">
+                react-native开发环境 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4" alt="胡剑">
+            
+              <p class="site-author-name" itemprop="name">胡剑</p>
+              <p class="site-description motion-element" itemprop="description">时间就是一个小偷,它让你猝不及防地失去,那些你很容易忽略掉的东西,当你记起时，却怎么也找不着了...</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/FassbenderMichael" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/540907171/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-globe"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/df1f61cabea9" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/179974868/" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>豆瓣</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ReactNative-快速开始"><span class="nav-number">1.</span> <span class="nav-text">ReactNative 快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#create-react-native-app"><span class="nav-number">1.1.</span> <span class="nav-text">create-react-native-app</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Expo"><span class="nav-number">1.2.</span> <span class="nav-text">Expo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#真机运行"><span class="nav-number">1.3.</span> <span class="nav-text">真机运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP错误问题"><span class="nav-number">1.3.1.</span> <span class="nav-text">IP错误问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发初体验"><span class="nav-number">1.4.</span> <span class="nav-text">开发初体验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误提示-红屏和黄屏"><span class="nav-number">1.5.</span> <span class="nav-text">错误提示 - 红屏和黄屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调试菜单"><span class="nav-number">1.6.</span> <span class="nav-text">调试菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内置组件"><span class="nav-number">1.7.</span> <span class="nav-text">内置组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#View"><span class="nav-number">1.7.1.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Text"><span class="nav-number">1.7.2.</span> <span class="nav-text">Text</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image"><span class="nav-number">1.7.3.</span> <span class="nav-text">Image</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#载入本地图片"><span class="nav-number">1.7.3.1.</span> <span class="nav-text">载入本地图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#载入网络图片"><span class="nav-number">1.7.3.2.</span> <span class="nav-text">载入网络图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#批量载入网络图片"><span class="nav-number">1.7.3.3.</span> <span class="nav-text">批量载入网络图片</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Button"><span class="nav-number">1.7.4.</span> <span class="nav-text">Button</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TextInput"><span class="nav-number">1.7.5.</span> <span class="nav-text">TextInput</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Alert"><span class="nav-number">1.7.6.</span> <span class="nav-text">Alert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dimensions"><span class="nav-number">1.7.7.</span> <span class="nav-text">Dimensions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ScrollView"><span class="nav-number">1.7.8.</span> <span class="nav-text">ScrollView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FlatList"><span class="nav-number">1.7.9.</span> <span class="nav-text">FlatList</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ActivityIndicator"><span class="nav-number">1.7.10.</span> <span class="nav-text">ActivityIndicator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触控系列组件"><span class="nav-number">1.7.11.</span> <span class="nav-text">触控系列组件</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡剑</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://fassbendermichael.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/07/14/react-native基础组件/';
+          this.page.identifier = '2019/07/14/react-native基础组件/';
+          this.page.title = 'react-native基础组件';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://fassbendermichael.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

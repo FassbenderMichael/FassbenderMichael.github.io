@@ -6,7 +6,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -228,6 +228,896 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/react-native开发环境/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡剑">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HuJian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/14/react-native开发环境/" itemprop="url">react-native开发环境</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-14T23:43:09+08:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/14/react-native开发环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/14/react-native开发环境/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="React-Native-Enviroment"><a href="#React-Native-Enviroment" class="headerlink" title="React Native Enviroment"></a>React Native Enviroment</h1><p>前面我们使用的开发方式是进化过的方式，简述步骤就是，先安装一个Expo应用程序，然后使用扫一扫功能在Expo内运行我们的App，偏向传统的前端开发方式。<br><br>这在之前，React Native采用的开发方式是先把写好的项目打包编译成一个独立App，然后直接安装到手机上运行，偏向传统的Native开发方式。</p>
+<p><strong>环境预览</strong></p>
+<ul>
+<li>[参照文档] <a href="http://reactnative.cn/docs/0.42/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.42/getting-started.html</a></li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/environment_config.png?raw=true" alt="预览"></li>
+</ul>
+<hr>
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="Yarn与React-Native-Cli"><a href="#Yarn与React-Native-Cli" class="headerlink" title="Yarn与React-Native-Cli"></a><strong>Yarn与React-Native-Cli</strong></h3><p>Yarn是Facebook提供的替代npm的工具，可以加速node模块的下载。React Native的命令行工具用于执行创建、初始化、更新项目、运行打包服务（packager）等任务。<br></p>
+<p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yarn react-native-cli</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检测</span></span><br><span class="line">yarn -v</span><br><span class="line">react-native -v</span><br></pre></td></tr></table></figure>
+<p>镜像配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yarn config set registry https://registry.npm.taobao.org --global</span><br><span class="line">yarn config set disturl https://npm.taobao.org/dist --global</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检测</span></span><br><span class="line">yarn config get registry</span><br><span class="line">yarn config get disturl</span><br></pre></td></tr></table></figure>
+<h3 id="Python2"><a href="#Python2" class="headerlink" title="Python2"></a><strong>Python2</strong></h3><p>需要注意，RN目前只支持<code>python2.x</code>版本，安装了3.x版本的需要更换。在安装python时，注意安装界面上的 <code>Add Python to path</code>选项, 勾选上会自动将Python配置到环境变量，否则需要手动配置。<br></p>
+<ul>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/python.png?raw=true" alt="Add Python to path"></li>
+<li>安装完毕后, 在命令行中键入 <code>python --version</code> 进行测试，显示出版本号即成功</li>
+</ul>
+<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a><strong>Java</strong></h3><p>如果使用Android系统开发测试，那么需要安装 Java SE Development Kit (JDK)，安装后需要手动配置环境变量。打开控制面板 -&gt; 系统和安全 -&gt; 系统 -&gt; 高级系统设置 -&gt; 高级 -&gt; 环境变量 -&gt; 新建。环境变量配置后，需要关闭现有的命令行工具然后重新打开，新的环境变量才会生效。</p>
+<ul>
+<li>[下载页面]<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a></li>
+<li>[环境变量配置参考文档]<a href="https://jingyan.baidu.com/article/d45ad148ba5ab169552b80d3.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/d45ad148ba5ab169552b80d3.html</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1. 创建 JAVA_HOME 环境变量，值为 jdk 的安装根路径，默认 C:\Program Files\Java\jdk1.8.0_112</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. 编辑 Path 环境变量，在 Path 中加入 %JAVA_HOME%\bin;%JAVA_HOME%\jre\bin，如果是Win10一个一个添加即可</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3. 创建 CLASSPATH 变量, 值为 .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 4. 配置完毕后保存并退出, 然后运行下面命令进行检测</span></span><br><span class="line">java -version</span><br><span class="line">javac -version</span><br></pre></td></tr></table></figure>
+<h3 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a><strong>Android Studio</strong></h3><p>Android Studio是谷歌推出的Android集成开发工具，其包含了运行和测试React Native应用所需的Android SDK和模拟器。<br><br>在安装时需要确定所有安装都勾选了，尤其是Android SDK和Android Device Emulator。在初步安装完成后，选择Custom进行自定义安装。其中Androoid SDK Location目录可以选择一个剩余空间比较大的磁盘存放，建议至少留有10G。<br></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h4><ul>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-custom-install-windows.png" alt="Custom"></li>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-verify-installs-windows.png" alt="setup"></li>
+</ul>
+<p>安装完成后，在Android Studio的欢迎界面中选择Configure | SDK Manager。</p>
+<ul>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-configure-sdk-windows.png" alt="welcome"></li>
+</ul>
+<p>在SDK Platforms窗口中，选择Show Package Details，然后在Android 6.0 (Marshmallow)中勾选Google APIs、Android SDK Platform 23、Intel x86 Atom System Image、Intel x86 Atom_64 System Image以及Google APIs Intel x86 Atom_64 System Image。</p>
+<ul>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-android-sdk-platforms-windows.png" alt="SDK platforms"></li>
+</ul>
+<p>在SDK Tools窗口中，选择Show Package Details，然后在Android SDK Build Tools中勾选Android SDK Build-Tools 23.0.1（必须包含有这个版本。当然如果其他插件需要其他版本，你可以同时安装其他多个版本）。然后还要勾选最底部的Android Support Repository.</p>
+<ul>
+<li><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-studio-android-sdk-build-tools-windows.png" alt="SDK tools"></li>
+</ul>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a><strong>配置环境变量</strong></h4><p>通过Android Studio安装的SDK路径，需要配置到ANDROID_HOME环境变量中。</p>
+<p><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-sdk-environment-variable-windows.png" alt="ANDROID_HOME"></p>
+<p>还可以把Android SDK的tools和platform-tools目录添加到PATH变量中，这样就可以在终端中运行一些Android工具，例如adb devices或android avd等。</p>
+<p><img src="https://reactnative.cn/static/docs/0.51/img/react-native-android-tools-environment-variable-windows.png" alt="path"></p>
+<h3 id="adb工具"><a href="#adb工具" class="headerlink" title="adb工具"></a>adb工具</h3><p>adb安装在Android-sdk路径下的platform-tools目录，这个工具是电脑与Android设备进行通信的通用命令行工具，有几个常用命令需要了解，将来打包调试的时候需要保证本机的adb版本需要与模拟器的adb一致，如果不一致可以复制本机的adb.ext然后覆盖掉模拟器中的版本。</p>
+<ul>
+<li>adb version        # 版本</li>
+<li>adb devices        # 列出连接到本机的Android设备与状态</li>
+<li>adb start-server  # 启动adb服务</li>
+<li>adb kill-server    # 关闭adb服务</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb version</span><br><span class="line">// 第一行显示的信息：Android Debug Bridge version 1.0.40</span><br><span class="line">// 其中40就代表adb的版本，将来可能把copy这个版本的adb工具覆盖掉模拟器版本</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="开发方式"><a href="#开发方式" class="headerlink" title="开发方式"></a><strong>开发方式</strong></h2><h3 id="启动模拟器"><a href="#启动模拟器" class="headerlink" title="启动模拟器"></a>启动模拟器</h3><ul>
+<li>启动模拟器，运行adb devices命令，查看设备是否正常连接，</li>
+<li>如果提示adb版本不符合，那么就需要把本地Android-sdk目录下的adb.ext复制到模拟器目录下的bin中，进行覆盖。然后重启模拟器进行尝试。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 连接正常的话会显示设备信息或地址信息，如：127.0.0.1:62001 device</span><br><span class="line">adb devices</span><br><span class="line"></span><br><span class="line">// 如果没有发现设备，那么需要手动进行连接，夜神模拟器端口62001，MUMU模拟器端口7555</span><br><span class="line">adb connect 127.0.0.1:7555</span><br></pre></td></tr></table></figure>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>创建项目的时候，保证项目所在目录没有中文与空格，然后运行命令创建项目，创建的过程中需要联网下载依赖包，需要耐心等待。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建项目，项目名称自由定义</span></span><br><span class="line">react-native init projectName</span><br></pre></td></tr></table></figure>
+<h3 id="启动js打包服务"><a href="#启动js打包服务" class="headerlink" title="启动js打包服务"></a>启动js打包服务</h3><ul>
+<li>在项目目录下运行<code>yarn start</code>命令，默认会启动一个<code>8081</code>端口的js打包传输服务，它的作用是向移动设备提供项目最新的打包生成的bundle.js文件，每当代码变更时，该服务就会重新打包js并推送给客户端使用。</li>
+<li><strong>注意</strong>：因为8081端口已经被adb工具占用了，所以我们需要手动换一个端口好。</li>
+</ul>
+<p><strong>端口检测</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 查看8081端口占用情况与pid</span><br><span class="line">netstat -aon | findstr 8081</span><br><span class="line"></span><br><span class="line">// 通过pid查阅程序名称，即可知道是谁占用了8081端口</span><br><span class="line">tasklist | findstr 上条命令得到的pid</span><br></pre></td></tr></table></figure>
+<p><strong>启动服务</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 切入项目目录</span><br><span class="line">cd projectName</span><br><span class="line"></span><br><span class="line">// 启动服务，并指定端口</span><br><span class="line">yarn start --prot 8888</span><br></pre></td></tr></table></figure>
+<p><strong>服务检测</strong></p>
+<p>服务启动之后，我们可以通过浏览器测试js是否可以正常得到，url如下：<br><code>http://192.168.12.1:9999/index.bundle?platform=android</code></p>
+<h3 id="app安装与运行"><a href="#app安装与运行" class="headerlink" title="app安装与运行"></a>app安装与运行</h3><ul>
+<li>在项目目录下运行<code>react-native run-android</code>命令便会打包<code>android</code>项目, 生成<code>apk</code>文件, 然后自动安装到Android设备并运行。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">react-native run-android</span><br><span class="line">// 最后看到BUILD SUCCESSFUL提示就代表打包成功</span><br></pre></td></tr></table></figure>
+<p>接下来设备会自动启动应用，如果显示如下界面就代表一切正常可以开发调试了。<br><br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_welcome.png?raw=true" alt="成功运行"></p>
+<p>打包中途打包失败了，记得看提示信息，可能是网络问题，一般会提示timed out，那么重拾或者找个网络环境好的，手机热点也可以。</p>
+<p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_timeout.jpg?raw=true" alt="timed out"></p>
+<p>也可能会提示找不到android-sdk目录，那么需要手动创建一个配置文件放置到projectName/android/local.properties。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 配置sdk所在目录</span><br><span class="line">sdk.dir=G:\\Android-sdk</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="开发初体验"><a href="#开发初体验" class="headerlink" title="开发初体验"></a>开发初体验</h2><ul>
+<li>在项目根目录下有个 <code>index.js</code> , 它是项目的<code>入口</code>文件, 负责注册根组件</li>
+<li>根目录下有个 <code>App.js</code> , 是默认生成的<code>根组件</code>, 我们在 APP 上看到的<code>欢迎界面</code>就是这个组件实现的</li>
+<li>尝试修改 <code>App.js</code> 中的文本内容, 然后手机摇一摇 <code>Reload</code> 查看即可看到修改内容</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          你是我的了!</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></span><br><span class="line"><span class="regexp">          哈哈, 开心不?</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span><br><span class="line">          &#123;instructions&#125;</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>根组件代码解读</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导包</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  Platform,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Platform.select方法会根据运行环境得到配置的内容</span></span><br><span class="line"><span class="keyword">const</span> instructions = Platform.select(&#123;</span><br><span class="line">  ios: <span class="string">'Press Cmd+R to reload,\n'</span> +</span><br><span class="line">    <span class="string">'Cmd+D or shake for dev menu'</span>,</span><br><span class="line">  android: <span class="string">'Double tap R on your keyboard to reload,\n'</span> +</span><br><span class="line">    <span class="string">'Shake or press menu button for dev menu'</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出根组件, 组件的定于语法与之前学习的一样</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="comment">// 返回的视图需要使用View组件包裹, 作用相当于Div标签</span></span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line"></span><br><span class="line">  		&#123;<span class="comment">/* 文本内容使用Text组件包裹, 作用相当于P标签 */</span>&#125;</span><br><span class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</span><br><span class="line">          Welcome to React Native!</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span></span><br><span class="line"><span class="regexp">          To get started, edit App.js</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Text&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</span><br><span class="line">          &#123;instructions&#125;</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义样式, 这里的尺寸大小无需加单位, 元素可以通过数组引用多个样式, 后面的样式优先级比前面的高</span></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    flex: <span class="number">1</span>,</span><br><span class="line">    justifyContent: <span class="string">'center'</span>,</span><br><span class="line">    alignItems: <span class="string">'center'</span>,</span><br><span class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  welcome: &#123;</span><br><span class="line">    fontSize: <span class="number">20</span>,</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    margin: <span class="number">10</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  instructions: &#123;</span><br><span class="line">    textAlign: <span class="string">'center'</span>,</span><br><span class="line">    color: <span class="string">'#333333'</span>,</span><br><span class="line">    marginBottom: <span class="number">5</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="真机调试"><a href="#真机调试" class="headerlink" title="真机调试"></a>真机调试</h2><h3 id="app手动安装"><a href="#app手动安装" class="headerlink" title="app手动安装"></a>app手动安装</h3><ul>
+<li>打包后的 <code>apk</code> 安装包, 可以在项目中找到，路径为 <code>projecrName/android/app/build/outputs/apk</code>，这个apk安装包可以手动安装到其它模拟器或真机中进行开发调试。</li>
+<li>如果自动安装失败, 可自行把apk文件拷贝到手机存储器, 然后手动安装。</li>
+</ul>
+<h3 id="app权限设置"><a href="#app权限设置" class="headerlink" title="app权限设置"></a>app权限设置</h3><ul>
+<li>app运行时需要<code>悬浮框</code>权限，可在<code>设置</code> =&gt; <code>授权管理</code> =&gt; <code>应用权限管理</code> 中找到对应的 APP , 然后<code>开启</code>悬浮框权限。<br></li>
+</ul>
+<h3 id="连接方式"><a href="#连接方式" class="headerlink" title="连接方式"></a>连接方式</h3><p>手机直连</p>
+<ul>
+<li>准备一台Android手机, 通过数据线连接到电脑，设置启用USB调试</li>
+<li>一般的手机在设置中可以直接找到开发者选项进行开启, 部分手机开启的位置可能不同，根据需要自行百度一下</li>
+<li>手机连接成功后运行检测命令adb devices,如果有输出设备列表与ID相关的字符串就证明连接成功了</li>
+<li>附录: 小米手机开启USB调试步骤<ul>
+<li>首先进入<code>设置</code> =&gt; <code>我的设备</code> =&gt; <code>全部参数</code> =&gt; 连续<code>点击</code>MUI版本3次以上</li>
+<li>然后重新进入<code>设置</code> =&gt; <code>更多设置</code> =&gt; <code>开发者选项</code>(在无障碍下面) =&gt; 找到<code>USB调试</code>点击开启</li>
+<li>最后需要拉到底部找到<code>启用 MUI 优化</code>, 关掉重启</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/usb_debug.png?raw=true" alt="usb调试"></p>
+<p>局域网连接</p>
+<ul>
+<li>移动设备除了通过 <code>USB</code> 直连电脑调试开发, 还可以采用<code>无线</code>的方式进行调试</li>
+<li>只要保证手机和电脑在同一个<code>局域网</code>, 然后摇一摇唤出调试菜单</li>
+<li>点击 <code>Dev settings</code> =&gt; <code>Debuug server host</code> , 配置本地 <code>IP</code> 地址和端口号 <code>8081</code> 即可</li>
+<li>如果出现这个<code>错误</code>提示, 说明配置错了: <code>could not connect to development server</code></li>
+<li><img src="img/react_debug_server.png" alt="摇一摇弹出框"></li>
+</ul>
+<hr>
+<h2 id="旧版环境安装，备份保留"><a href="#旧版环境安装，备份保留" class="headerlink" title="旧版环境安装，备份保留"></a>旧版环境安装，备份保留</h2><h3 id="注册事项"><a href="#注册事项" class="headerlink" title="注册事项"></a><strong>注册事项</strong></h3><ul>
+<li>安装的目录结构中<code>不要</code>出现<code>中文</code>与<code>特殊字符</code></li>
+<li>如果<code>计算机</code>名称是中文改成<code>英文</code></li>
+<li>因为这些环境都依赖我们的操作系统，如果系统是被优化阉割的版本可能会安装失败</li>
+</ul>
+<h3 id="环境预览"><a href="#环境预览" class="headerlink" title="环境预览"></a><strong>环境预览</strong></h3><ul>
+<li>参照文档 <a href="http://reactnative.cn/docs/0.42/getting-started.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.42/getting-started.html</a></li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/environment_config.png?raw=true" alt="预览"></li>
+</ul>
+<h3 id="Node环境"><a href="#Node环境" class="headerlink" title="Node环境"></a><strong>Node环境</strong></h3><ul>
+<li>下载最新的长期<code>稳定版本</code><a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
+<li>安装完毕后，在命令行中键入 <code>node -v</code> 进行测试，显示出版本号即成功</li>
+<li>在国内的话如有需要可以<code>修改</code> npm 的<code>下载地址</code>, 或在下载包的时候临时指定<ul>
+<li><code>npm config set registry https://registry.npm.taobao.org -g</code></li>
+<li><code>npm config set disturl https://npm.taobao.org/dist -g</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="React-Native-Cli与Yarn"><a href="#React-Native-Cli与Yarn" class="headerlink" title="React-Native-Cli与Yarn"></a><strong>React-Native-Cli与Yarn</strong></h3><ul>
+<li><code>Yarn</code> 是 <code>Facebook</code> 推出的<code>包管理</code>工具, 可以加速 node 模块的下载, <code>React-Native</code> 脚手架安装包的时候会使用</li>
+<li><code>React-Native-Cli</code> 是一款命令行工具, 用于 <code>React-Native</code> 项目的创建、初始化、更新、运行与打包</li>
+<li>安装命令: <code>npm install yarn react-native-cli -g</code></li>
+<li>测试命令: <code>yarn -v</code> <code>react-native -v</code></li>
+<li>安装完毕后可以设置 <code>Yarn</code> 安装模块的<code>镜像</code>地址<ul>
+<li><code>yarn config set registry https://registry.npm.taobao.org -g</code></li>
+<li><code>yarn config set disturl https://npm.taobao.org/dist -g</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Python环境"><a href="#Python环境" class="headerlink" title="Python环境"></a><strong>Python环境</strong></h3><ul>
+<li>安装 <code>2.×</code> 的版本的 <code>python</code>, 安装时注意勾选安装界面上的 <code>Add Python to path</code>, 自动将Python添加到<code>环境变量</code></li>
+<li>安装完毕后, 在命令行中键入 <code>python --version</code> 进行测试，显示出版本号即成功<br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/python.png?raw=true" alt="预览"></li>
+</ul>
+<h3 id="Java环境"><a href="#Java环境" class="headerlink" title="Java环境"></a><strong>Java环境</strong></h3><ul>
+<li>下载1.8版本JDK, <a href="http://www.oracle.com/technetwork/java/javase/overview/index.html" target="_blank" rel="noopener">http://www.oracle.com/technetwork/java/javase/overview/index.html</a></li>
+<li>安装完毕后, 需要手动配置环境变量<a href="http://jingyan.baidu.com/article/f96699bb8b38e0894e3c1bef.html" target="_blank" rel="noopener">http://jingyan.baidu.com/article/f96699bb8b38e0894e3c1bef.html</a><ol>
+<li>系统环境变量中新增 <code>JAVA_HOME</code> 变量，值为 <code>C:\Program Files\Java\jdk1.8.0_112</code>, 即 jdk 的<code>安装</code>根路径</li>
+<li>修改系统环境变量 <code>Path</code>, 在 Path 之后新增 <code>%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin</code></li>
+<li>新增 <code>CLASSPATH</code> 变量, 值为 <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</code></li>
+<li>配置完毕后保存并退出, 在命令行中分别键入<code>java</code> 与 <code>javac</code> 进行测试, 出现命令选项即配置成功</li>
+</ol>
+</li>
+</ul>
+<h3 id="Android环境"><a href="#Android环境" class="headerlink" title="Android环境"></a><strong>Android环境</strong></h3><ol>
+<li><p>双击<code>installer_r24.3.4-windows.exe</code>安装androidSDK<br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/android_sdk.png?raw=true" alt="每个用户"></p>
+</li>
+<li><p>进入安装目录，将<code>android-25</code>、<code>android-23</code>(react-native依赖)压缩包复制到<code>platforms</code>文件夹下，右键<code>解压</code>到当前文件夹</p>
+</li>
+<li><p>将<code>platform-tools_r23.1.0-windows</code>压缩包复制到<code>安装目录</code>，右键<code>解压</code>到当前文件夹</p>
+</li>
+<li><p><strong>tools文件夹不解压覆盖也行；</strong><del>解压<code>tools</code>，放到<code>tools</code>文件夹下</del></p>
+</li>
+<li><p>在安装目录新建一个<code>build-tools</code>文件夹，然后将<code>build-tools_r23.0.1-windows.zip(react-native依赖)</code>、<br><code>build-tools_r23.0.2-windows.zip(weex依赖)</code>和<code>build-tools_r23.0.3-windows.zip</code>压缩包复制到<code>build-tools</code>，<br>然后依次右键解压到当前文件夹，<code>解压后</code>的文件夹需要<code>修改名字</code>为对应的版本号<code>23.0.1</code>、<code>23.0.2</code>和<code>23.0.3</code></p>
+</li>
+<li><p>在安装目录中，新建<code>extras</code>文件夹，在<code>extras</code>文件夹下新建<code>android</code>文件夹<br>将<code>android_m2repository_r40.zip</code>与<code>support_r23.2.1.zip</code>压缩包复制到这个<code>android</code>文件夹，右键解压到当前文件夹</p>
+</li>
+<li><p>配置安装环境变量：在系统环境变量中新建<code>ANDROID_HOME</code>变量，值为SDK安装目录,<br>然后在Path中新增 <code>;%ANDROID_HOME%\tools;%ANDROID_HOME%\platform-tools;</code></p>
+</li>
+</ol>
+<h2 id="环境测试与APP打包"><a href="#环境测试与APP打包" class="headerlink" title="环境测试与APP打包"></a>环境测试与APP打包</h2><h3 id="创建项目-1"><a href="#创建项目-1" class="headerlink" title="创建项目"></a>创建项目</h3><ul>
+<li>使用<code>命令行</code>工具切入一个<code>目录</code>, 保证该目录及整个<code>路径</code>中没有任何<code>中文</code>字符串</li>
+<li>然后运行 <code>react-native init project-name</code> 命令初始化一个 <code>React-Native</code> 项目</li>
+<li>创建时过程中需要联网<code>下载</code>依赖包, 所以可能比较慢, 建议设置 <code>npm 或 yarn</code> 为国内镜像源</li>
+</ul>
+<h3 id="初始打包"><a href="#初始打包" class="headerlink" title="初始打包"></a>初始打包</h3><ul>
+<li>运行 <code>cd project-name</code> 命令进入<code>项目</code>根目录</li>
+<li>然后运行 <code>react-native run-android</code> 命令</li>
+<li>该命令首先在本地启动一个端口<code>8081</code>的本地<code>服务器</code>, 用于向移动设备提供最新的项目打包生成的 <code>js</code> 文件</li>
+<li>其次命令会打包 <code>android</code> 项目, 生成 <code>apk</code> 文件, 如果有移动设备连接了电脑, 还会自动帮你<code>安装</code></li>
+</ul>
+<h3 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h3><ul>
+<li>打包好的 <code>apk</code> 安装包, 被放置到了 <code>/android/app/build/outputs/apk</code> 目录下</li>
+<li>如果没有设备连接电脑, 或自动安装失败, 可自行把 <code>apk</code> 文件<code>拷贝</code>到手机存储器, 然后手动<code>安装</code></li>
+</ul>
+<h3 id="设置App权限"><a href="#设置App权限" class="headerlink" title="设置App权限"></a>设置App权限</h3><ul>
+<li><code>App</code> 安装完毕要后<code>执行</code>, 需要确保其拥有<code>悬浮框</code>权限</li>
+<li>可在<code>设置</code> =&gt; <code>授权管理</code> =&gt; <code>应用权限管理</code> 中找到对应的 APP , 然后<code>开启</code>悬浮框权限</li>
+<li>有些手机需要关闭优化，比如MIUI系统手机需要进入开发者模式，关闭 “MIUI优化”</li>
+</ul>
+<h3 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h3><ul>
+<li>App 权限设置完毕后, 关掉重新启动, 便会看到一个<code>欢迎</code>界面</li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_welcome.png?raw=true" alt="欢迎页面"></li>
+<li>也可以<code>摇一摇</code>手机, 唤起调试菜单, 点击第一个选项 <code>Reload</code>重新加载 <code>js</code> 执行</li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_yaoyiyao.png?raw=true" alt="摇一摇弹出框"></li>
+</ul>
+<h2 id="常见打包失败问题"><a href="#常见打包失败问题" class="headerlink" title="常见打包失败问题"></a>常见打包失败问题</h2><ul>
+<li>参考资料 <a href="http://www.open-open.com/lib/view/open1477469117948.html" target="_blank" rel="noopener">http://www.open-open.com/lib/view/open1477469117948.html</a></li>
+<li>参考资料 <a href="http://reactnative.cn/docs/0.50/running-on-device-android.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/running-on-device-android.html#content</a></li>
+</ul>
+<h3 id="无法获取桥接"><a href="#无法获取桥接" class="headerlink" title="无法获取桥接"></a>无法获取桥接</h3><ul>
+<li>提示: <code>Could not get BatchedBridge, make sure your bundle is packaged correctly</code></li>
+<li>确保 <code>android/app/src/main/</code> 目录下有 <code>assets</code> 文件夹, 如果没有, 手动创建一个</li>
+<li>然后在命令行工具中切入到项目根目录</li>
+<li>执行命令: <code>react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/</code></li>
+</ul>
+<h3 id="缺少许可"><a href="#缺少许可" class="headerlink" title="缺少许可"></a>缺少许可</h3><ul>
+<li><strong>Windows脚本</strong><ul>
+<li><code>mkdir &quot;%ANDROID_HOME%\licenses&quot;</code></li>
+<li><code>echo |set /p=&quot;8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;%ANDROID_HOME%\licenses\android-sdk-license&quot;</code></li>
+</ul>
+</li>
+<li><strong>Linux脚本</strong><ul>
+<li><code>mkdir &quot;$ANDROID_HOME/licenses&quot;</code></li>
+<li><code>echo -e &quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&quot; &gt; &quot;$ANDROID_HOME/licenses/android-sdk-license&quot;</code><br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_license.png?raw=true" alt="缺少许可截图与解决方案"></li>
+</ul>
+</li>
+</ul>
+<h3 id="连接超时"><a href="#连接超时" class="headerlink" title="连接超时"></a>连接超时</h3><p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/bundle_error_timeout.jpg?raw=true" alt="连接超时截图与解决方案"></p>
+<hr>
+<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><h3 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h3><ul>
+<li>之前运行 <code>react-native run-android</code> 打包命令的时候会自动启动一个本地<code>服务器</code>用于更新 js 代码</li>
+<li>如果是项目的<code>后续</code>开发, 我们只需单独运行 <code>react-native start</code> 命令重新启动<code>服务器</code>即可</li>
+<li>只要启动了, 我们就可以修改 <code>web</code> 代码, 将来移动设备 <code>Reload</code> 新代码即可预览最新效果</li>
+</ul>
+<h3 id="设备直连"><a href="#设备直连" class="headerlink" title="设备直连"></a>设备直连</h3><ol>
+<li>准备一台 <code>Android</code> 手机, 通过数据线<code>连接</code>到电脑，设置启用<code>USB调试</code></li>
+<li>一般的手机在<code>设置</code>中可以直接找到<code>开发者选项</code>进行开启, 如果<code>找不到</code>, 就自行百度查一下</li>
+<li>手机连接成功后运行检测命令 <code>adb devices</code> , 如果有输出设备列表与 <code>ID</code> 相关的字符串就证明连接成功了<br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/usb_debug.png?raw=true" alt="调试模式"><br><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/adb_devices.png?raw=true" alt="查看连接设备"></li>
+<li>附录: 小米手机开启USB调试步骤<ul>
+<li>首先进入<code>设置</code> =&gt; <code>我的设备</code> =&gt; <code>全部参数</code> =&gt; 连续<code>点击</code>MUI版本3次以上</li>
+<li>然后重新进入<code>设置</code> =&gt; <code>更多设置</code> =&gt; <code>开发者选项</code>(在无障碍下面) =&gt; 找到<code>USB调试</code>点击开启</li>
+<li>最后需要拉到底部找到<code>启用 MUI 优化</code>, 关掉重启</li>
+</ul>
+</li>
+</ol>
+<h3 id="局域网连接"><a href="#局域网连接" class="headerlink" title="局域网连接"></a>局域网连接</h3><ul>
+<li>移动设备除了通过 <code>USB</code> 直连电脑调试开发, 还可以采用<code>无线</code>的方式进行调试</li>
+<li>只要保证手机和电脑在同一个<code>局域网</code>, 然后摇一摇唤出调试菜单</li>
+<li>点击 <code>Dev settings</code> =&gt; <code>Debuug server host</code> , 配置本地 <code>IP</code> 地址和端口号 <code>8081</code> 即可</li>
+<li>如果出现这个<code>错误</code>提示, 说明配置错了: <code>could not connect to development server</code></li>
+<li><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/react_debug_server.png?raw=true" alt="摇一摇弹出框"></li>
+</ul>
+<h3 id="调试菜单说明"><a href="#调试菜单说明" class="headerlink" title="调试菜单说明"></a>调试菜单说明</h3><ul>
+<li>Reload: 重新加载整个页面</li>
+<li>Debug JS Remotely: 启动远程调试, 会自动打开chrome浏览器, 然后可在开发者工具中调试js</li>
+<li>Enable Live Reload: 开启自动加载, 代码变动会自动更新整个页面</li>
+<li>Enable Hot Reloading: 热更新, 代码变动自动的进行局部更新</li>
+<li>Show Perf Monitor: 打开性能监控，可查看UI与JS运行性能</li>
+<li>Dev Sttings: 开发调试配置</li>
+</ul>
+<hr>
+<h2 id="打包正式版"><a href="#打包正式版" class="headerlink" title="打包正式版"></a>打包正式版</h2><p>1、产生签名的key</p>
+<p>该过程会用到keytool密钥和证书管理工具，在项目的主目录（不是android文件夹）中执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 生成签名key，注意记下你的密钥和存储密码，后面配置文件需要使用</span><br><span class="line">keytool -genkey -v -keystore my-release-key.keystore -alias 自己起的别名 -keyalg RSA -keysize 2048 -validity 10000</span><br><span class="line"></span><br><span class="line">// 将keystore文件移动至android/app/文件夹</span><br><span class="line">move my-release-key.keystore android/app/</span><br></pre></td></tr></table></figure>
+<p>2、修改android/gradle.properties文件，增加如下配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MYAPP_RELEASE_STORE_FILE=my-release-key.keystore</span><br><span class="line">MYAPP_RELEASE_KEY_ALIAS=自己起的别名</span><br><span class="line">MYAPP_RELEASE_STORE_PASSWORD=存储密码</span><br><span class="line">MYAPP_RELEASE_KEY_PASSWORD=密钥</span><br></pre></td></tr></table></figure>
+<p>3、修改android/app/build.gradle文件，增加如下签名配置</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">android &#123; </span><br><span class="line">  signingConfigs &#123; </span><br><span class="line">    release &#123; </span><br><span class="line">        storeFile <span class="keyword">file</span>(MYAPP_RELEASE_STORE_FILE) </span><br><span class="line">        storePassword MYAPP_RELEASE_STORE_PASSWORD </span><br><span class="line">        keyAlias MYAPP_RELEASE_KEY_ALIAS </span><br><span class="line">        keyPassword MYAPP_RELEASE_KEY_PASSWORD </span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">  buildTypes &#123; </span><br><span class="line">    release &#123; </span><br><span class="line">      signingConfig signingConfigs.release </span><br><span class="line">    &#125; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、打包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 在android/app/build/outputs/apk/文件夹中生产可以发布的app-release.apk文件</span><br><span class="line">cd android</span><br><span class="line">gradlew assembleRelease</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/react-native基础组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡剑">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HuJian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/14/react-native基础组件/" itemprop="url">react-native基础组件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-14T23:42:30+08:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/14/react-native基础组件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/14/react-native基础组件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ReactNative-快速开始"><a href="#ReactNative-快速开始" class="headerlink" title="ReactNative 快速开始"></a>ReactNative 快速开始</h1><p>学习使用 ReactNative 最令人头疼的就是环境问题，因为大多数 Web 开发者，并不熟悉 Android 与 IOS 的开发环境，配置起来比较繁琐。当然 Android 程序员也不熟悉 IOS 环境，反之亦然，这导致很多人因为繁杂的开发环境而放弃学习或者暂时搁浅。</p>
+<p>为了改善这个问题，一个快速的开发环境解决方案应运而生。这个方案需要两个工具：1. create-react-native-app 2. Expo。</p>
+<h2 id="create-react-native-app"><a href="#create-react-native-app" class="headerlink" title="create-react-native-app"></a>create-react-native-app</h2><p>这是一款用来创建 ReactNative 项目的脚手架工具。特点是无需配置繁杂的 Android 或 IOS 开发环境，便可进行原生应用的开发，极大简化了环境搭建与配置的过程，很适合学习使用。</p>
+<ul>
+<li>[参考文档] <a href="https://reactnative.cn/docs/getting-started.html" target="_blank" rel="noopener">https://reactnative.cn/docs/getting-started.html</a></li>
+<li>[替代方案] <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank" rel="noopener">https://facebook.github.io/react-native/docs/getting-started.html</a></li>
+</ul>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装</span></span><br><span class="line">npm install -g create-react-native-app</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检测，文档更新时最新版本2.0.2</span></span><br><span class="line">create-react-native-app --version</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建项目</span></span><br><span class="line">create-react-native-app projectName</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动项目</span></span><br><span class="line">cd projectName</span><br><span class="line">expo start</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Expo"><a href="#Expo" class="headerlink" title="Expo"></a>Expo</h2><p>这是一款安装在手机上的应用，专门负责运行上述方式构建的 App，这有点像是微信里面运行的小程序。IOS 可以到 AppStore 里面搜索下载，Android 可以到 GooglePlay 里面搜索下载，也可以到 Github 里下载。</p>
+<ul>
+<li>[Github] <a href="https://github.com/expo/expo" target="_blank" rel="noopener">https://github.com/expo/expo</a></li>
+</ul>
+<hr>
+<h2 id="真机运行"><a href="#真机运行" class="headerlink" title="真机运行"></a>真机运行</h2><p>准备工作：使用<code>create-react-native-app</code>创建一个项目，然后手机安装<code>Expo</code>应用，并确保手机与开发机处于同一局域网下。</p>
+<p>项目运行：<code>npm start</code>启动项目，打开<code>Expo</code>应用，使用里面的扫一扫功能，扫描项目启动后生成的巨大二维码，等待JS打包传输完毕，就会在手机上运行。</p>
+<h3 id="IP错误问题"><a href="#IP错误问题" class="headerlink" title="IP错误问题"></a>IP错误问题</h3><p>因为开发机可能会有多个ip地址，比如以太网IP、虚拟IP、无线局域网IP等等。当项目启动时通常会无脑的选择IP列表中的第一个，假如是以太网IP，那么就与手机所处的无线局域网不同，造成网络连接失败。</p>
+<p>下面是这种情况的图例，项目启动时使用的是IP列表中的第一个94 IP，并没有使用无线局域网IP。<br></p>
+<p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/ipconfig.png?raw=true" alt="ipconfig"></p>
+<p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/expo_service.png?raw=true" alt="expo-service"></p>
+<p>如果发生这种情况，先<code>Ctrl+C</code>停掉项目，设置一个环境变量，然后再重启项目即可。</p>
+<ul>
+<li>[参考解决方案] <a href="https://github.com/react-community/create-react-native-app/blob/d01ddabb634532200629c6d17f920eb856fa6416/react-native-scripts/template/README.md#environment-variables" target="_blank" rel="noopener">https://github.com/react-community/create-react-native-app/blob/d01ddabb634532200629c6d17f920eb856fa6416/react-native-scripts/template/README.md#environment-variables</a></li>
+<li>[参考解决方案] <a href="https://github.com/react-community/create-react-native-app/issues/270" target="_blank" rel="noopener">https://github.com/react-community/create-react-native-app/issues/270</a></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 设置环境变量</span></span><br><span class="line">set REACT_NATIVE_PACKAGER_HOSTNAME=my-custom-ip-address-or-hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 重启项目</span></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="开发初体验"><a href="#开发初体验" class="headerlink" title="开发初体验"></a>开发初体验</h2><ul>
+<li>在项目根目录下有个 <code>App.js</code> , 是应用的<code>根组件</code>, 我们手机上看到的<code>内容</code>就是这个组件实现的</li>
+<li>尝试修改 <code>App.js</code> 中的文本内容, 然后手机摇一摇, 点击 <code>Reload</code> 选项即可更新修改内容</li>
+<li>也可尝试给文本添加新的样式</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, Text, View &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出根组件, 组件的定于语法与之前学习的一样</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="comment">// 返回的视图需要使用View组件包裹, 作用相当于Div标签</span></span><br><span class="line">        &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">            &#123;<span class="comment">/* 文本内容使用Text组件包裹, 作用相当于P标签 */</span>&#125;</span><br><span class="line">            &lt;Text&gt;Open up App.js to start working on your app!&lt;/Text&gt;</span><br><span class="line">        &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 定义样式, 这里的尺寸大小无需加单位, 元素可以通过数组引用多个样式, 后面的样式优先级比前面的高</span></span><br><span class="line"><span class="regexp">const styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">  container: &#123;</span></span><br><span class="line"><span class="regexp">    flex: 1,</span></span><br><span class="line"><span class="regexp">    backgroundColor: '#fff',</span></span><br><span class="line"><span class="regexp">    alignItems: 'center',</span></span><br><span class="line"><span class="regexp">    justifyContent: 'center',</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="错误提示-红屏和黄屏"><a href="#错误提示-红屏和黄屏" class="headerlink" title="错误提示 - 红屏和黄屏"></a>错误提示 - 红屏和黄屏</h2><p>RN代码运行时会把错误分为红屏和黄屏两种，红屏会以全屏红色显示在应用中，导致程序无法正常运行，红屏通常是编码错误导致的，必须修复。<br></p>
+<p>黄屏代表警告，会显示在应用下方，不影响程序运行，不修复也可以，警告可以通过代码禁止。<br></p>
+<p>红屏和黄屏只在debug版本中才会显示，在rellease版本中不会。一般情况下，通过RN红屏中的错误提示信息，就可以定位问题，如果是语法等常见运行错误，RN也会给出错误代码所在位置与行数，所以出现红屏一定要阅读描述信息。<br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 频闭黄色警告，参数为一个数组：数组中的字符串就是要屏蔽的警告的开头的内容。</span></span><br><span class="line">YellowBox.ignoreWarnings([<span class="string">'Warning: '</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手动触发红屏和警告</span></span><br><span class="line"><span class="built_in">console</span>.error(<span class="string">"严重错误"</span>);</span><br><span class="line"><span class="built_in">console</span>.warn(<span class="string">"警告"</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="调试菜单"><a href="#调试菜单" class="headerlink" title="调试菜单"></a>调试菜单</h2><p>React-Native开发调试没有本地代码方便，但也是可以调的，在调试菜单中可以进行开发调试相关的配置。调试菜单只在debug版本中可以被调出，如果是模拟器环境，Windows平台按window+m可调出，也可能是F1或F2，Mac平台按commond+m可调出，或者发送<code>adb shell input keyevent 82</code>指令。如果是真机，摇一摇就可以调出调试菜单。<br></p>
+<p><img src="https://note.youdao.com/yws/public/resource/6a301213468716d4d839ca93f6b26025/xmlnote/5F7D6A3BB20945BE8C521606F0DD0C76/6915" alt="调试菜单预览"></p>
+<p>调试菜单说明</p>
+<ul>
+<li>Reload: 重新加载整个页面</li>
+<li>Debug JS Remotely: 启动远程调试, 会自动打开chrome浏览器, 然后可在开发者工具中调试js</li>
+<li>Enable Live Reload: 开启自动加载, 代码变动会自动更新整个页面</li>
+<li>Enable Hot Reloading: 热更新, 代码变动自动的进行局部更新</li>
+<li>Dev Sttings: 开发调试配置</li>
+</ul>
+<hr>
+<h2 id="内置组件"><a href="#内置组件" class="headerlink" title="内置组件"></a>内置组件</h2><ul>
+<li>在 <code>React Native</code> 中你需要使用官方提供的<code>组件</code>进行应用构建</li>
+<li>因为是开发<code>原生</code>应用, 我们的代码最终会<code>转为</code>原生组件的方式渲染, 所以你不会看到任何以 <code>html</code> 标签命名的组件</li>
+<li>[官方文档] <a href="https://facebook.github.io/react-native/docs/getting-started" target="_blank" rel="noopener">https://facebook.github.io/react-native/docs/getting-started</a></li>
+</ul>
+<h3 id="View"><a href="#View" class="headerlink" title="View"></a>View</h3><ul>
+<li>视图容器，作用相当于 <code>html</code> 的 <code>div</code> 标签，它是创建UI所需的最基础组件，支持Flexbox布局、样式、触摸事件，它可以放到其它视图中，也可以包含任意多个任意子视图。</li>
+<li><a href="https://reactnative.cn/docs/view/" target="_blank" rel="noopener">https://reactnative.cn/docs/view/</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, Button &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &#123;<span class="comment">/* View标签相当于div，可以嵌套 */</span>&#125;</span><br><span class="line">            &lt;View style=&#123;style.container&#125;&gt;</span><br><span class="line">                &lt;View&gt;</span><br><span class="line">                    &lt;Text&gt;React Native&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>View&gt;</span><br><span class="line">                &lt;View&gt;</span><br><span class="line">                    &lt;Text&gt;使用React编写&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;Text&gt;使用JSX编写&lt;/</span>Text&gt;</span><br><span class="line">                &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>View&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意border、background等样式不能简写，必须一个一个的设置属性</span></span><br><span class="line"><span class="keyword">let</span> style = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        width: <span class="number">300</span>,</span><br><span class="line">        padding: <span class="number">10</span>,</span><br><span class="line">        borderStyle: <span class="string">"dashed"</span>,</span><br><span class="line">        borderWidth: <span class="number">2</span>,</span><br><span class="line">        borderColor: <span class="string">"red"</span>,</span><br><span class="line">        borderRadius: <span class="number">2</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    text: &#123;</span><br><span class="line">        fontSize: <span class="number">20</span>,</span><br><span class="line">        color: <span class="string">"yellow"</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h3><ul>
+<li>文本容器，作用相当于 <code>html</code> 的 <code>span</code> 标签，为什么不是 <code>p</code> 标签呢，一会演示。Text标签支持嵌套、触摸事件。在RN中，文本必须放置到Text中才可以被渲染，否则报错。</li>
+<li>注意: 除了Text外, 别的组件内都不能包含文本</li>
+<li><a href="https://reactnative.cn/docs/text/" target="_blank" rel="noopener">https://reactnative.cn/docs/text/</a></li>
+</ul>
+<p>文本布局</p>
+<p>Text采用的是文本布局，多个子文本在渲染时会折叠合并在一起，如果把View理解成块级元素，那么Text就可以理解为行内元素。<br></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">TextTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="comment">// 可以嵌套</span></span><br><span class="line">            &lt;Text&gt;</span><br><span class="line">                &#123;<span class="comment">/* 文本节点是span版本的p标签，行内元素，下面文字会合并在一行 */</span>&#125;</span><br><span class="line">                &lt;Text&gt;饿了吗&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Text&gt;美图&lt;/</span>Text&gt;</span><br><span class="line">            &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>文本样式</strong></p>
+<p>在RN中，父文本的样式可以传递给后代文本，也就是样式继承。但是除了文本之外其它组件都无法继承样式。<br></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;Text style=&#123;style.rootText&#125;&gt;</span><br><span class="line">            &lt;Text&gt;饿了吗&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">            &lt;Text&gt;美图&lt;/</span>Text&gt;</span><br><span class="line">            &#123;<span class="comment">/* 文本样式继承 */</span>&#125;</span><br><span class="line">            &lt;Text&gt;</span><br><span class="line">                &lt;Text&gt;滴滴外卖&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>Text&gt;</span><br><span class="line">        &lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">let style = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">    rootText: &#123;</span></span><br><span class="line"><span class="regexp">        fontSize: 20,</span></span><br><span class="line"><span class="regexp">        color: "blue",</span></span><br><span class="line"><span class="regexp">        lineHeight: 24</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><ul>
+<li>作用相当于 <code>html</code> 的 <code>img</code> 标签用于承载图片</li>
+<li>组件通过 <code>source</code> 属性设置图片地址</li>
+<li><a href="https://reactnative.cn/docs/image.html" target="_blank" rel="noopener">https://reactnative.cn/docs/image.html</a></li>
+<li><a href="http://reactnative.cn/docs/0.50/images.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/images.html#content</a></li>
+</ul>
+<h4 id="载入本地图片"><a href="#载入本地图片" class="headerlink" title="载入本地图片"></a>载入本地图片</h4><ul>
+<li>本地图片通过<code>require</code>方法导入</li>
+<li>之前的版本中require方法必须传入<code>静态字符串</code>，不能使用表达式和字符串拼接, 也就是写死，同时图片名称也不允许以<code>数字</code>开头，现在的新版本已经修复了这两个bug</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Image &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">let</span> pic = &#123;</span><br><span class="line">            uri: <span class="string">'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=645293140,2005760885&amp;fm=173'</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">let</span> imgBasePath = <span class="string">"../public/img/"</span>;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View &gt;</span><br><span class="line">                &#123;<span class="comment">/* 通过source属性设置图片地址，通过require方法载入本地图片 */</span>&#125;</span><br><span class="line">                &lt;Image style=&#123;styles.img&#125; source=&#123;<span class="built_in">require</span>(<span class="string">'../public/img/12.jpg'</span>)&#125;/&gt;</span><br><span class="line">                </span><br><span class="line">                &#123;<span class="comment">/* 在之前的版本中，图片路径必须是静态的，不能写表达式，现在可以了 */</span>&#125;</span><br><span class="line">                &lt;Image style=&#123;styles.img&#125; source=&#123;<span class="built_in">require</span>(imgBasePath + <span class="string">'12.jpg'</span>)&#125; /&gt;</span><br><span class="line">                </span><br><span class="line">                &#123;<span class="comment">/* 在之前的版本中，图片名称也不能以数字开头，现在也可以了 */</span>&#125;</span><br><span class="line">                &lt;Image style=&#123;styles.img&#125; source=&#123;<span class="built_in">require</span>(<span class="string">'./56.jpg'</span>)&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">let styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">    img: &#123;</span></span><br><span class="line"><span class="regexp">        width: 55,</span></span><br><span class="line"><span class="regexp">        height: 55</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h4 id="载入网络图片"><a href="#载入网络图片" class="headerlink" title="载入网络图片"></a>载入网络图片</h4><ul>
+<li>如果是通过uri载入的网络图片，必须要设置宽高，否则无法显示</li>
+<li>如果某些网站的图片载入失败尝试换一个域名图片试试</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">let</span> pic = &#123;</span><br><span class="line">            uri: <span class="string">'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=645293140,2005760885&amp;fm=173'</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">let</span> imgBasePath = <span class="string">"../public/img/"</span>;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View &gt;</span><br><span class="line">                &#123;<span class="comment">/* 没有宽高，图片不会显示 */</span>&#125;</span><br><span class="line">                &lt;Image source=&#123;pic&#125; /&gt;</span><br><span class="line"></span><br><span class="line">                &#123;<span class="comment">/* 设置宽高，图片正常显示 */</span>&#125;</span><br><span class="line">                &lt;Image source=&#123;pic&#125; style=&#123;&#123;<span class="attr">width</span>:<span class="number">200</span>, <span class="attr">height</span>: <span class="number">100</span>&#125;&#125; /&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="批量载入网络图片"><a href="#批量载入网络图片" class="headerlink" title="批量载入网络图片"></a>批量载入网络图片</h4><ul>
+<li>之前如果想<code>写活</code>地址, 必须定义一个<code>对象</code>赋值</li>
+<li><code>&lt;Image source={对象} /&gt;</code></li>
+<li>现在更加灵活，只需要把uri写活就可以</li>
+<li><code>&lt;Image source={uri: 变量} /&gt;</code></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Image &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">this</span>.props.imgs &amp;&amp; <span class="keyword">this</span>.props.imgs.map(<span class="function">(<span class="params">uri, i</span>) =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">return</span> &lt;Image key=&#123;`key$&#123;i&#125;`&#125; source=&#123;&#123;uri: uri&#125;&#125; style=&#123;&#123;width:200, height: 100&#125;&#125; /&gt;;</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Button"><a href="#Button" class="headerlink" title="Button"></a>Button</h3><ul>
+<li>作用相当于 <code>html</code> 的 <code>button</code> 标签用于触发点击</li>
+<li>按钮需要通过 <code>title</code> 属性设置文本内容, 值必须为字符串，其他数值或者不设都会报错</li>
+<li>按钮通过 <code>onPress</code> 属性监听点击事件</li>
+<li><a href="http://reactnative.cn/docs/0.50/button.html" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/button.html</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, Button, Alert &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ButtonTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            num: <span class="number">1</span></span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    onPressHandler() &#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;<span class="attr">num</span>: ++<span class="keyword">this</span>.state.num&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;Text&gt;&#123;<span class="keyword">this</span>.state.num&#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Button onPress=&#123;() =&gt; &#123;this.onPressHandler()&#125;&#125; title="点我+1"&gt;&lt;/</span>Button&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="TextInput"><a href="#TextInput" class="headerlink" title="TextInput"></a>TextInput</h3><ul>
+<li>作用相当于 <code>html</code> 的 <code>input</code> 标签用于输入文本</li>
+<li>需要通过 <code>value</code> 属性指定文本内容, 通过 <code>onChangeText</code> 属性监听文本的变化事件</li>
+<li><a href="http://reactnative.cn/docs/0.50/textinput.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/textinput.html#content</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, TextInput &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">TextInputTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            text: <span class="string">'默认值'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &#123;<span class="comment">/* 模拟双向数据绑定 */</span>&#125;</span><br><span class="line">      			&lt;Text&gt;&#123; <span class="keyword">this</span>.state.text &#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;TextInput value=&#123; this.state.text &#125; onChangeText=&#123;(text) =&gt; this.setState(&#123;text&#125;)&#125; /</span>&gt;</span><br><span class="line">                &lt;Text&gt;&#123; <span class="keyword">this</span>.state.text &#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">    			&lt;TextInput placeholder="请输入密码" onChangeText=&#123;(text) =&gt; this.setState(&#123;text&#125;)&#125; /</span>&gt;</span><br><span class="line">	    	&lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, Button, Alert &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">AlertTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    onPressHanlder() &#123;</span><br><span class="line">        Alert.alert(</span><br><span class="line">            <span class="comment">// 标题</span></span><br><span class="line">            <span class="string">'温馨提示'</span>,</span><br><span class="line">            <span class="comment">// 内容</span></span><br><span class="line">            <span class="string">'您的餐凉了，要不要热一下'</span>,</span><br><span class="line">            <span class="comment">// 配置一个按钮是确定，两个按钮是取消与确定，三个按钮是稍后再试、取消与确定</span></span><br><span class="line">            [</span><br><span class="line">              &#123;<span class="attr">text</span>: <span class="string">'再等一会'</span>, <span class="attr">onPress</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'先聊会天'</span>)&#125;,</span><br><span class="line">              &#123;<span class="attr">text</span>: <span class="string">'算了'</span>, <span class="attr">onPress</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'凉着吃吧'</span>)&#125;,</span><br><span class="line">              &#123;<span class="attr">text</span>: <span class="string">'好的'</span>, <span class="attr">onPress</span>: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'热的好吃'</span>)&#125;,</span><br><span class="line">            ],</span><br><span class="line">            <span class="comment">// 点击屏幕关闭</span></span><br><span class="line">            &#123; <span class="attr">cancelable</span>: <span class="literal">false</span> &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;Button onPress=&#123;()=&gt;&#123;<span class="keyword">this</span>.onPressHanlder()&#125;&#125; title=<span class="string">"点我弹框"</span>&gt;&lt;/Button&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Dimensions"><a href="#Dimensions" class="headerlink" title="Dimensions"></a>Dimensions</h3><p>有时候我们需要设置元素大小为屏幕的大小，在Web开发中可以使用%百分比单位，但是RN并不支持这种单位，这时候我们可以使用RN内置的<code>Dimensions</code>对象API方法动态获取屏幕宽高然后进行设置。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Dimensions = <span class="built_in">require</span>(<span class="string">'Dimensions'</span>);</span><br><span class="line"><span class="keyword">const</span> screenSize = Dimensions.get(<span class="string">"window"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        width: screenSize.width,</span><br><span class="line">        height: screenSize.height</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="ScrollView"><a href="#ScrollView" class="headerlink" title="ScrollView"></a>ScrollView</h3><ul>
+<li>默认情况下, <code>超出</code>屏幕的内容是看不到的, 不像浏览器环境下会自动添加<code>滚动条</code></li>
+<li>如果需要滚动, 可以使用这个<code>组件</code>把要相应的内容<code>包裹</code>起来, 被包裹的内容就会处于<code>滚动条</code>中</li>
+<li>滚动的过程中，可以通过onScroll绑定回调，每帧最多调用一次回调</li>
+<li><a href="http://reactnative.cn/docs/0.50/scrollview.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/scrollview.html#content</a></li>
+</ul>
+<p><strong>基本使用</strong></p>
+<p>ScrollView使用非常简单，只需要把标签内容通过ScrollView组件包裹起来即可。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (</span><br><span class="line">    &lt;ScrollView&gt;</span><br><span class="line">        &lt;View style=&#123;styles.container&#125; onScroll=&#123;() =&gt; &#123;<span class="keyword">this</span>.onScrollHandler()&#125;&#125;&gt;</span><br><span class="line">            &lt;Text&gt;Open up App.js to start working on your app!&lt;/Text&gt;</span><br><span class="line">            &lt;Text&gt;Changes you make will automatically reload.&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">            &lt;Text&gt;Shake your phone to open the developer menu1.&lt;/</span>Text&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;ViewTest&gt;&lt;/ViewTest&gt;</span><br><span class="line">            &lt;TextTest&gt;&lt;/TextTest&gt;</span><br><span class="line">            &lt;ImageTest imgs=&#123;imgs&#125;&gt;&lt;/ImageTest&gt;</span><br><span class="line">            &lt;ButtonTest&gt;&lt;/ButtonTest&gt;</span><br><span class="line">            &lt;TextInputTest&gt;&lt;/TextInputTest&gt;</span><br><span class="line">            &lt;AlertTest&gt;&lt;/AlertTest&gt;</span><br><span class="line">        &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>ScrollView&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>简易Swiper</strong></p>
+<p>我们可以利用ScrollView的几个特殊属性来实现一个简易的Swiper。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">    StyleSheet,</span><br><span class="line">    View,</span><br><span class="line">    Text,</span><br><span class="line">    ScrollView</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Dimensions = <span class="built_in">require</span>(<span class="string">'Dimensions'</span>);</span><br><span class="line"><span class="keyword">const</span> screenSize = Dimensions.get(<span class="string">"window"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ScrollViewSwiper</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取渲染列表</span></span><br><span class="line">    getList() &#123;</span><br><span class="line">        <span class="keyword">const</span> backgroundList = [<span class="string">"orange"</span>, <span class="string">"purple"</span>, <span class="string">"pink"</span>, <span class="string">"aqua"</span>];</span><br><span class="line">        <span class="keyword">return</span> backgroundList.map(<span class="function">(<span class="params">color, i</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                &lt;View</span><br><span class="line">                    key=&#123; <span class="string">`key<span class="subst">$&#123;i&#125;</span>`</span> &#125; </span><br><span class="line">                    style=&#123; [styles.swipeItem, &#123;<span class="attr">backgroundColor</span>: color&#125;] &#125;&gt;</span><br><span class="line">                    &lt;Text&gt;&#123; color &#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                &lt;/</span>View&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="comment">// horizontal属性可设置列表水平排列，</span></span><br><span class="line">            <span class="comment">// pagingEnabled属性能够让列表一页一页切换，</span></span><br><span class="line">            <span class="comment">// showsHorizontalScrollIndicator属性控制滚动条显示隐藏</span></span><br><span class="line">            &lt;ScrollView</span><br><span class="line">                style=&#123;styles.swipe&#125;</span><br><span class="line">                horizontal=&#123; <span class="literal">true</span> &#125;</span><br><span class="line">                pagingEnabled=&#123; <span class="literal">true</span> &#125;</span><br><span class="line">                showsHorizontalScrollIndicator=&#123; <span class="literal">false</span> &#125;&gt;</span><br><span class="line">                &#123; <span class="keyword">this</span>.getList() &#125;</span><br><span class="line">            &lt;<span class="regexp">/ScrollView&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">    swipe: &#123;</span></span><br><span class="line"><span class="regexp">        marginTop: 24,</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    swipeItem: &#123;</span></span><br><span class="line"><span class="regexp">        width: screenSize.width,</span></span><br><span class="line"><span class="regexp">        height: 200</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h3 id="FlatList"><a href="#FlatList" class="headerlink" title="FlatList"></a>FlatList</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, View, Text, FlatList &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">FlatListTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;FlatList</span><br><span class="line">                    data=&#123;[</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Devin'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Jackson'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'James'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Joel'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'John'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Jillian'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Jimmy'</span>&#125;,</span><br><span class="line">                        &#123;<span class="attr">key</span>: <span class="string">'Julie'</span>&#125;,</span><br><span class="line">                    ]&#125;</span><br><span class="line">                    renderItem=&#123;(e) =&gt; &lt;Text style=&#123;styles.item&#125;&gt;&#123;e.index + ":" + e.item.key&#125;&lt;/Text&gt;&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">        );</span></span><br><span class="line"><span class="regexp">        </span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">const styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="regexp">    item: &#123;</span></span><br><span class="line"><span class="regexp">        padding: 10,</span></span><br><span class="line"><span class="regexp">        fontSize: 18,</span></span><br><span class="line"><span class="regexp">        height: 44,</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">&#125;);</span></span><br></pre></td></tr></table></figure>
+<h3 id="ActivityIndicator"><a href="#ActivityIndicator" class="headerlink" title="ActivityIndicator"></a>ActivityIndicator</h3><ul>
+<li>展示一个小圆形的<code>loading</code></li>
+<li>通过属性 <code>animating</code> 控制显示隐藏, <code>color</code> 设置颜色</li>
+<li><a href="http://reactnative.cn/docs/0.50/activityindicator.html#content" target="_blank" rel="noopener">http://reactnative.cn/docs/0.50/activityindicator.html#content</a></li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; StyleSheet, ActivityIndicator &#125; <span class="keyword">from</span> <span class="string">"react-native"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityIndicatorTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="keyword">super</span>(props);</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            isShow: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;ActivityIndicator animating=&#123;<span class="keyword">this</span>.state.isShow&#125; color=<span class="string">"green"</span> size=<span class="string">"large"</span>&gt;&lt;/ActivityIndicator&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="触控系列组件"><a href="#触控系列组件" class="headerlink" title="触控系列组件"></a>触控系列组件</h3><p>在需要捕捉用户点击操作时，可以使用<code>Touchable</code>开头的一系列组件。这些组件通过onPress属性设置点击事件的处理函数。当在本组件上按下手指并且抬起手指时也没有移开到组件外时，此函数会被调用。Touchable组件最大的特点是附带反馈效果。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; </span><br><span class="line">    StyleSheet, </span><br><span class="line">    View, </span><br><span class="line">    Image,</span><br><span class="line">    Text, </span><br><span class="line">    TouchableHighlight, </span><br><span class="line">    TouchableOpacity, </span><br><span class="line">    TouchableNativeFeedback </span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</span><br><span class="line"><span class="keyword">import</span> StyleBoxTest <span class="keyword">from</span> <span class="string">'./StyleBoxTest'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">TouchableGroupTest</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    opacityHandler() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"透明按钮"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    HighlighrHandler() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"高亮按钮"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FeedbackHandler() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"原生反馈按钮"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &#123;<span class="comment">/* 透明效果，支持多个子节点 */</span>&#125;</span><br><span class="line">                &lt;TouchableOpacity </span><br><span class="line">                    activeOpacity=&#123;<span class="number">0.5</span>&#125; </span><br><span class="line">                    onPress=&#123;<span class="keyword">this</span>.opacityHandler.bind(<span class="keyword">this</span>)&#125;&gt;</span><br><span class="line">                    &lt;View style=&#123;styles.base&#125;&gt;</span><br><span class="line">                        &lt;Text style=&#123;styles.baseFont&#125;&gt;透明按钮&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;/</span>View&gt;</span><br><span class="line">                &lt;<span class="regexp">/TouchableOpacity&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">                &#123;/</span>* 透明与底色两种效果，只支持一个子节点，可以用一个View再包装多个子节点 *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">                &#123;/</span>* 可以包裹图片，点击时加深背景 *<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">                &lt;TouchableHighlight</span></span><br><span class="line"><span class="regexp">                    activeOpacity=&#123;0.5&#125; </span></span><br><span class="line"><span class="regexp">                    underlayColor="#c1c1c1"</span></span><br><span class="line"><span class="regexp">                    onPress=&#123;this.HighlighrHandler.bind(this)&#125;&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;View style=&#123;styles.base&#125;&gt;</span></span><br><span class="line"><span class="regexp">                        &lt;Image source=&#123;require("./</span><span class="number">56.</span>jpg<span class="string">")&#125; style=&#123;&#123;width:300,height:100&#125;&#125; resizeMode="</span>stretch<span class="string">"&gt;&lt;/Image&gt;</span></span><br><span class="line"><span class="string">                    &lt;/View&gt;</span></span><br><span class="line"><span class="string">                &lt;/TouchableHighlight&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">                &#123;/* 使用原生状态渲染反馈效果，比如涟漪，只能放置一个view子组件 */&#125;</span></span><br><span class="line"><span class="string">                &#123;/* 效果有三个可选方法：SelectableBackground、SelectableBackgroundBorderless、Ripple(color)*/&#125;</span></span><br><span class="line"><span class="string">                &lt;TouchableNativeFeedback </span></span><br><span class="line"><span class="string">                    background=&#123;TouchableNativeFeedback.SelectableBackground()&#125;</span></span><br><span class="line"><span class="string">                    onPress=&#123;this.FeedbackHandler.bind(this)&#125;&gt;</span></span><br><span class="line"><span class="string">                    &lt;View style=&#123;styles.base&#125;&gt;</span></span><br><span class="line"><span class="string">                        &lt;Text style=&#123;styles.baseFont&#125;&gt;原生按钮&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                    &lt;/View&gt;</span></span><br><span class="line"><span class="string">                &lt;/TouchableNativeFeedback&gt;</span></span><br><span class="line"><span class="string">            &lt;/View&gt;</span></span><br><span class="line"><span class="string">        );</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">const styles = StyleSheet.create(&#123;</span></span><br><span class="line"><span class="string">    base: &#123;</span></span><br><span class="line"><span class="string">        margin: 10,</span></span><br><span class="line"><span class="string">        width: 300,</span></span><br><span class="line"><span class="string">        height: 100,</span></span><br><span class="line"><span class="string">        borderRadius: 5,</span></span><br><span class="line"><span class="string">        backgroundColor: 'green',</span></span><br><span class="line"><span class="string">        justifyContent: 'center',</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    baseFont: &#123;</span></span><br><span class="line"><span class="string">        color: "</span>orange<span class="string">",</span></span><br><span class="line"><span class="string">        textAlign: "</span>center<span class="string">",</span></span><br><span class="line"><span class="string">        lineHeight: 50</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/react-native介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡剑">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HuJian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/14/react-native介绍/" itemprop="url">react-native介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-14T23:41:33+08:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/14/react-native介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/14/react-native介绍/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="移动APP"><a href="#移动APP" class="headerlink" title="移动APP"></a>移动APP</h1><p>移动指的是移动设备平台, <code>app</code> 是应用 (<code>application</code>) 的缩写, 移动App就是移动设备上运行的应用程序</p>
+<h2 id="种类划分"><a href="#种类划分" class="headerlink" title="种类划分"></a>种类划分</h2><ul>
+<li><strong>WebAPP</strong>:<ul>
+<li>网页应用, 需要运行在<code>浏览器</code>环境中, <code>无需</code>安装即可使用</li>
+<li>使用纯<code>web</code>技术开发实现</li>
+<li>由<code>浏览器</code>负责UI界面的<code>渲染</code></li>
+</ul>
+</li>
+<li><strong>NativeAPP</strong>:<ul>
+<li>原生应用, 直接运行在移动<code>设备</code>上, 需要<code>安装</code>后使用</li>
+<li>主要采用设备<code>原生语言</code>开发实现, 利用一些新技术可使用<code>其他语言</code>实现部分功能</li>
+<li>由移动<code>设备</code>负责UI界面的<code>渲染</code></li>
+</ul>
+</li>
+<li><strong>HybridAPP</strong>:<ul>
+<li>混合应用, 直接运行在<code>移动设备</code>上, 需要<code>安装</code>后使用</li>
+<li>部分功能采用设备<code>原生语言</code>开发, 部分采用<code>web</code>技术开发</li>
+<li><code>原生</code>语言编写的功能由移动<code>设置</code>渲染, <code>web</code>语言编写的功能运行在App内嵌的<code>web容器</code>中(就是一个内嵌的<code>浏览器</code>)</li>
+</ul>
+</li>
+</ul>
+<h2 id="运作模式"><a href="#运作模式" class="headerlink" title="运作模式"></a>运作模式</h2><p><img src="https://github.com/guopengfei116/drop/blob/master/img/react-native/app_operational_mode.png?raw=true" alt="移动app运行模式对比"></p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">对比/分类</th>
+<th style="text-align:center">Web App</th>
+<th style="text-align:center">Native App</th>
+<th style="text-align:center">Hybrid App</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">市场认可度</td>
+<td style="text-align:center">不认</td>
+<td style="text-align:center">认可</td>
+<td style="text-align:center">认可</td>
+</tr>
+<tr>
+<td style="text-align:left">是否要安装</td>
+<td style="text-align:center">否</td>
+<td style="text-align:center">是</td>
+<td style="text-align:center">是</td>
+</tr>
+<tr>
+<td style="text-align:left">开发成本</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">中</td>
+</tr>
+<tr>
+<td style="text-align:left">维护更新</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">中</td>
+</tr>
+<tr>
+<td style="text-align:left">跨平台</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">中</td>
+</tr>
+<tr>
+<td style="text-align:left">体验</td>
+<td style="text-align:center">差</td>
+<td style="text-align:center">高</td>
+<td style="text-align:center">中</td>
+</tr>
+</tbody>
+</table>
+<h2 id="进化"><a href="#进化" class="headerlink" title="进化"></a>进化</h2><p>你会发现，Native App 性能体验好，Hybrid App 开发维护成本低。你可能会想，如果有一种技术能够同时拥有两者的优点就好了，facebook 公司的 ReactNative 因此而生，它使用js和React编写UI逻辑，然后生成原生控件进行渲染绘制，既拥有媲美原生应用的性能体验，又拥有混合应用跨平台、开发快等优点。</p>
+<p>当然这也不是绝对的，在特殊需求下，还是会有不足。首先框架本身需要处理大量平台相关的逻辑，随着系统与API的升级变化，开发者有可能也需要处理平台之间的差异，甚至有些特性只能在部分平台上实现，从而降低跨平台性。当然，这些问题也会随着 ReactNative 的版本迭代逐渐改善。</p>
+<h1 id="WEB技术开发框架"><a href="#WEB技术开发框架" class="headerlink" title="WEB技术开发框架"></a>WEB技术开发框架</h1><h2 id="混合应用"><a href="#混合应用" class="headerlink" title="混合应用"></a>混合应用</h2><h4 id="Ionic"><a href="#Ionic" class="headerlink" title="Ionic"></a>Ionic</h4><ul>
+<li>Angular官网 <a href="https://angular.io/" target="_blank" rel="noopener">https://angular.io/</a></li>
+<li>Ionic官网 <a href="http://ionicframework.com/" target="_blank" rel="noopener">http://ionicframework.com/</a></li>
+<li>Ionic中文网 <a href="http://www.ionic.wang/" target="_blank" rel="noopener">http://www.ionic.wang/</a></li>
+<li>Cordova官网 <a href="https://cordova.apache.org/" target="_blank" rel="noopener">https://cordova.apache.org/</a></li>
+<li>Cordova中文网 <a href="http://cordova.axuer.com/" target="_blank" rel="noopener">http://cordova.axuer.com/</a></li>
+</ul>
+<h4 id="Html5"><a href="#Html5" class="headerlink" title="Html5+"></a>Html5+</h4><ul>
+<li>官网 <a href="http://www.dcloud.io/" target="_blank" rel="noopener">http://www.dcloud.io/</a></li>
+</ul>
+<h4 id="AppCan"><a href="#AppCan" class="headerlink" title="AppCan"></a>AppCan</h4><ul>
+<li>官网 <a href="http://www.appcan.cn/" target="_blank" rel="noopener">http://www.appcan.cn/</a></li>
+</ul>
+<h4 id="微信公众号"><a href="#微信公众号" class="headerlink" title="微信公众号"></a>微信公众号</h4><ul>
+<li>官网 <a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">https://mp.weixin.qq.com/</a></li>
+<li>其他 <a href="https://my.oschina.net/u/1416844/blog/759209" target="_blank" rel="noopener">https://my.oschina.net/u/1416844/blog/759209</a></li>
+</ul>
+<h2 id="原生App"><a href="#原生App" class="headerlink" title="原生App"></a>原生App</h2><h4 id="ReactNative"><a href="#ReactNative" class="headerlink" title="ReactNative"></a>ReactNative</h4><ul>
+<li>React官网 <a href="https://facebook.github.io/react/" target="_blank" rel="noopener">https://facebook.github.io/react/</a></li>
+<li>ReactNative官网 <a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener">https://facebook.github.io/react-native/</a></li>
+<li>ReactNative中文网 <a href="https://reactnative.cn/" target="_blank" rel="noopener">https://reactnative.cn/</a></li>
+</ul>
+<h4 id="Weex"><a href="#Weex" class="headerlink" title="Weex"></a>Weex</h4><ul>
+<li>Vue官网 <a href="https://cn.vuejs.org/" target="_blank" rel="noopener">https://cn.vuejs.org/</a></li>
+<li>Weex官网 <a href="http://weex.apache.org/cn/" target="_blank" rel="noopener">http://weex.apache.org/cn/</a></li>
+<li>WeexGithub <a href="https://github.com/apache/incubator-weex" target="_blank" rel="noopener">https://github.com/apache/incubator-weex</a></li>
+</ul>
+<h4 id="Flutter"><a href="#Flutter" class="headerlink" title="Flutter"></a>Flutter</h4><ul>
+<li>Rlutter官网 <a href="https://flutter.io/" target="_blank" rel="noopener">https://flutter.io/</a></li>
+<li>Rlutter中文网 <a href="https://flutterchina.club/" target="_blank" rel="noopener">https://flutterchina.club/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1323,489 +2213,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/koa-源码解析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="胡剑">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HuJian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/21/koa-源码解析/" itemprop="url">koa 源码解析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T14:16:07+08:00">
-                2019-02-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/21/koa-源码解析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/21/koa-源码解析/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>koa 框架是基于 Node.js 下一代的 web server 框架, 舍弃了回调写法, 提高了错误处理效率, 而且其不绑定任何中间件, 核心代码只提供优雅轻量的函数库.<br>平时经常使用到 koa 框架, 所以希望通过阅读源码学习其思想, 本文是基于 koa2 的源码进行分析.</p>
-<h1 id="koa-整体架构"><a href="#koa-整体架构" class="headerlink" title="koa 整体架构"></a>koa 整体架构</h1><p>koa 框架的源码结构非常简单, 在 lib 文件夹下, 只有 4 个文件, 分别是 application.js, context.js, request.js, response.js.<br>而 application.js 是 koa 框架的入口文件, context.js 的作用是创建网络请求的上下文对象, request.js 是用于包装 koa 的 request 对象的, response.js<br>则是用于包装 koa 的 response 对象的. 我们这里使用 koa 框架建立一个简单的 node 服务, 以此来逐步了解 koa 内部机理.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> (ctx, next) &#123;</span><br><span class="line">  ctx.body = <span class="string">'Hello World'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-<p>上面的代码, 先生成了一个 koa 对象, 然后通过使用 use 函数往 server 中添加中间件函数, 最后使用 listen 函数进行对 3000 端口的监听.</p>
-<h1 id="koa-源码剖析"><a href="#koa-源码剖析" class="headerlink" title="koa 源码剖析"></a>koa 源码剖析</h1><p>由上面的简单代码, 我们会有几个疑问: koa 对象中包含了些什么属性与方法? use 函数对于中间件函数的处理是怎么样的? listen 函数做了什么?<br>因此我们先来看一下 application.js 的源码:</p>
-<h2 id="application-js"><a href="#application-js" class="headerlink" title="application.js"></a>application.js</h2><p>application.js 暴露了一个 Application 类供我们使用, 也即是说, 我们 new 一个 koa 对象实质上就是新建一个 Application 的实例对象. 而 Application 类是继承<br>于 EventEmitter (Node.js events 模块)的, 所以我们在 koa 实例对象上可以使用 on, emit 等方法进行事件监听.</p>
-<h3 id="生成-application-对象"><a href="#生成-application-对象" class="headerlink" title="生成 application 对象"></a>生成 application 对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">Emitter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="keyword">super</span>(); <span class="comment">// 因为继承于 EventEmitter, 这里需要调用 super</span></span><br><span class="line">        <span class="keyword">this</span>.proxy = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">this</span>.middleware = [];</span><br><span class="line">        <span class="keyword">this</span>.subdomainOffset = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">this</span>.env = process.env.NODE_ENV || <span class="string">'development'</span>;</span><br><span class="line">        <span class="keyword">this</span>.context = <span class="built_in">Object</span>.create(context);</span><br><span class="line">        <span class="keyword">this</span>.request = <span class="built_in">Object</span>.create(request);</span><br><span class="line">        <span class="keyword">this</span>.response = <span class="built_in">Object</span>.create(response);</span><br><span class="line">        <span class="keyword">if</span> (util.inspect.custom) &#123;</span><br><span class="line">        <span class="keyword">this</span>[util.inspect.custom] = <span class="keyword">this</span>.inspect;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以看到在 constructor 函数中, 实例对象会初始化几个重要的属性, proxy 属性是代理设置, middleware 属性是中间件数组, 用于存储中间件函数的, subdomainOffset 属性是子域名偏移量<br>设置, env 属性保存 node 的环境变量 NODE_ENV 值, context, requets, response 则是 koa 自身的包装的 context 对象, request 对象, response 对象. 这里特别讲解一下 proxy 属性与<br>subdomainOffset 属性. proxy 属性值是 true 或者 false, 它的作用在于是否获取真正的客户端 ip 地址(详细请看附录的第一点). subdomainOffset 属性会改变获取 subdomain 时返回数组的值,<br>比如 test.page.example.com 域名, 如果设置 subdomainOffset 为 2, 那么返回的数组值为 [“page”, “test”], 如果设置为 3, 那么返回数组值为 [“test”].</p>
-<h3 id="use-与中间件"><a href="#use-与中间件" class="headerlink" title="use 与中间件"></a>use 与中间件</h3><p>use 函数内部仅仅是对 generator 函数利用 koa-convert 库进行转化(将 generator 函数包装成 Promise), 如果不是则不转化, 然后将这个中间件函数 push 进实例对象的 middleware 数组中.<br>所以, 所谓中间件函数的串联其实就是通过数组来逐个执行的, 至于 koa 是怎么利用 koa-compose 建立起核心的中间件机制的, 这里按下不表, 详细请阅读本人的 理解 koa 中间件机制 博文.</p>
-<h3 id="listen-原理"><a href="#listen-原理" class="headerlink" title="listen 原理"></a>listen 原理</h3><p>listen 函数的原理其实很简单, 它实际上是一个缩写的函数, 它本质上就是在内部通过 Node 原生的 http 模块建立起一个 http server, 而这个 http server 的回调函数使用的是 koa 中的 callback 函数.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">listen(...args) &#123;</span><br><span class="line">  debug(<span class="string">'listen'</span>);</span><br><span class="line">  <span class="keyword">const</span> server = http.createServer(<span class="keyword">this</span>.callback());</span><br><span class="line">  <span class="keyword">return</span> server.listen(...args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>下面就来讲解一下核心的 callback 函数.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">callback() &#123;</span><br><span class="line">  <span class="keyword">const</span> fn = compose(<span class="keyword">this</span>.middleware);  <span class="comment">// 使用 compose 建立中间件机制</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.listeners(<span class="string">'error'</span>).length) <span class="keyword">this</span>.on(<span class="string">'error'</span>, <span class="keyword">this</span>.onerror);  <span class="comment">// 如果没有对 error 事件进行监听, 那么绑定 error 事件监听处理</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// handleRequest 函数相当于 http.creatServer 的回调函数, 有 req, res 两个参数, 代表原生的 request, response 对象.</span></span><br><span class="line">  <span class="keyword">const</span> handleRequest = <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> ctx = <span class="keyword">this</span>.createContext(req, res); <span class="comment">// 每次接受一个新的请求就是生成一次全新的 context</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.handleRequest(ctx, fn);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> handleRequest;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">handleRequest(ctx, fnMiddleware) &#123;</span><br><span class="line">  <span class="keyword">const</span> res = ctx.res;</span><br><span class="line">  res.statusCode = <span class="number">404</span>;</span><br><span class="line">  <span class="keyword">const</span> onerror = <span class="function"><span class="params">err</span> =&gt;</span> ctx.onerror(err); <span class="comment">// 错误处理</span></span><br><span class="line">  <span class="keyword">const</span> handleResponse = <span class="function"><span class="params">()</span> =&gt;</span> respond(ctx); <span class="comment">// 响应处理</span></span><br><span class="line">  onFinished(res, onerror); <span class="comment">// 为 res 对象添加错误处理响应, 当 res 响应结束时, 执行 context 中的 onerror 函数(这里需要注意区分 context 与 koa 实例中的 onerror)</span></span><br><span class="line">  <span class="keyword">return</span> fnMiddleware(ctx).then(handleResponse).catch(onerror); <span class="comment">// 执行中间件数组所有函数, 并结束时调用 respond 函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>对于 this.createContext 函数, 它的用于就是生成一个新的 context 对象并建立 koa 中 context, requets, response 属性之间与原生 http 对象的关系的.而 handleRequest 函数只是负责执行<br>中间件所有的函数, 并在中间件函数执行结束的时候调用 respond.<br>对于在 koa 中的 context 对象, request 对象, response 对象与 http 模块原生的 req 与 res 之间的关系我并不打算陈列代码, 下面我以图解的形式来帮助阅读:</p>
-<img src="http://weixinfactory.di1game.com/blog/applicaton.png">
-<h3 id="对请求的响应处理-respond"><a href="#对请求的响应处理-respond" class="headerlink" title="对请求的响应处理 respond"></a>对请求的响应处理 respond</h3><p>对于 respond 函数, 其核心就是根据不同类型的数据对 http 的响应头部与响应体 body 做对应的处理.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">respond</span>(<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// allow bypassing koa</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">false</span> === ctx.respond) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> res = ctx.res;</span><br><span class="line">  <span class="comment">// writable 是原生的 response 对象的 writeable 属性, 检查是否是可写流</span></span><br><span class="line">  <span class="keyword">if</span> (!ctx.writable) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> body = ctx.body;</span><br><span class="line">  <span class="keyword">const</span> code = ctx.status;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ignore body</span></span><br><span class="line">  <span class="comment">// 如果响应的 statusCode 是属于 body 为空的类型, 例如 204, 205, 304, 将 body 置为 null</span></span><br><span class="line">  <span class="keyword">if</span> (statuses.empty[code]) &#123;</span><br><span class="line">    <span class="comment">// strip headers</span></span><br><span class="line">    ctx.body = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> res.end();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果是 HEAD 方法</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'HEAD'</span> == ctx.method) &#123;</span><br><span class="line">    <span class="comment">// headersSent 属性 Node 原生的 response 对象上的, 用于检查 http 响应头部是否已经被发送</span></span><br><span class="line">    <span class="comment">// 如果头部未被发送, 那么添加 length 头部</span></span><br><span class="line">    <span class="keyword">if</span> (!res.headersSent &amp;&amp; isJSON(body)) &#123;</span><br><span class="line">      ctx.length = Buffer.byteLength(<span class="built_in">JSON</span>.stringify(body));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res.end();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// status body</span></span><br><span class="line">  <span class="comment">// 如果 body 值为空</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">null</span> == body) &#123;</span><br><span class="line">    <span class="comment">// body 值为 context 中的 message 属性或 code</span></span><br><span class="line">    body = ctx.message || <span class="built_in">String</span>(code);</span><br><span class="line">    <span class="comment">// 修改头部的 type 与 length 属性</span></span><br><span class="line">    <span class="keyword">if</span> (!res.headersSent) &#123;</span><br><span class="line">      ctx.type = <span class="string">'text'</span>;</span><br><span class="line">      ctx.length = Buffer.byteLength(body);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res.end(body);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// responses</span></span><br><span class="line">  <span class="comment">// 对 body 为 buffer 类型的进行处理</span></span><br><span class="line">  <span class="keyword">if</span> (Buffer.isBuffer(body)) <span class="keyword">return</span> res.end(body);</span><br><span class="line">  <span class="comment">// 对 body 为字符串类型的进行处理</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'string'</span> == <span class="keyword">typeof</span> body) <span class="keyword">return</span> res.end(body);</span><br><span class="line">  <span class="comment">// 对 body 为流形式的进行处理</span></span><br><span class="line">  <span class="keyword">if</span> (body <span class="keyword">instanceof</span> Stream) <span class="keyword">return</span> body.pipe(res);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// body: json</span></span><br><span class="line">  <span class="comment">// 对 body 为 json 格式的数据进行处理, 1: 将 body 转化为 json 字符串, 2: 添加 length 头部信息</span></span><br><span class="line">  body = <span class="built_in">JSON</span>.stringify(body);</span><br><span class="line">  <span class="keyword">if</span> (!res.headersSent) &#123;</span><br><span class="line">    ctx.length = Buffer.byteLength(body);</span><br><span class="line">  &#125;</span><br><span class="line">  res.end(body);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在 respond 函数中, 主要是运用 node http 模块中的响应对象中的 end 方法与 koa context 对象中代理的属性进行最终响应对象的设置.</p>
-<h2 id="request-js"><a href="#request-js" class="headerlink" title="request.js"></a>request.js</h2><p>主要是对原生的 http 模块的 requets 对象进行封装, 其实就是对 request 对象某些属性或方法通过重写 getter/setter 函数进行代理, 请看下面的图进行更好的理解:</p>
-<img src="http://weixinfactory.di1game.com/blog/request.png">
-<h3 id="内容协商"><a href="#内容协商" class="headerlink" title="内容协商"></a>内容协商</h3><p>我们可以看到 request 中有很多 accept 相关的方法, 我们来看看 accept 相关的内容协商的知识:<br>所谓内容协商, 就是客户端向服务端请求文件, 返回符合某些标准的文件, 而除了服务端将所有版本的文件全部返回由<br>客户端来决定使用哪个版本这种比较浪费网络资源的方法之外, 我们还可以使用通过请求/响应头部进行交流并返回合适版本的方法.</p>
-<table>
-<thead>
-<tr>
-<th>请求头字段</th>
-<th>解释</th>
-<th>对应响应头 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Accept</td>
-<td>告诉服务端可以接收的类型(text/html, application/json 等)</td>
-<td>Content-Type </td>
-</tr>
-<tr>
-<td>Accept-charset</td>
-<td>告诉服务端可以接收的字符集类型(utf8, GBK 等)</td>
-<td>Content-Type  </td>
-</tr>
-<tr>
-<td>Accept-Encoding</td>
-<td>告诉服务端可以接收的压缩类型(gzip, deflate 等)</td>
-<td>Content-Encoding  </td>
-</tr>
-<tr>
-<td>Accept-Language</td>
-<td>告诉服务端可以接受的语言类型(zh-CN, en 等)</td>
-<td>Content-Language  </td>
-</tr>
-</tbody>
-</table>
-<p>   使用上面的头部字段就可以达到请求合适的文档类型.而对于客户端与服务端之间可能有多个实体, 比如 CDN, 缓存服务<br>器等等, 万一中间实体缓存了错误的文件版本, 那么后果就是客户端有可能无法正确地解析该文件.所以需要 vary 响应<br>头部字段, vary 字段的值类似于这样: vary: user-agent, location. vary 字段是告诉中间实体如何正确判断有效的<br>缓存文件版本, 比如像上面的值, 那就是利用请求的 user-agent, location 两个头部的字段生成的 hash, 如果再有请<br>求过来并且请求的 ua 与 location 头部字段生成的 hash 有缓存, 那么就返回对应的缓存文件.</p>
-<h2 id="response-js"><a href="#response-js" class="headerlink" title="response.js"></a>response.js</h2><p>同样的, response 也是对 http 模块的 response 对象进行封装, 通过对 response 对象的某些属性或方法通过重写 getter/setter 函数进行代理, 请看下面的图帮助理解:<br><img src="http://weixinfactory.di1game.com/blog/koaresponse.png"></p>
-<h3 id="Content-disposition"><a href="#Content-disposition" class="headerlink" title="Content-disposition"></a>Content-disposition</h3><p>在 response 对象的 attachment 方法中, 我们可以看到对 HTTP 头部的 Content-disposition 字段进行了处理, 那么究竟 Content-disposition 字段是做什么用的?<br>Content-disposition 是用于说明这个返回的信息是以什么形式展示的, 例如如果值为 inline, 那么就是以网页的一部分或者整个页面展示, 如果是 attachment 的话, 就是以下载附件的<br>形式展示:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: inline; <span class="comment">// 网页一部分或者整个网页展示</span></span><br><span class="line">Content-Disposition: attachment; <span class="comment">// 下载网页附件的形式</span></span><br><span class="line">Content-Disposition: attachment, filename=<span class="string">"xxx.ext"</span>; <span class="comment">// 还可以使用 filename 来指定文件名</span></span><br></pre></td></tr></table></figure>
-<p>当然, 在 Content-Type 为 multipart/form-data 格式中, Content-Disposition 也会发挥作用, 用于定义表单的键名:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: multipart/form; boundry=<span class="string">"boundry"</span></span><br><span class="line"></span><br><span class="line">--boundry</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"field1"</span></span><br><span class="line"></span><br><span class="line">value</span><br><span class="line">--boundry</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"field2"</span></span><br><span class="line"></span><br><span class="line">value</span><br></pre></td></tr></table></figure>
-<h3 id="缓存协商"><a href="#缓存协商" class="headerlink" title="缓存协商"></a>缓存协商</h3><p>在 request 中使用 fresh 字段来判断这个请求需要的内容是否是最新的, 其原理也就是我们熟知的 http 缓存机制, 内部通过 fresh 这个库, 判断请求头部中的 if-modify-since 与<br>if-match-since 对比于响应头部中的 last-Modified 字段与 ETag 字段.当然, 在检查这两个字段之前, 还需要检查一下请求头部的 Cache-Control 头部, 如果 Cache-Control 头部<br>是 no-cache, 那么就代表请求信息必须是最新的, 如果不是 no-cache, 接着就需要判断上面说的两个字段.而 last-modified 与 ETag 的检查有没有优先顺序呢? 答案是有的.<br>koa 中先检查 ETag 有没有过期, 手段是通过检查 if-match-since 字段与 Etag 字段是否相同, 然后会检查 last-modified 有没有过期, 手段是通过检查 if-modify-since 与 last-modified<br>的日期是不是 last-modified 日期时间戳小于 if-modified-since 日期时间戳, 如果是那么说明内容是新鲜的, 如果不是说明内容是旧的.</p>
-<h2 id="context-js"><a href="#context-js" class="headerlink" title="context.js"></a>context.js</h2><p>分析了上面的 request 与 response, context 的分析更为简单了, context 的核心就是通过 delegates 这一个库, 将 request, response 对象上的属性方法代理到 context 对象上.<br>也就是说例如 this.ctx.headersSent 相当于 this.response.headersSent. request 对象与 response 对象的所有方法与属性都能在 ctx 对象上找到. 这里我们来看一下 delegates 库<br>的属性代理函数的片段, 借此理解一下 context 是如何代理 request 与 response 上的属性与方法的:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delegate(proto, <span class="string">'response'</span>)</span><br><span class="line">  .getter(<span class="string">'headerSent'</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Delegator.prototype.getter = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// this.proto 指向原型, 这里的 proto 就是上面的 proto, 也就是说 context 对象</span></span><br><span class="line">  <span class="keyword">var</span> proto = <span class="keyword">this</span>.proto;</span><br><span class="line">  <span class="comment">// target 是指 'response' 字符串</span></span><br><span class="line">  <span class="keyword">var</span> target = <span class="keyword">this</span>.target;</span><br><span class="line">  <span class="comment">// 将 name 加入到 delegator 实例对象的getters数组中</span></span><br><span class="line">  <span class="keyword">this</span>.getters.push(name);</span><br><span class="line">  <span class="comment">// 调用原生的 __defineGetter__ 方法进行getter代理,那么 proto[name] 就相当于 proto[target][name]</span></span><br><span class="line">  <span class="comment">// 而 context.response 就相当于 response 对象</span></span><br><span class="line">  <span class="comment">// 由此实现属性代理</span></span><br><span class="line">  proto.__defineGetter__(name, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>[target][name];</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h1><p>在 koa 中, 错误处理分为在 application.js 中的 onerror 处理函数与在 context.js 中的 onerror 处理函数.这两者绑定的位置是不一样的, context 的 onerror 函数是绑定在<br>中间函数数组生成的 Promise 的 catch 中与 res 对象的 onFinished 函数的回调的, 这里的意图显而易见, 就是为了处理请求或响应中出现的 error 事件的.<br>而 application.js 中的 onerror 函数是绑定在 koa 实例对象上的, 它监听的是整个对象的 error 事件.</p>
-<h2 id="context-中的错误处理"><a href="#context-中的错误处理" class="headerlink" title="context 中的错误处理"></a>context 中的错误处理</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">onerror(err) &#123;</span><br><span class="line">  <span class="comment">// don't do anything if there is no error.</span></span><br><span class="line">  <span class="comment">// this allows you to pass `this.onerror`</span></span><br><span class="line">  <span class="comment">// to node-style callbacks.</span></span><br><span class="line">  <span class="comment">// 没有错误则忽略, 不执行下面的逻辑</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="literal">null</span> == err) <span class="keyword">return</span>;</span><br><span class="line">  <span class="comment">// 将错误转化为 Error 实例</span></span><br><span class="line">  <span class="keyword">if</span> (!(err <span class="keyword">instanceof</span> <span class="built_in">Error</span>)) err = <span class="keyword">new</span> <span class="built_in">Error</span>(util.format(<span class="string">'non-error thrown: %j'</span>, err));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> headerSent = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.headerSent || !<span class="keyword">this</span>.writable) &#123;</span><br><span class="line">    headerSent = err.headerSent = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// delegate</span></span><br><span class="line">  <span class="comment">// 触发 koa 实例对象的 error 事件, application 上的 onerror 函数会执行</span></span><br><span class="line">  <span class="keyword">this</span>.app.emit(<span class="string">'error'</span>, err, <span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// nothing we can do here other</span></span><br><span class="line">  <span class="comment">// than delegate to the app-level</span></span><br><span class="line">  <span class="comment">// handler and log.</span></span><br><span class="line">  <span class="comment">// 如果响应头部已经发送(或者 socket 不可写), 那么退出函数</span></span><br><span class="line">  <span class="keyword">if</span> (headerSent) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 获取 http 原生 res 对象</span></span><br><span class="line">  <span class="keyword">const</span> &#123; res &#125; = <span class="keyword">this</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// first unset all headers</span></span><br><span class="line">  <span class="comment">// 根据文档 res.getHeaderNames 函数是 7.7.0 版本后添加的, 这里为了兼容做了一个判断</span></span><br><span class="line">  <span class="comment">// 如果出错那么之前中间件或者其他地方设置的 HTTP 头部就无效了, 应该清空设置</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> res.getHeaderNames === <span class="string">'function'</span>) &#123;</span><br><span class="line">    res.getHeaderNames().forEach(<span class="function"><span class="params">name</span> =&gt;</span> res.removeHeader(name));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    res._headers = &#123;&#125;; <span class="comment">// Node &lt; 7.7</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// then set those specified</span></span><br><span class="line">  <span class="keyword">this</span>.set(err.headers);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// force text/plain</span></span><br><span class="line">  <span class="comment">// 出错后响应类型为 text/plain</span></span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">'text'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ENOENT support</span></span><br><span class="line">  <span class="comment">// 对 ENOENT 错误进行处理, ENOENT 的错误 message 是文件或者路径不存在, 所以状态码应该是 404</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'ENOENT'</span> == err.code) err.status = <span class="number">404</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// default to 500</span></span><br><span class="line">  <span class="comment">// 默认设置状态码为 500</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="string">'number'</span> != <span class="keyword">typeof</span> err.status || !statuses[err.status]) err.status = <span class="number">500</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// respond</span></span><br><span class="line">  <span class="keyword">const</span> code = statuses[err.status];</span><br><span class="line">  <span class="keyword">const</span> msg = err.expose ? err.message : code;</span><br><span class="line">  <span class="comment">// 设置响应状态码</span></span><br><span class="line">  <span class="keyword">this</span>.status = err.status;</span><br><span class="line">  <span class="comment">// 设置响应 body 长度</span></span><br><span class="line">  <span class="keyword">this</span>.length = Buffer.byteLength(msg);</span><br><span class="line">  <span class="comment">// 返回 message</span></span><br><span class="line">  <span class="keyword">this</span>.res.end(msg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="application-中的错误处理"><a href="#application-中的错误处理" class="headerlink" title="application 中的错误处理"></a>application 中的错误处理</h2><p>application 中的错误处理是对 koa 实例对象中例如函数执行出错等等内部错误进行处理.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">onerror(err) &#123;</span><br><span class="line">  <span class="comment">// 判断 err 是否是 Error 实例</span></span><br><span class="line">  assert(err <span class="keyword">instanceof</span> <span class="built_in">Error</span>, <span class="string">`non-error thrown: <span class="subst">$&#123;err&#125;</span>`</span>);</span><br><span class="line">  <span class="comment">// 忽略 404 错误</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="number">404</span> == err.status || err.expose) <span class="keyword">return</span>;</span><br><span class="line">  <span class="comment">// 如果有静默设置, 则忽略</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.silent) <span class="keyword">return</span>;</span><br><span class="line">  <span class="comment">// 打印出出错堆栈</span></span><br><span class="line">  <span class="keyword">const</span> msg = err.stack || err.toString();</span><br><span class="line">  <span class="built_in">console</span>.error();</span><br><span class="line">  <span class="built_in">console</span>.error(msg.replace(<span class="regexp">/^/gm</span>, <span class="string">'  '</span>));</span><br><span class="line">  <span class="built_in">console</span>.error();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个函数的主要作用就是处理出错函数的堆栈打印, 方便我们进行问题定位.</p>
-<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="1-koa-中-proxy-属性真正用途是什么"><a href="#1-koa-中-proxy-属性真正用途是什么" class="headerlink" title="1. koa 中 proxy 属性真正用途是什么?"></a>1. koa 中 proxy 属性真正用途是什么?</h2><p>要知道, 我们在实际运用中, 可能会使用很多的代理服务器, 包括我们常见的正向代理与反向代理, 虽然代理的用处很大, 但是无法避免地我们有时需要知晓真正的客户端的请求 ip,<br>而其实实际上, 服务器并不知道真正的客户端请求 ip, 即使你使用 socket.remoteAddrss 属性来查看, 因为这个请求是代理服务器转发给服务器的, 幸好代理服务器例如 nginx 提供了一个<br>HTTP 头部来记录每次代理服务器的源 IP 地址, 也就是 X-Forwarded-For 头部.形式如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For: 192.168.210.13, 210.112.40.13, 43.56.210.10</span><br></pre></td></tr></table></figure>
-<p>如果一个请求跳转了很多代理服务器, 那么 X-Forwarded-For 头部的 ip 地址就会越多, 第一个就是原始的客户端请求 ip, 第二个就是第一个代理服务器 ip, 以此类推.<br>当然, X-Forwarded-For 并不完全可信, 因为中间的代理服务器可能会”使坏”更改某些 IP. 而 koa 中 proxy 属性的设置就是如果使用 true, 那么就是使用 X-Forwarded-For 头部的第一个<br>ip 地址, 如果使用 false, 则使用 server 中的 socket.remoteAddress 属性值.<br>除了 X-Forwarded-For 之外, proxy 还会影响 X-Forwarded-proto 的使用, 和 X-Forwarded-For 一样, X-Forwarded-proto 记录最开始的请求连接使用的协议类型(HTTP/HTTPS), 因为客户端与<br>服务端之间可能会存在很多层代理服务器, 而代理服务器与服务端之间可能只是使用 HTTP 协议, 并没有使用 HTTPS, 所以 proxy 属性为 true 的话, koa 的 protocol 属性会去取 X-Forwarded-proto 头部的值(koa 中 protocol 属性会先使用 tlsSocket.encrypted 属性来判断是否是 https 协议, 如果是则直接返回 ‘https’).</p>
-<h2 id="2-javascript-中的-运算符"><a href="#2-javascript-中的-运算符" class="headerlink" title="2. javascript 中的 ~ 运算符"></a>2. javascript 中的 ~ 运算符</h2><p>~ 运算符是一元运算符, 它的运算逻辑是如下: 例如计算 ~1</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 将十进制的 1 转化为二进制的 0001</span><br><span class="line">2. 先对 0001 按位取反: 1110</span><br><span class="line">3. 然后我们知道最高位为 1, 所以数字为负数, 然后将除去最高位剩下的三位数字再按位取反得到 001</span><br><span class="line">4. 然后再向 001 加 1 即 001 + 001 得到 010, 转为十进制为数字 2</span><br><span class="line">5. 再加上我们之前最高位为 1, 所以最后数字为负数即 -2</span><br><span class="line">6. 所以 ~1 === -2</span><br></pre></td></tr></table></figure>
-<p>用简略的表达式来说明就是 ~ X = -(X + 1).而我们可以看到在 koa 中, length 返回的结果使用了 ~~length 这样的形式, 两次二进制否运算, 这样的目的是为了值得安全输出, 如果 ~ 运算符后面的值<br>是 NaN, null, 空字符串, 空数组, 非数字字符串的话, 返回值为 -1, 而对于小数, ~ 运算符会向下取整.其实对于小数, ~ 运算会选择忽略小数部分, 对于非整数的值会先执行 Number 类型转化.<br>所以两次二进制否运算 ~~, 可以使小数向下取整, 让非整数值输出为 0(~-1 === 0).</p>
-<h2 id="3-Buffer-byteLength-计算长度"><a href="#3-Buffer-byteLength-计算长度" class="headerlink" title="3. Buffer.byteLength 计算长度"></a>3. Buffer.byteLength 计算长度</h2><p>细心阅读源码会发现, 在 koa 中设置响应的 length 头部信息, 并不是使用字符串的 length 属性来设置的, 而是通过 Buffer.byteLength 方法来计算得到的. 为什么要这么做呢?<br>HTTP Content-length 头部的数值其实是字节数而不是字符数, 对于汉字来说, utf-8 编码模式下一个汉字字符需要 3 个字节, 所以不能使用字符串的 length 属性来赋值 Content-Length 头部.</p>
-<h2 id="4-Restful-中的幂等性"><a href="#4-Restful-中的幂等性" class="headerlink" title="4. Restful 中的幂等性"></a>4. Restful 中的幂等性</h2><p>我们可以在 request 对象中找到, 有 idempotent 属性, 它用于判断请求方法 verb 是不是幂等的. 所谓幂等性, 就是无论这个相同的请求请求多少次, 得到的数据结果是一样的. 而在 HTTP 的方法中,<br>GET, HEAD, PUT, DELETE, TRACK, OPTIONS 请求都是幂等的. 对于 POST 与 PATCH 方法则是不幂等的.<br>这里特别讲解一下 PUT 的含义, PUT 的定义是 Replace(create or update), 如果存在那么就替换, 如果不存在那么就新增数据.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/理解-koa-的中间件机制/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="胡剑">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HuJian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/21/理解-koa-的中间件机制/" itemprop="url">理解 koa 的中间件机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T11:40:28+08:00">
-                2019-02-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/21/理解-koa-的中间件机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/21/理解-koa-的中间件机制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h1><p>中间件 在 Node.js 中被广泛使用,它泛指一种特定的设计模式、一系列的处理单元、过滤器和处理程序,以函数的形式存在,连接在一起,形成一个异步队列,来完成对任何数据的预处理和后处理.</p>
-<p>它的优点在于 灵活性:使用中间件我们用极少的操作就能得到一个插件,用最简单的方法就能将新的过滤器和处理程序扩展到现有的系统上.</p>
-<h2 id="常规中间件模式"><a href="#常规中间件模式" class="headerlink" title="常规中间件模式"></a>常规中间件模式</h2><p>中间件模式中,最基础的组成部分就是 中间件管理器,我们可以用它来组织和执行中间件的函数,如图所示:<br><img src="http://weixinfactory.di1game.com/blog/middleware.png"></p>
-<h1 id="面向切面编程-AOP"><a href="#面向切面编程-AOP" class="headerlink" title="面向切面编程(AOP)"></a>面向切面编程(AOP)</h1><p>AOP(面向切面的编程)主要是将一些与核心业务逻辑模块无关的功能抽离出来,这些功能通常包括日志统计,安全控制,或者是异常处理等等.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFunc = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'核心函数,内部逻辑'</span>); </span><br><span class="line">&#125;</span><br><span class="line">myFunc();  <span class="comment">// 核心函数,内部逻辑</span></span><br></pre></td></tr></table></figure>
-<p>before函数:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在原函数执行前执行 fn 函数</span></span><br><span class="line"><span class="built_in">Function</span>.prorotype.before = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>) <span class="comment">// [Function: myFunc]</span></span><br><span class="line">    <span class="built_in">console</span>.log(fn) <span class="comment">// [Function]</span></span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>; <span class="comment">//用来保存调用这个函数的引用,如myFunc调用此函数,则_this指向myFunc</span></span><br><span class="line">    <span class="comment">//返回一个函数,相当于一个代理函数,也就是说,这里包含了原函数和新函数,原函数指的是myFunc,新函数指的是fn</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">        fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>); <span class="comment">//修正this的指向,将this指针指向fn,将myFunc接收的参数传给fn处理.</span></span><br><span class="line">        <span class="keyword">return</span> _this.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>); <span class="comment">//执行原函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>执行myFunc函数:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">myFunc = myFunc.before(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'预处理'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">myFunc(); <span class="comment">//先输出预处理,再输出核心函数,内部逻辑</span></span><br></pre></td></tr></table></figure></p>
-<p>after函数同理:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在原函数执行后执行 fn 函数</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.after = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> r = _this.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>); <span class="comment">//先执行原函数,也就是myFunc</span></span><br><span class="line">        fn.apply(<span class="keyword">this</span>,<span class="built_in">arguments</span>);   <span class="comment">//再执行新函数</span></span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">myFunc = myFunc.before(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'预处理'</span>);  </span><br><span class="line">&#125;).after(<span class="function"><span class="keyword">function</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'后处理'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">myFunc(); <span class="comment">//先输出预处理,再输出核心函数,内部逻辑,最后输出后处理</span></span><br></pre></td></tr></table></figure>
-<p>上面这两个函数是通过在 Function.prototype 上添加两个函数: before, after.<br>两个函数的返回值都是一个函数, 这个函数会按照次序执行函数.<br>这样函数各自保持了他们的整洁性.但是这样的 before 与 after 函数的简单使用缺陷也是很明显的,<br>他们并不支持异步的函数, 而日常开发中异步的场景有非常多, 所以这样的代码还是只能在 demo 中使用,不适合生产环境中使用.所以我们来看一下 koa 框架是怎么做的.</p>
-<h1 id="koa-中的中间件"><a href="#koa-中的中间件" class="headerlink" title="koa 中的中间件"></a>koa 中的中间件</h1><p>koa 是 nodejs 中非常精简的框架, 其中的精粹思想就是洋葱模型(中间件模型), 它实现的核心就是借助 compose 这个库来实现的.这里我主要看的是 koa2 所使用的 compose 源码,<br>对于 koa1 的 compose 源码其实思想是一致的, 只不过它针对的是 generator 函数, koa2 针对的是 async 函数, 相比之下 async 会更符合潮流.<br>对于 compose 也就是 koa 的核心思想就是像下面这个图:<br><img src="http://weixinfactory.di1game.com/blog/koa-core.png"></p>
-<h2 id="那么-compose-是怎么实现上面这个思想的呢"><a href="#那么-compose-是怎么实现上面这个思想的呢" class="headerlink" title="那么 compose 是怎么实现上面这个思想的呢?"></a>那么 compose 是怎么实现上面这个思想的呢?</h2><p>下面我们来解读一下 compose 的源码, compose 的源码非常精简!</p>
-<h3 id="middleware-in-koa1"><a href="#middleware-in-koa1" class="headerlink" title="middleware in koa1"></a>middleware in koa1</h3><p>对于 koa1 来说, 它是基于 generator 函数与 co 类库的:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">middleware</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 解释一下传入的 next, 这个传入的 next 函数是在所有中间件执行后的"最后"一个函数, 这里的"最后"并不是真正的最后,</span></span><br><span class="line">    <span class="comment">// 而是像上面那个图中的圆心, 执行完圆心之后, 会返回去执行上一个中间件函数(middleware[length - 1])剩下的逻辑</span></span><br><span class="line">    <span class="comment">// 简称圆心函数</span></span><br><span class="line">    <span class="comment">// 如果没有传入那就就赋值为一个空函数</span></span><br><span class="line">    <span class="keyword">if</span> (!next) next = noop();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> i = middleware.length;</span><br><span class="line">    <span class="comment">// 从后往前加载中间件</span></span><br><span class="line">    <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">      <span class="comment">// 将后面一个函数传给前面的函数作为 next 函数, 前面函数中的 next 参数其实就是下一个中间件函数</span></span><br><span class="line">      next = middleware[i].call(<span class="keyword">this</span>, next);</span><br><span class="line">      <span class="comment">// 这里可以知道 next 函数都是 generator 函数</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'isGenerator:'</span>, (<span class="keyword">typeof</span> next.next === <span class="string">'function'</span> &amp;&amp; <span class="keyword">typeof</span> next.throw === <span class="string">'function'</span>)); <span class="comment">// true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 使用 yield 委托执行生成器函数</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">yield</span> *next;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> *<span class="title">noop</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>解释一下 koa1 中的 compose 为什么从后往前遍历中间件函数而且还使用了 call 函数执行了一次, 这个是因为 koa1 中默认函数都是生成器函数, 我们知道生成器函数<br>执行一次并不是真正地执行了函数内部的逻辑, 而是初始化得到一个生成器对象, 而在生成器对象生成的时候, 我们需要对函数需要的 next 函数进行传值, 所以会采用逆序遍历.</p>
-<h3 id="middleware-in-koa2"><a href="#middleware-in-koa2" class="headerlink" title="middleware in koa2"></a>middleware in koa2</h3><p>对于 koa2 来说中间件机制 compose 基于 async 与 Promise: 会稍微比 koa1 中的复杂一点</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span> (<span class="params">middleware</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 传入的 middleware 参数必须是数组</span></span><br><span class="line">  <span class="keyword">if</span> (!<span class="built_in">Array</span>.isArray(middleware)) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Middleware stack must be an array!'</span>)</span><br><span class="line">  <span class="comment">// middleware 数组的元素必须是函数</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> fn <span class="keyword">of</span> middleware) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">'function'</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Middleware must be composed of functions!'</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 返回一个函数闭包, 保持对 middleware 的引用</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">context, next</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里的 context 参数是作为一个全局的设置, 所有中间件的第一个参数就是传入的 context, 这样可以</span></span><br><span class="line">    <span class="comment">// 在 context 中对某个值或者某些值做"洋葱处理"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解释一下传入的 next, 这个传入的 next 函数是在所有中间件执行后的"最后"一个函数, 这里的"最后"并不是真正的最后,</span></span><br><span class="line">    <span class="comment">// 而是像上面那个图中的圆心, 执行完圆心之后, 会返回去执行上一个中间件函数(middleware[length - 1])剩下的逻辑</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// index 是用来记录中间件函数运行到了哪一个函数</span></span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">-1</span></span><br><span class="line">    <span class="comment">// 执行第一个中间件函数</span></span><br><span class="line">    <span class="keyword">return</span> dispatch(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// i 是洋葱模型的记录已经运行的函数中间件的下标, 如果一个中间件里面运行两次 next, 那么 i 是会比 index 小的.</span></span><br><span class="line">      <span class="comment">// 如果对这个地方不清楚可以查看下面的图</span></span><br><span class="line">      <span class="keyword">if</span> (i &lt;= index) <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'next() called multiple times'</span>))</span><br><span class="line">      index = i</span><br><span class="line">      <span class="keyword">let</span> fn = middleware[i]</span><br><span class="line">      <span class="keyword">if</span> (i === middleware.length) &#123;</span><br><span class="line">        <span class="comment">// 这里的 next 就是一开始 compose 传入的 next, 意味着当中间件函数数列执行完后, 执行这个 next 函数, 即圆心</span></span><br><span class="line">        fn = next</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 如果没有函数, 直接返回空值的 Promise</span></span><br><span class="line">      <span class="keyword">if</span> (!fn) <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve()</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 为什么这里要包一层 Promise? </span></span><br><span class="line">        <span class="comment">// 因为 async 需要后面是 Promise, 然后 next 函数返回值就是 dispatch 函数的返回值, </span></span><br><span class="line">        <span class="comment">// 所以运行 async next(); 需要 next 包一层 Promise,next 函数是固定的, 可以执行下一个函数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(fn(context, <span class="function"><span class="keyword">function</span> <span class="title">next</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> dispatch(i + <span class="number">1</span>)</span><br><span class="line">        &#125;))</span><br><span class="line">      &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(err)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>真正的核心:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compose</span> (<span class="params">middleware</span>) </span>&#123; <span class="comment">// [Promise, Promise, Promise]</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">context, next</span>) </span>&#123; <span class="comment">// next</span></span><br><span class="line">    <span class="keyword">let</span> index = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">return</span> dispatch(<span class="number">0</span>)</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">dispatch</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">      index = i</span><br><span class="line">      <span class="keyword">let</span> fn = middleware[i]</span><br><span class="line">      <span class="keyword">if</span> (i === middleware.length) fn = next <span class="comment">// 当运行结束的时候,next赋值给fn,next是undefined</span></span><br><span class="line">      <span class="keyword">if</span> (!fn) <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve() <span class="comment">// !undefined,跳出当前的中间件,执行逻辑函数</span></span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(</span><br><span class="line">          fn(context, dispatch.bind(<span class="literal">null</span>, i + <span class="number">1</span>)) <span class="comment">// 此处相当于将上一个函数执行结果的Promise对象传入下一个函数</span></span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>至于在一个中间件函数中两次调用 next 函数导致出错, 我这里提供一个简单的例子供大家参考:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">first</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'1'</span>);</span><br><span class="line">  <span class="comment">// async 与 co + yield 的模型不同, await 是需要后面是 promise 的函数, 并且自己执行一次, 而 co 是自己拿到 value 然后帮你自动执行.</span></span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">  <span class="keyword">await</span> next(); <span class="comment">// 两次调用 next</span></span><br><span class="line">  <span class="built_in">console</span>.log(ctx);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">second</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'2'</span>);</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">third</span>(<span class="params">ctx, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'3'</span>);</span><br><span class="line">  <span class="keyword">await</span> next();</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'4'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> middleware = [first, second, third];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> com = compose(middleware);</span><br><span class="line"></span><br><span class="line">com(<span class="string">'ctx'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hey'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>如果第一个中间件中没有两次调用 next 函数, 那么正确的结果为 1 2 3 ‘hey’ 4 ‘ctx’. 对于出错的真正原因是如下图:<br><img src="http://weixinfactory.di1game.com/blog/next-err.png"></p>
-<p>在第 5 步中, 传入的 i 值为 1, 因为还是在第一个中间件函数内部, 但是 compose 内部的 index 已经是 3 了, 所以 i &lt; 3, 所以报错了, 可知在一个中间件函数内部不允许多次调用 next 函数.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/http请求返回gzip处理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="胡剑">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/46552129?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HuJian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/21/http请求返回gzip处理/" itemprop="url">http请求返回gzip处理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T11:33:49+08:00">
-                2019-02-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/02/21/http请求返回gzip处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/21/http请求返回gzip处理/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>引入模块<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const http = require(<span class="string">'http'</span>);</span><br><span class="line">const qs = require(<span class="string">'querystring'</span>)</span><br><span class="line">const zlib = require(<span class="string">'zlib'</span>); ==&gt; 压缩解压数据</span><br></pre></td></tr></table></figure></p>
-<p>程序主题<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    hostname: <span class="string">'www.kuaidi100.com'</span>,</span><br><span class="line">    path: <span class="string">'/query?type=yuantong&amp;postid=804233238482357128&amp;temp=0.04453568682858622&amp;phone=123'</span>,</span><br><span class="line">    methos: <span class="string">'GET'</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">        <span class="string">'Accept'</span>: <span class="string">'*/*'</span>,</span><br><span class="line">        <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate'</span>, <span class="comment">//这里设置返回的编码方式 设置其他的会是乱码</span></span><br><span class="line">        <span class="string">'Accept-Language'</span>: <span class="string">'zh-CN,zh;q=0.8'</span>,</span><br><span class="line">        <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</span><br><span class="line">        <span class="string">'Content-Encoding'</span>: <span class="string">'gzip'</span>,</span><br><span class="line">        <span class="string">'Vary'</span>: <span class="string">'Accept-Encoding'</span>,</span><br><span class="line">        <span class="string">'Transfer-Encoding'</span>: <span class="string">'chunked'</span>,</span><br><span class="line">        <span class="string">'Content-Type'</span>: <span class="string">'application/json;charset=utf-8'</span>,</span><br><span class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http.get(options, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'STATUS: '</span> + res.statusCode);</span><br><span class="line">    <span class="built_in">console</span>.log(res.headers[<span class="string">'content-encoding'</span>])</span><br><span class="line">    <span class="keyword">var</span> html = [];</span><br><span class="line">    res.on(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        html.push(data);</span><br><span class="line">    &#125;)</span><br><span class="line">    res.on(<span class="string">"end"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> buffer = Buffer.concat(html);</span><br><span class="line">        <span class="comment">// 对返回的数据buffer进行解压操作</span></span><br><span class="line">        zlib.gunzip(buffer, <span class="function"><span class="keyword">function</span>(<span class="params">err, decoded</span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(decoded.toString());</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;).on(<span class="string">"error"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"获取失败"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1858,7 +2265,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
